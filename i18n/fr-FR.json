@@ -631,10 +631,10 @@
 			"hangup2": "Raison",
 			"details1": "Appel",
 			"details2": "Détails",
-			"report1": "Soumettre",
-			"report2": "Reporter"
+			"actions": "Actions"
 		},
 		"reportCall": "Reporter Appel",
+		"downloadFax": "Télécharger",
 		"loaderMessage": "Défilez vers le bas ou cliquez ici pour charger plus d'appels.",
 		"loadingMessage": "Chargement d'appels supplémentaires...",
 		"alertMessages": {

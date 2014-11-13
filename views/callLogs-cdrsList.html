@@ -46,9 +46,14 @@
 			</div>
 		</div>
 		<div class="grid-cell report">
-			<div class="sub-cell single-cell">
+			<div class="sub-cell {{#if this.fax_info}}cell-top{{else}}single-cell{{/if}}">
 				<a href="{{this.mailtoLink}}">{{../i18n.callLogs.reportCall}}</a>
 			</div>
+		{{#if this.fax_info}}
+			<div class="sub-cell cell-bottom">
+				<a class="download-fax" href="javascript:void(0);" data-id="{{this.fax_info.fax_doc_id}}">{{../../i18n.callLogs.downloadFax}}</a>
+			</div>
+		{{/if}}
 		</div>
 	</div>
 	{{#each this.bLegs}}

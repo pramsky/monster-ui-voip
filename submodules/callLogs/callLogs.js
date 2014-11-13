@@ -173,6 +173,10 @@ define(function(require){
 				e.stopPropagation();
 			});
 
+			template.on('click', '.grid-cell.report .download-fax', function(event) {
+				self.callLogsGetFaxAttachment($(this).data('id'));
+			});
+
 			function loadMoreCdrs() {
 				var loaderDiv = template.find('.call-logs-loader');
 				if(startKey) {
@@ -382,6 +386,24 @@ define(function(require){
 				},
 				error: function(data, status) {
 					monster.ui.alert('error', self.i18n.active().callLogs.alertMessages.getDetailsError);
+				}
+			});
+		},
+
+		callLogsGetFaxAttachment: function(faxId, callbackSuccess, callbackError){
+			var self = this;
+
+			self.callApi({
+				resource: 'fax.getAttachment',
+				data: {
+					accountId: self.accountId,
+					faxId: faxId
+				},
+				success: function(data, status) {
+					callbackSuccess && callbackSuccess();
+				},
+				error: function(data, status) {
+					callbackError && callbackError();
 				}
 			});
 		}

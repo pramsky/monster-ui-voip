@@ -146,14 +146,14 @@
 	font-style: italic;
 }
 #call_logs_container .grid-cell.details {
-	width: 10%;
+	width: 8%;
 }
 #call_logs_container .grid-cell.details i:hover {
 	color: #22ccff;
 	cursor: pointer;
 }
 #call_logs_container .grid-cell.report {
-	width: 10%;
+	width: 12%;
 }
 #call_logs_container .sub-cell {
 	height: 20px;
