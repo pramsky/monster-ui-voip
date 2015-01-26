@@ -26,7 +26,7 @@
 		</div>
 		{{/if}}
 		<div class="dashboard-content-div dashboard-left-content">
-			<div class="dashboard-left-section clearfix">
+			<div class="dashboard-left-section users-section clearfix">
 				<div class="left-section-header link-box" data-category="users">
 					<span class="title">{{i18n.myOffice.totalUsers}}</span>
 					<span class="number">{{totalUsers}}</span>
@@ -37,7 +37,7 @@
 					{{/times}}
 				</div>
 			</div>
-			<div class="dashboard-left-section clearfix">
+			<div class="dashboard-left-section devices-section clearfix">
 				<div class="left-section-header link-box" data-category="devices">
 					<span class="title">{{i18n.myOffice.totalDevices}}</span>
 					<span class="number">{{totalDevices}}</span>
@@ -185,13 +185,15 @@
 					<div class="row-label">Download Phone System Manual</div>
 					<div class="row-link pull-right"><a href="#">Print</a></div>
 				</div> -->
-				<div class="dashboard-box-row account-info-box">
-					<div class="row-label">{{i18n.myOffice.accountId}}</div>
-					<div class="row-value">{{account.id}}</div>
-				</div>
-				<div class="dashboard-box-row account-info-box">
-					<div class="row-label">{{i18n.myOffice.accountRealm}}</div>
-					<div class="row-value">{{account.realm}}</div>
+				<div class="dashboard-box sub-box account-info-box">
+					<div class="dashboard-box-row account-info-row">
+						<div class="row-label">{{i18n.myOffice.accountId}}</div>
+						<div class="row-value">{{account.id}}</div>
+					</div>
+					<div class="dashboard-box-row account-info-row">
+						<div class="row-label">{{i18n.myOffice.accountRealm}}</div>
+						<div class="row-value">{{account.realm}}</div>
+					</div>
 				</div>
 			</div>
 		</div>

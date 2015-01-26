@@ -271,11 +271,11 @@
 	text-transform: uppercase;
 	font-size: 12px;
 }*/
-#myoffice_container .dashboard-right-content .dashboard-box .dashboard-box-row.account-info-box > div {
+#myoffice_container .dashboard-right-content .dashboard-box .dashboard-box-row.account-info-row > div {
 	height: 20px;
 	line-height: 20px;
 }
-#myoffice_container .dashboard-right-content .dashboard-box .dashboard-box-row.account-info-box .row-label {
+#myoffice_container .dashboard-right-content .dashboard-box .dashboard-box-row.account-info-row .row-label {
 	font-weight: 600;
 	margin-right: 10px;
 }

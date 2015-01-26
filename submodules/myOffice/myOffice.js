@@ -2,7 +2,8 @@ define(function(require){
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		monster = require('monster'),
-		chart = require('chart');
+		chart = require('chart'),
+		introJs = require('introJs');
 
 	var app = {
 
@@ -94,7 +95,59 @@ define(function(require){
 						}) :
 						[{ value:1, color:"#DDD" }],
 						chartOptions
-					);
+					),
+					intro = introJs();
+
+				intro.setOptions({
+					exitOnOverlayClick: false,
+					tooltipClass: 'monster-intro-tooltip',
+					highlightClass: 'monster-intro-highlight',
+					steps: [
+						{
+							intro: 'Welcome to SmartPBX! Here is a quick overview of what you can do:'
+						},
+						{
+							element: template.find('.users-section')[0],
+							intro: 'See how many users you have on your account.',
+							position: 'right'
+						},
+						{
+							element: template.find('.devices-section')[0],
+							intro: 'See what devices are set up on your account, and how many of them are unregistered.',
+							position: 'right'
+						},
+						{
+							element: template.find('.conf-section')[0],
+							intro: 'See how many conference bridges are available on your account',
+							position: 'right'
+						},
+						{
+							element: template.find('.main-number-row')[0],
+							intro: 'Set your company main number(s)',
+							position: 'left'
+						},
+						{
+							element: template.find('.conf-number-row')[0],
+							intro: 'Set your main conference number(s).',
+							position: 'left'
+						},
+						{
+							element: template.find('.total-numbers-div')[0],
+							intro: 'Manage your account numbers',
+							position: 'left'
+						},
+						{
+							element: template.find('.account-info-box')[0],
+							intro: 'Easy access to basic account information.',
+							position: 'left'
+						},
+						{
+							element: $('#voip_container .left-menu')[0],
+							intro: 'Quick links to all the sections of SmartPBX.',
+							position: 'left'
+						}
+					]
+				});
 
 				// Trick to adjust the vertical positioning of the number types legend
 				if(myOfficeData.classifiedNumbers.length <= 3) {
@@ -110,6 +163,8 @@ define(function(require){
 				parent
 					.empty()
 					.append(template);
+
+				intro.start();
 			});
 		},
 
