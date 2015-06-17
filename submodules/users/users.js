@@ -3,6 +3,7 @@ define(function(require){
 		_ = require('underscore'),
 		chosen = require('chosen'),
 		monster = require('monster'),
+		language = require('monster-language'),
 		timezone = require('monster-timezone'),
 		toastr = require('toastr');
 
@@ -497,6 +498,7 @@ define(function(require){
 							currentUser = data;
 
 							template.find('#user_timezone').chosen({search_contains: true, width: "220px"});
+							template.find('#user_language').chosen({search_contains: true, width: "220px"});
 
 							data.extra.differentEmail ? template.find('.email-group').show() : template.find('.email-group').hide();
 
@@ -766,6 +768,7 @@ define(function(require){
 				monster.util.checkVersion(currentUser, function() {
 					if(monster.ui.valid(form)) {
 						currentUser.extra.vmbox.timezone = formData.timezone;
+						currentUser.extra.vmbox.language = formData.language;
 
 						var userToSave = $.extend(true, {}, currentUser, formData),
 							oldPresenceId = currentUser.presence_id;
@@ -2548,6 +2551,7 @@ define(function(require){
 					});
 
 					timezone.populateDropdown(template.find('#user_timezone'), dataTemplate.timezone||'inherit', {inherit: self.i18n.active().defaultTimezone});
+					language.populateDropdown(template.find('#user_language'), dataTemplate.language||'inherit', {inherit: self.i18n.active().defaultLanguage});
 
 					monster.ui.tooltips(template, {
 						options: {

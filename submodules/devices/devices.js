@@ -169,7 +169,6 @@ define(function(require){
 									dataDevice.provision.feature_keys[i] = { type: 'none' };
 								}
 							}
-
 							self.callApi({
 								resource: 'user.list',
 								data: {
@@ -350,6 +349,39 @@ define(function(require){
 				var videoCodecs = monster.ui.codecSelector('video', templateDevice.find('#video_codec_selector'), data.media.video.codecs);
 			}
 
+                        if  (typeof data.media.audio['tx_volume'] !== 'number') data.media.audio['tx_volume'] = '0';
+                        var slider_tx  = templateDevice.find('#slider_tx'),tooltip_tx = templateDevice.find('.tooltip_tx');
+                                        tooltip_tx.css('left', data.media.audio['tx_volume']).text( data.media.audio['tx_volume']);
+                                        slider_tx.slider({
+                                        range: "min",min: -4,value: data.media.audio['tx_volume'],max: 4,step: 1,
+                                        slide: function(event, ui_tx) { //When the slider is sliding
+                                                var value_tx  = slider_tx.slider('value'),
+                                                volume_tx = templateDevice.find('.volume_tx');
+                                                tooltip_tx.css('left', value_tx).text(ui_tx.value);  //Adjust the tooltip accordingly
+                                                if(value_tx < -3) {volume_tx.css('background-position', '0 0');}
+                                                else if (value_tx <= -1) {volume_tx.css('background-position', '0 -25px');}
+                                                else if (value_tx <= 2) {volume_tx.css('background-position', '0 -50px');}
+                                                else {volume_tx.css('background-position', '0 -75px');};
+                                        }
+                        });
+                        if(typeof data.media.audio['rx_volume'] !== 'number') data.media.audio['rx_volume'] = '0';
+                        var volume_tx = $('#slider_tx').slider("option", "value_tx");
+                        var volume_rx = $('#slider_rx').slider("option", "value_rx");
+                        var slider_rx  = templateDevice.find('#slider_rx'), tooltip_rx = templateDevice.find('.tooltip_rx');
+                                        tooltip_rx.css('left', data.media.audio['rx_volume']).text( data.media.audio['rx_volume']);
+                                        slider_rx.slider({
+                                        range: "min",min: -4,value: data.media.audio['rx_volume'],max: 4,step: 1,
+                                        slide: function(event, ui_rx) { //When the slider is sliding
+                                                var value_rx  = slider_rx.slider('value'),
+                                                volume_rx = templateDevice.find('.volume_rx');
+                                                tooltip_rx.css('left', value_rx).text(ui_rx.value);  //Adjust the tooltip accordingly
+                                                if(value_rx < -3) {volume_rx.css('background-position', '0 0');}
+                                                else if (value_rx <= -1) {volume_rx.css('background-position', '0 -25px');}
+                                                else if (value_rx <= 2) {volume_rx.css('background-position', '0 -50px');}
+                                                else {volume_rx.css('background-position', '0 -75px');};
+                                        },
+                        });
+
 			monster.ui.tabs(templateDevice);
 			monster.ui.protectField(templateDevice.find('#sip_password'), templateDevice);
 
@@ -369,7 +401,7 @@ define(function(require){
 				if(monster.ui.valid(deviceForm)) {
 					templateDevice.find('.feature-key-value:not(.active)').remove();
 
-					var dataToSave = self.devicesMergeData(data, templateDevice, audioCodecs, videoCodecs);
+					var dataToSave = self.devicesMergeData(data, templateDevice, audioCodecs, videoCodecs, slider_tx.slider('value'), slider_rx.slider('value'));
 
 					self.devicesSaveDevice(dataToSave, function(data) {
 						popup.dialog('close').remove();
@@ -491,6 +523,17 @@ define(function(require){
 				});
 			});
 
+
+			templateDevice.find('.tabs-section[data-section="WebRTC"] .type-info a').on('click', function() {
+				var $this = $(this);
+
+				setTimeout(function() {
+					var action = ($this.hasClass('collapsed') ? 'show' : 'hide').concat('Info');
+
+					$this.find('.text').text(self.i18n.active().devices.popupSettings.WebRTC.info.link[action]);
+				});
+			});
+
 			var popup = monster.ui.dialog(templateDevice, {
 				position: ['center', 20],
 				title: popupTitle,
@@ -498,7 +541,7 @@ define(function(require){
 			});
 		},
 
-		devicesMergeData: function(originalData, template, audioCodecs, videoCodecs) {
+		devicesMergeData: function(originalData, template, audioCodecs, videoCodecs, tx_volume, rx_volume) {
 			var self = this,
 				hasCodecs = $.inArray(originalData.device_type, ['sip_device', 'landline', 'fax', 'ata', 'softphone', 'smartphone', 'mobile', 'sip_uri']) > -1,
 				hasSIP = $.inArray(originalData.device_type, ['fax', 'ata', 'softphone', 'smartphone', 'mobile']) > -1,
@@ -521,7 +564,9 @@ define(function(require){
 			if(hasCodecs) {
 				formData.media = $.extend(true, {
 					audio: {
-						codecs: []
+						codecs: [],
+						tx_volume: tx_volume,
+						rx_volume: tx_volume
 					},
 					video: {
 						codecs: []
@@ -637,7 +682,9 @@ define(function(require){
 							enforce_security: false,
 						},
 						audio: {
-							codecs: ['PCMU', 'PCMA']
+							codecs: ['PCMU', 'PCMA'],
+							tx_volume: "0",
+							rx_volume: "0"
 						},
 						video: {
 							codecs: []

@@ -8,10 +8,13 @@ define(function(require){
 
 		css: [ 'app' ],
 
-		i18n: { 
+		i18n: {
 			'en-US': { customCss: false },
 			'fr-FR': { customCss: false },
-			'ru-RU': { customCss: false }
+			'ru-RU': { customCss: false },
+                        'de-DE': { customCss: false },
+                        'it-IT': { customCss: false },
+                        'ro-RO': { customCss: false }
 		},
 
 		requests: {},

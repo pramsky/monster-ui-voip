@@ -492,7 +492,7 @@ define(function(require){
 				|| !('emergency' in data.account.caller_id)
 				|| !('number' in data.account.caller_id.emergency)
 				|| !(data.account.caller_id.emergency.number in data.numbers)
-				|| data.numbers[data.account.caller_id.emergency.number].features.indexOf('dash_e911') < 0
+//				|| data.numbers[data.account.caller_id.emergency.number].features.indexOf('dash_e911') < 0
 				)
 			) {
 				data.topMessage = {
@@ -805,7 +805,7 @@ define(function(require){
 			});
 
 			emergencyZipcodeInput.on('blur', function() {
-				$.getJSON('http://www.geonames.org/postalCodeLookupJSON?&country=US&callback=?', { postalcode: $(this).val() }, function(response) {
+				$.getJSON('http://www.geonames.org/postalCodeLookupJSON?&country=CH&callback=?', { postalcode: $(this).val() }, function(response) {
 					if (response && response.postalcodes.length && response.postalcodes[0].placeName) {
 						emergencyCityInput.val(response.postalcodes[0].placeName);
 						emergencyStateInput.val(response.postalcodes[0].adminName1);

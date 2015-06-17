@@ -494,7 +494,7 @@
 
 /* Ringback Feature */
 .feature-popup-container[data-feature="ringback"] {
-	width: 516px;
+	width: 536px;
 }
 
 .feature-popup-container[data-feature="ringback"] .media-dropdown {
@@ -534,7 +534,7 @@
 
 /* Next Action Feature */
 .feature-popup-container[data-feature="next_action"] {
-	width: 540px;
+	width: 580px;
 }
 
 .feature-popup-container[data-feature="next_action"] .next-action > * {

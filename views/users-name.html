@@ -67,16 +67,9 @@
 			</div>
 
 			<div class="row-fields">
-            	<div class="fa fa-wrapper" data-original-title="{{i18n.users.editionForm.languageHelp}}" data-placement="top" data-toggle="tooltip"><i class="fa fa-flag"></i></div>
-				<select id="user_language" name="extra.language">
-					{{#select language}}
-						<option value="auto">{{i18n.languages.auto}}</option>
-						<option value="en-US">{{i18n.languages.americanEnglish}}</option>
-						<option value="fr-FR">{{i18n.languages.frenchFrench}}</option>
-						<option value="ru-RU">{{i18n.languages.russianRussian}}</option>
-					{{/select}}
-				</select>
-			</div>
+				<div class="fa fa-wrapper" data-original-title="{{i18n.users.editionForm.languageHelp}}" data-placement="top" data-toggle="tooltip"><i class="fa fa-flag"></i></div>
+                                    <select id="user_language" name="language" data-original_value="{{account.language}}"></select>
+                        </div>
 
 			<div class="row-fields">
 				<div class="fa fa-wrapper" data-original-title="{{i18n.users.editionForm.ringingHelp}}" data-placement="top" data-toggle="tooltip"><i class="fa fa-bell-o"></i></div>

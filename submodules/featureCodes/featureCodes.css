@@ -17,6 +17,11 @@
 	color: #555;
 }
 
+#feature_codes_container .feature-codes-category {
+	width: 50%;
+	float: left;
+}
+
 #feature_codes_container .feature-codes-content .feature-codes-category:not(:first-child) {
 	margin-top: 20px;
 }

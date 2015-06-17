@@ -16,7 +16,7 @@ define(function(require){
 			'auth.currentAccountUpdated': '_strategyOnCurrentAccountUpdated'
 		},
 
-		weekdays: ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"],
+		weekdays: ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"],
 
 		weekdayLabels: [
 			"MainMonday",

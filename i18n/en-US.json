@@ -188,6 +188,14 @@
 					"help": "When checked supporting phones will show a call missed if it was part of a ring group answered elsewhere."
 				}
 			},
+			"webrtc": {
+				"menuTitle": "WebRTC Link",
+				"sectionTitle": "WebRTC Link",
+				"showInfowebrtc": {
+					"infoLink": "Use this selection for absolute caution!",
+					"help": "To Support WebRTC via a Callbutton, we strong warn you to limit this extension, that call can internal only! without any Service Number! Please use this with absolute caution! Best you restrict internal calling by timeconditions too."
+				}
+			},
 			"restrictions": {
 				"menuTitle": "Restrictions",
 				"sectionTitle": "Restrictions Settings",
@@ -236,6 +244,8 @@
 					"types": {
 						"presence": "Indicate when a user has an incoming call or is on the phone. The indicator can be used to pick up ringing calls or speed dial that user.",
 						"parking": "Indicate when a call is placed on a parking slot available to the entire company. The indicator can be used to transfer a call to the parking slot or retrieve a parked call.",
+                                                "extension": "Nebenstelle",
+                                                "line": "Leitung",
 						"personal_parking": "Indicate when a call is placed on a parking slot dedicated to the selected user. The indicator can be used to transfer a call to the parking slot or retrieve a parked call.",
 						"speed_dial": "Does not indicate for any calls event but can be used to rapidly call the configured number."
 					}
@@ -243,6 +253,8 @@
 				"types": {
 					"none": "None",
 					"presence": "Presence",
+                                        "extension": "Nebenstelle",
+                                        "line": "Leitung",
 					"parking": "Parking",
 					"personal_parking": "Personal Parking",
 					"speed_dial": "Speed Dial"
@@ -371,7 +383,15 @@
 			"ata": "ATA",
 			"sip_uri": "SIP URI"
 		},
-		"unassignedDevice": "-"
+		"unassignedDevice": "-",
+		"walkthrough": {
+			"steps": {
+				"1": "Add a specific User Group by clicking on the button. The handy drag and drop allows you to add users, create a group name and add an extension number. Once complete, each User Group and its settings will be populated below.",
+				"2": "Once a User Group is created, it will pre-populate the area here. Make any necessary changes such as the group name, number of members and extension number.",
+				"3": "Purchase, Port and Assign numbers. Once complete, it will automatically be assigned to the specific User Group.",
+				"4": "Turn on/off and seamlessly manage any of the User Features specific to the User Group."
+			}
+		}
 	},
 
 	"users": {

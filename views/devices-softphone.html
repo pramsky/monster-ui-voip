@@ -1,4 +1,4 @@
-<div class="edit-device" data-id="{{id}}">
+<div class="edit-device"[M#= data-id="{{id}}">
 	<div class="title-bar clearfix">
 		<div class="device-title pull-left">
 			<div class="device-icon">
@@ -26,6 +26,7 @@
 					<li><a class="tabs-selector change-section" data-section="restrictions" href="javascript:void(0)"><i class="fa fa-ban"></i>{{ i18n.devices.popupSettings.restrictions.menuTitle }}</a></li>
 					<li><a class="tabs-selector change-section" data-section="callerId" href="javascript:void(0)"><i class="fa fa-ambulance"></i>{{ i18n.devices.popupSettings.callerId.menuTitle }}</a></li>
 					<li><a class="tabs-selector change-section" data-section="miscellaneous" href="javascript:void(0)"><i class="fa fa-cogs"></i>{{ i18n.devices.popupSettings.miscellaneous.menuTitle }}</a></li>
+					<li><a class="tabs-selector change-section" data-section="webrtc" href="javascript:void(0)"><i class="fa fa-link"></i>{{ i18n.devices.popupSettings.webrtc.menuTitle }}</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -63,20 +64,34 @@
 				</div>
 			</div>
 
-			<div class="tabs-section clearfix" data-section="audio">
-				<div class="title">
-					{{ i18n.devices.popupSettings.audio.sectionTitle }}
-				</div>
-
-				<div class="helper">
-					<i class="fa fa-info-circle"></i>
-					{{ i18n.devices.popupSettings.dragAndDrop }}
-				</div>
-
-				<div class="items-selector codec-selector clearfix" id="audio_codec_selector">
-				</div>
-			</div>
-
+                        <div class="tabs-section clearfix" data-section="audio">
+                                <div class="volume-wrapper pull-left">
+                                        <div class="title">
+                                                {{ i18n.devices.popupSettings.audio.sectionTitle }}
+                                        </div>
+                                </div>
+                                <div class="volume-wrapper pull-right">
+                                        <div id="volume-tab-tx">
+                                            <div class="section_tx">
+                                                <span class="tooltip_tx"></span>
+                                                    <div id="slider_tx"></div>
+                                                <span class="volume_tx"></span>
+                                            </div>
+                                        </div>
+                                        <div id="volume-tab-rx">
+                                            <div class="section_rx">
+                                                <span class="tooltip_rx"></span>
+                                                    <div id="slider_rx"></div>
+                                                <span class="volume_rx"></span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="helper pull-left">
+                                        <i class="icon-info-sign"></i>
+                                        {{ i18n.devices.popupSettings.dragAndDropAudio }}
+                                </div>
+                                <div class="items-selector codec-selector clearfix" id="audio_codec_selector"></div>
+                        </div>
 			<div class="tabs-section clearfix" data-section="video">
 				<div class="title">
 					{{ i18n.devices.popupSettings.video.sectionTitle }}
@@ -102,6 +117,7 @@
 					</div>
 					<div class="restriction-list">
 					{{#each extra.restrictions}}
+                                        <div class="clearfix restrictions-list">
 						<div class="control-group restriction-line{{#if this.disabled}} disabled{{/if}}" data-restriction="{{@key}}">
 							<label class="control-label">{{this.friendly_name}}
 								{{#if this.help}}
@@ -117,6 +133,7 @@
 								<i class="restriction-matcher-sign fa-lg fa fa-check monster-green"></i>
 							</div>
 						</div>
+					</div>
 					{{/each}}
 					</div>
 					<div class="restriction-message help-box">
@@ -185,11 +202,23 @@
 					</div>
 				</div>
 			</div>
-		</form>
-	</div>
 
-	<div class="actions clearfix">
-		{{#if id}}
+			<div class="tabs-section clearfix" data-section="webrtc">
+				<div class="title">
+					{{ i18n.devices.popupSettings.webrtc.sectionTitle }}
+				</div>
+
+                                <div class="type-info helper warning">
+                                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#info_content"><i class="fa fa-question-circle"></i><span class="text">{{ i18n.devices.popupSettings.webrtc.showInfowebrtc.infoLink }}</span></a>
+                                        <div id="info_content" class="collapse">
+                                                        <p><strong>{{ i18n.devices.popupSettings.webrtc.showInfowebrtc.help }}</strong></p>
+                                        </div>
+                                </div>
+
+                </div>
+
+                <div class="actions clearfix">
+                {{#if id}}
 			<a id="delete_device" class="monster-link"><i class="fa fa-trash-o monster-red"></i>{{ i18n.devices.deleteDevice }}</a>
 		{{/if}}
 

@@ -101,18 +101,34 @@
 				</div>
 			</div>
 
-			<div class="tabs-section clearfix" data-section="audio">
-				<div class="title">
-					{{ i18n.devices.popupSettings.audio.sectionTitle }}
-				</div>
-
-				<div class="helper">
-					<i class="fa fa-info-circle"></i>
-					{{ i18n.devices.popupSettings.dragAndDrop }}
-				</div>
-
-				<div class="items-selector codec-selector" id="audio_codec_selector"></div>
-			</div>
+                        <div class="tabs-section clearfix" data-section="audio">
+                                <div class="volume-wrapper pull-left">
+                                        <div class="title">
+                                                {{ i18n.devices.popupSettings.audio.sectionTitle }}
+                                        </div>
+                                </div>
+                                <div class="volume-wrapper pull-right">
+                                        <div id="volume-tab-tx">
+                                            <div class="section_tx">
+                                                <span class="tooltip_tx"></span>
+                                                    <div id="slider_tx"></div>
+                                                <span class="volume_tx"></span>
+                                            </div>
+                                        </div>
+                                        <div id="volume-tab-rx">
+                                            <div class="section_rx">
+                                                <span class="tooltip_rx"></span>
+                                                    <div id="slider_rx"></div>
+                                                <span class="volume_rx"></span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="helper pull-left">
+                                        <i class="icon-info-sign"></i>
+                                        {{ i18n.devices.popupSettings.dragAndDropAudio }}
+                                </div>
+                                <div class="items-selector codec-selector clearfix" id="audio_codec_selector"></div>
+                        </div>
 
 			<div class="tabs-section clearfix" data-section="video">
 				<div class="title">
@@ -138,6 +154,7 @@
 					</div>
 					<div class="restriction-list">
 					{{#each extra.restrictions}}
+                                        <div class="clearfix restrictions-list">
 						<div class="control-group restriction-line{{#if this.disabled}} disabled{{/if}}" data-restriction="{{@key}}">
 							<label class="control-label">{{this.friendly_name}}
 								{{#if this.help}}
@@ -153,6 +170,7 @@
 								<i class="restriction-matcher-sign fa-lg fa fa-check monster-green"></i>
 							</div>
 						</div>
+					</div>
 					{{/each}}
 					</div>
 					<div class="restriction-message help-box">
