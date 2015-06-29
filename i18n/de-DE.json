@@ -121,6 +121,7 @@
 		"deletedDevice": "Sie haben erfolgreich das Gerät von \"{{deviceName}}\" gelöscht.",
 		"popupSettings": {
 			"advancedTitle": "Erweitert",
+			"brandDownloads": "Produkteinfo Hersteller",
 			"basicTitle": "Basis Einstellungen",
 			"basicSectionTitle": "Basis Einstellungen",
 			"dragAndDropAudio": "Mit den Sprech- und Höhrregler können Sie das Volume der Übertragung anpassen. Speziell bei (Echo Reduzierung) Volume unter -1 fahren. Um einen Codec auszuwählen, müssen Sie in per Drag und Drop von der \"Möglichen\" in die \"Ausgewählte\" Box verschieben",
@@ -180,7 +181,7 @@
                                 "sectionTitle": "WebRTC Link",
                                 "showInfowebrtc": {
                                         "infoLink": "Benutze dies mit Aboluter Vorsicht!",
-                                        "help": "Um einen Knopf für WebRTC zu benutzen, muss diese Nebenstelle mit Limiten versehen werden, die es erlaubt dass NUR intern verbunden zu werden, ohne sonstige Nummern! Am besten machen Sie auch ein Zeitlimit um bei Abwesenheit NUR eine Ansage zu übertragen."
+                                        "help": "Um einen Knopf für WebRTC zu benutzen, muss diese Nebenstelle mit Limiten versehen werden, die es erlaubt NUR intern verbunden zu werden, ohne sonstige Nummern! Am besten machen Sie auch ein Zeitlimit um bei Abwesenheit NUR eine Ansage zu übertragen."
                                 }
                         },
 			"restrictions": {
@@ -257,7 +258,7 @@
 			"missingDevice": "Mein Gerät ist nicht in der Liste",
 			"title": "Wählen des Gerätes",
 			"macAddress": "MAC-Adresse",
-			"deviceName": "Eigene Gerätebezeichnung"
+			"deviceName": "Gerätebezeichnung"
 		},
 		"sip_device": {
 			"addTitle": "SIP-Gerät zufügen",
@@ -265,13 +266,13 @@
 			"macAddressPlaceholder": "19:33:1A:B2:12:58",
 			"new": "Neues SIP-Gerät",
 			"macAddress": "MAC-Adresse",
-			"deviceName": "Eigene Gerätebezeichnung"
+			"deviceName": "Gerätebezeichnung"
 		},
                 "spare": "Freie",
 		"assigned": "Zugeordnet",
 		"sip_uri": {
 			"addTitle": "SIP-URI zufügen",
-			"deviceName": "Eigene Gerätebezeichnung",
+			"deviceName": "Gerätebezeichnung",
 			"editTitle": "SIP-URI: {{name}} ändern",
 			"new": "Neue SIP-URI anlegen",
 			"uri": "SIP-URI",
@@ -280,7 +281,7 @@
 		},
 		"landline": {
 			"addTitle": "Festnetz zufügen",
-			"deviceName": "Eigene Gerätebezeichnung",
+			"deviceName": "Gerätebezeichnung",
 			"editTitle": "Festnetz: {{name}} ändern",
 			"new": "Neuer Festnetzanschluss",
 			"number": "Nummer",
@@ -291,7 +292,7 @@
 		},
 		"cellphone": {
 			"addTitle": "Handy zufügen",
-			"deviceName": "Eigene Gerätebezeichnung",
+			"deviceName": "Gerätebezeichnung",
 			"editTitle": "Handy: {{name}} ändern",
 			"new": "Neues Handy",
 			"number": "Nummer",
@@ -302,7 +303,7 @@
 		},
 		"mobile": {
 			"addTitle": "Mobile zufügen",
-			"deviceName": "Eigene Gerätebezeichnung",
+			"deviceName": "Gerätebezeichnung",
 			"editTitle": "Mobile: {{name}} ändern",
 			"mdn": "MDN",
 			"mdnPlaceholder": "10-Stellen Telefonnummer",
@@ -310,7 +311,7 @@
 		},
 		"smartphone": {
 			"addTitle": "Smartphone zufügen",
-			"deviceName": "Eigene Gerätebezeichnung",
+			"deviceName": "Gerätebezeichnung",
 			"editTitle": "Smartphone: {{name}} ändern",
 			"new": "Neues Smartphone",
 			"requireKeypress": "Smartphone-Beantworter benutzen",
@@ -323,7 +324,7 @@
 			"macAddress": "MAC-Adresse",
 			"macAddressPlaceholder": "19:33:1A:B2:12:58",
 			"new": "Fax Maschine",
-			"deviceName": "Eigene Gerätebezeichnung",
+			"deviceName": "Gerätebezeichnung",
 			"t38": "T38",
 			"disabled": "Aus",
 			"auto": "Automatisch",
@@ -333,19 +334,19 @@
 			"addTitle": "Ein Softphone zufügen",
 			"editTitle": "Softphone: {{name}} ändern",
 			"new": "Neues Softphone",
-			"deviceName": "Eigene Gerätebezeichnung"
+			"deviceName": "Gerätebezeichnung"
 		},
 		"ata": {
 			"addTitle": "Ein ATA-Gerät zufügen",
 			"editTitle": "ATA-Gerät: {{name}} ändern",
 			"new": "Neues ATA-Gerät",
-			"deviceName": "Eigene Gerätebezeichnung"
+			"deviceName": "Gerätebezeichnung"
 		},
 		"sip": {
 			"username": "SIP Benutzername",
 			"password": "SIP Passwort",
 			"realm": "Realm",
-			"deviceName": "Eigene Gerätebezeichnung"
+			"deviceName": "Gerätebezeichnung"
 		},
 		"spare": "Freie",
 		"title": "Geräte",
@@ -985,6 +986,7 @@
                 "noVMBoxesConfigured": "Es sind keine Beantworter eingeschaltet",
                 "popupSettings": {
                         "advancedTitle": "Erweitert",
+                        "brandDownloads": "Downloads Produktinfo",
                         "basicTitle": "Basis Einstellungen",
                         "basicSectionTitle": "Basis Einstellungen",
                         "basic": {

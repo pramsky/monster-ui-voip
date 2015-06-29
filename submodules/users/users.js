@@ -773,6 +773,9 @@ define(function(require){
 						currentUser.extra.vmbox.timezone = formData.timezone;
 						currentUser.extra.vmbox.language = formData.language;
 
+						formData.first_name = monster.util.convertUtf8ToAscii(formData.first_name);
+						formData.last_name = monster.util.convertUtf8ToAscii(formData.last_name);
+
 						var userToSave = $.extend(true, {}, currentUser, formData),
 							oldPresenceId = currentUser.presence_id;
 

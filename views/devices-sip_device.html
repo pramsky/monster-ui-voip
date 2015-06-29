@@ -3,7 +3,7 @@
 		<div class="device-title pull-left">
 			{{#if provision}}
 			<div class="device-image model-image" style="background-image: url('css/assets/models/{{toLowerCase provision.endpoint_brand}}_{{toLowerCase provision.endpoint_family}}_{{toLowerCase provision.endpoint_model}}.jpg');"></div>
-			<div class="device-model">{{provision.endpoint_brand}} - {{provision.endpoint_model}}</div>
+			<div class="device-model devlink">{{provision.endpoint_brand}} - {{provision.endpoint_model}}</br><a target="_tab" href="http://{{ provision.endpoint_brand }}.com">{{ i18n.devices.popupSettings.brandDownloads }}</a></div>
 			{{else}}
 				<div class="device-icon">
 					<i class="icon-telicon-voip-phone"></i>

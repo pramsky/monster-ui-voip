@@ -128,6 +128,7 @@
 		"deletedDevice": "You successfully deleted the following device \"{{deviceName}}\".",
 		"popupSettings": {
 			"advancedTitle": "Advanced",
+			"brandDownloads": "Productinfo downloads",
 			"basicTitle": "Basic Settings",
 			"basicSectionTitle": "Basic Settings",
 			"dragAndDrop": "To select a codec, drag and drop from the available codecs box to selected codecs box",

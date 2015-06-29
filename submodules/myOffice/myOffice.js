@@ -815,7 +815,8 @@ define(function(require){
 
 			popupTemplate.find('.save').on('click', function() {
 				var callerIdNumber = callerIdNumberSelect.val(),
-					e911Form = popupTemplate.find('.emergency-form > form'),
+					e911Form = popupTemplate.find('.emergency-form > form');
+
 					updateAccount = function() {
 						self.myOfficeUpdateAccount(account, function(updatedAccount) {
 							popup.dialog('close').remove();
@@ -827,6 +828,7 @@ define(function(require){
 				if(callerIdNumber) {
 					if(monster.ui.valid(e911Form)) {
 						var callerIdName = callerIdNameInput.val();
+						callerIdName = monster.util.convertUtf8ToAscii(callerIdName);
 
 						account.caller_id = $.extend(true, {}, account.caller_id, {
 							external: {

@@ -163,6 +163,7 @@ define(function(require){
 			templateVMBox.find('.actions .save').on('click', function() {
 				if(monster.ui.valid(vmboxForm)) {
 					var dataToSave = self.vmboxesMergeData(data, templateVMBox);
+                                        dataToSave.name = monster.util.convertUtf8ToAscii(dataToSave.name);
 
 					self.vmboxesSaveVmbox(dataToSave, function(data) {
 						callbacks.afterSave && callbacks.afterSave(data);

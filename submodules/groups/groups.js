@@ -842,6 +842,7 @@ define(function(require){
 					var formData = monster.ui.getFormData('form-name');
 
 					//formData = self.groupsCleanNameData(formData);
+					formData.name = monster.util.convertUtf8ToAscii(formData.name);
 
 					data = $.extend(true, {}, data, formData);
 

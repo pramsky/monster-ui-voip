@@ -607,6 +607,7 @@ define(function(require){
 			}
 
 			var mergedData = $.extend(true, {}, originalData, formData);
+			mergedData.name = monster.util.convertUtf8ToAscii(formData.name);
 
 			/* The extend doesn't override an array if the new array is empty, so we need to run these snippet after the merge */
 			if(hasRTP) {
