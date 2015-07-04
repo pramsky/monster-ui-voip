@@ -4,6 +4,7 @@ define(function(require){
 		monster = require('monster'),
 		timepicker = require('timepicker'),
 		timezone = require('monster-timezone'),
+		ttsvoice = require('monster-ttsvoice'),
 		toastr = require('toastr');
 
 	var app = {
@@ -1587,6 +1588,8 @@ define(function(require){
 
 			container.find('.target-select').chosen({ search_contains: true, width: '150px' });
 
+			ttsvoice.populateDropdown(container.find('#tts_voice'), greeting.tts.voice||'inherit', {inherit: self.i18n.defaultttsvoice});
+
 			container.find('.upload-input').fileUpload({
 				inputOnly: true,
 				wrapperClass: 'upload-container',
@@ -1654,8 +1657,9 @@ define(function(require){
 						greeting.type = 'virtual_receptionist';
 						greeting.description = "<Text to Speech>";
 						greeting.media_source = "tts";
+						var voice = document.getElementById("tts_voice").value;
 						greeting.tts = {
-							voice: "female/en-US",
+							voice: voice,
 							text: text
 						};
 						self.callApi({
@@ -1684,7 +1688,7 @@ define(function(require){
 									media_source: "tts",
 									description: "<Text to Speech>",
 									tts: {
-										voice: "female/en-US",
+										voice: "",
 										text: text
 									}
 								}
@@ -2590,7 +2594,23 @@ define(function(require){
 					callback && callback(savedUser.data);
 				}
 			});
-		}
+		},
+		play_audio: function() {
+			var audioElement = document.createElement('audio');
+			audioElement.setAttribute('src', 'audio.mp3');
+			audioElement.setAttribute('autoplay', 'autoplay');
+			//audioElement.load()
+			$.get();
+			audioElement.addEventListener("load", function() {
+			    audioElement.play();
+			}, true);
+			$('.play').click(function() {
+			    audioElement.play();
+			});
+			$('.pause').click(function() {
+			    audioElement.pause();
+			});
+		},
 	};
 
 	return app;

@@ -20,7 +20,9 @@
 							 data-parent="#strategy_menu_popup_accordion" 
 							 data-target="#strategy_menu_popup_tts_greeting">
 							<div class="pull-right"><i class="fa fa-comment"></i></div>
-							<div>{{i18n.strategy.popup.ttsGreetingTitle}}</div>
+							<div>{{i18n.strategy.popup.ttsGreetingTitle}}
+                                                            <i class="text-center fa fa-play-circle"></i>
+                                                        </div>
 						</div>
 						<div class="collapse" id="strategy_menu_popup_tts_greeting">
 							<div class="greeting-option-content">
@@ -30,9 +32,10 @@
 								<textarea placeholder="{{i18n.strategy.popup.ttsGreetingPlaceholder}}">
 									{{#compare greeting.media_source '===' 'tts'}}{{greeting.tts.text}}{{/compare}}
 								</textarea>
-								<div class="greeting-option-actions clearfix">
-									<button class="update-greeting pull-right monster-button-mini monster-button-primary">{{i18n.update}}</button>
-									<button class="cancel-greeting pull-right monster-button-mini">{{i18n.cancel}}</button>
+								<div class="tts_voice greeting-option-actions clearfix">
+                                                                    <select id="tts_voice" name="greeting.tts.voice" data-original_value="{{greeting.tts.voice}}" class="pull-left monster-button-mini" style="width: 100px; height:22px;"></select>
+								<button class="update-greeting pull-right monster-button-mini monster-button-primary">{{i18n.update}}</button>
+								<button class="cancel-greeting pull-right monster-button-mini">{{i18n.cancel}}</button>
 								</div>
 							</div>
 						</div>
@@ -42,7 +45,9 @@
 							 data-parent="#strategy_menu_popup_accordion" 
 							 data-target="#strategy_menu_popup_upload_greeting">
 							<div class="pull-right"><i class="fa fa-upload"></i></div>
-							<div>{{i18n.strategy.popup.uploadGreetingTitle}}</div>
+							<div>{{i18n.strategy.popup.uploadGreetingTitle}}
+                                                            <i class="text-center fa fa-play-circle"></i>
+							</div>
 						</div>
 						<div class="collapse" id="strategy_menu_popup_upload_greeting">
 							<div class="greeting-option-content">
@@ -62,7 +67,9 @@
 							 data-parent="#strategy_menu_popup_accordion" 
 							 data-target="#strategy_menu_popup_record_greeting">
 							<div class="pull-right"><i class="fa fa-info-circle"></i></div>
-							<div>{{i18n.strategy.popup.recordGreetingTitle}}</div>
+							<div>{{i18n.strategy.popup.recordGreetingTitle}}
+                                                            <i class="text-center fa fa-play-circle"></i>
+                                                        </div>
 						</div>
 						<div class="collapse" id="strategy_menu_popup_record_greeting">
 							<div class="greeting-option-content">

@@ -695,14 +695,14 @@
                 },
                 "popup": {
                     "title": "Virtueller Portier",
-                    "infoBlock": "Der virtuelle Portier nimmt professionell Anrufe entgegen, und überträgt sie auf eine entsprechende Abteilung / Gruppe / Person oder auf den Beantworter. Im Hauptmenü können Sie die Menüpunkte einzurichten. Bitte nehmen Sie dazu eine Ansage auf, die mit diesem Hauptmenü übereinstimmt: z.B. \"Drücken Sie Eins für den Verkauf, oder zwei für die Reparaturabteilung.\"",
+                    "infoBlock": "Der virtuelle Portier nimmt professionell Anrufe entgegen, und überträgt sie auf eine entsprechende Abteilung / Gruppe / Person oder auf den Beantworter. Bitte nehmen Sie dazu eine Ansage auf, die mit diesem Hauptmenü übereinstimmt: z.B. \"Drücken Sie Eins für den Verkauf, oder zwei für die Reparaturabteilung.\"",
                     "menuTitle": "Hauptmenü",
                     "greetingsTitle": "Ansage",
                     "addRouteLink": "Menüpunkt hinzufügen",
-                    "ttsGreetingTitle": "Vorlesedienst",
+                    "ttsGreetingTitle": "TTS Vorlesedienst",
                     "ttsGreetingPlaceholder": "Bitte geben Sie Ihre Ansage hier.",
-                    "uploadGreetingTitle": "Laden Sie Ihre eigene Ansage",
-                    "recordGreetingTitle": "Nehmen Sie die Ansage mittels Telefon auf",
+                    "uploadGreetingTitle": "Ansage hochladen",
+                    "recordGreetingTitle": "Mit Telefon aufnehmen",
                     "recordGreetingInfo": "Die Anleitung unten erklärt wie Sie die Ansage per Telefon aufnehmen:",
                     "recordGreetingLines": {
                         "line1": "Nehmen Sie ein Telefon das zu diesem Konto gehört",
@@ -752,7 +752,8 @@
 			"user": "Benutzer",
 			"device": "Geräte",
 			"ring_group": "Gruppen",
-			"voicemail": "Beantworter"
+			"voicemail": "Beantworter",
+			"directory": "Verzeichnisse"
 		},
 		"confirmMessages": {
 			"deleteHoliday": "Diese Ferienzeit wird vollständig gelöscht. Weiter?",

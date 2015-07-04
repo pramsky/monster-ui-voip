@@ -651,7 +651,8 @@
 			"user": "utenti",
 			"device": "dispositivi",
 			"ring_group": "gruppi",
-			"voicemail": "caselle vocali"
+			"voicemail": "caselle vocali",
+			"directory": "elenco"
 		},
 		"confirmMessages": {
 			"deleteHoliday": "questa festa verrà eliminato definitivamente. continuare?",

@@ -177,7 +177,7 @@ define(function(require){
 								success: function(data, status) {
 									var keyTypes = [ 'none', 'presence', 'parking', 'personal_parking', 'speed_dial' ],
 										parkingSpots = [],
-										extra;
+										pextra;
 
 									data.data.sort(function(a, b) {
 										return a.last_name.toLowerCase() > b.last_name.toLowerCase() ? 1 : -1;
@@ -195,7 +195,7 @@ define(function(require){
 										}
 									});
 
-									extra = {
+									pextra = {
 										users: data.data,
 										featureKeys:{
 											parkingSpots: parkingSpots,
@@ -203,7 +203,7 @@ define(function(require){
 										}
 									};
 
-									dataDevice.extra = dataDevice.hasOwnProperty(extra) ? $.extend(true, {}, dataDevice.extra, extra) : extra;
+									dataDevice.extra.provision = dataDevice.hasOwnProperty(pextra) ? $.extend(true, {}, dataDevice.extra, pextra) : pextra;
 
 									self.devicesRenderDevice(dataDevice, callbackSave, callbackDelete);
 								}

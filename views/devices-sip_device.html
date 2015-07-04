@@ -256,7 +256,7 @@
 				<div class="type-info helper">
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#info_content"><i class="fa fa-question-circle"></i><span class="text">{{ i18n.devices.popupSettings.featureKeys.info.link.showInfo }}</span></a>
 					<div id="info_content" class="collapse">
-						{{#each extra.featureKeys.types}}
+						{{#each extra.provision.featureKeys.types}}
 							<p>{{#if info}}<strong>{{text}}</strong>: {{info}}{{/if}}</p>
 						{{/each}}
 					</div>
@@ -269,7 +269,7 @@
 					<div class="controls">
 						<select name="provision.feature_keys[{{@key}}].type" class="feature-key-type span2">
 						{{#select type}}
-							{{#each ../../extra.featureKeys.types}}
+							{{#each ../../extra.provision.featureKeys.types}}
 								<option value="{{id}}">{{text}}</option>
 							{{/each}}
 						{{/select}}
@@ -277,7 +277,7 @@
 						<div class="feature-key-value" data-type="presence">
 							<label for="provision.feature_keys[{{@key}}].value">{{ ../i18n.devices.popupSettings.featureKeys.labels.user }}</label>
 							<select name="provision.feature_keys[{{@key}}].value" class="chosen-feature-key-user">
-							{{#each ../../extra.users}}
+							{{#each ../../extra.provision.users}}
 								<option value="{{id}}">{{first_name}} {{last_name}}</option>
 							{{/each}}
 							</select>
@@ -285,7 +285,7 @@
 						<div class="feature-key-value" data-type="parking">
 							<label for="provision.feature_keys[{{@key}}].value">{{ ../i18n.devices.popupSettings.featureKeys.labels.parkingSpot }}</label>
 							<select class="span1" name="provision.feature_keys[{{@key}}].value">
-							{{#each ../../extra.featureKeys.parkingSpots}}
+							{{#each ../../extra.provision.featureKeys.parkingSpots}}
 								<option value="{{this}}">{{this}}</option>
 							{{/each}}
 							</select>
@@ -293,7 +293,7 @@
 						<div class="feature-key-value" data-type="personal_parking">
 							<label for="provision.feature_keys[{{@key}}].value">{{ ../i18n.devices.popupSettings.featureKeys.labels.user }}</label>
 							<select name="provision.feature_keys[{{@key}}].value" class="chosen-feature-key-user">
-							{{#each ../../extra.users}}
+							{{#each ../../extra.provision.users}}
 								<option value="{{id}}">{{first_name}} {{last_name}}</option>
 							{{/each}}
 							</select>
