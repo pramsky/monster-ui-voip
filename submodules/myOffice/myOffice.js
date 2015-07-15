@@ -805,7 +805,7 @@ define(function(require){
 			});
 
 			emergencyZipcodeInput.on('blur', function() {
-				$.getJSON('http://www.geonames.org/postalCodeLookupJSON?&country=CH&callback=?', { postalcode: $(this).val() }, function(response) {
+				$.getJSON('https://speech.allip.ovh/postalCodeLookupJSON?&country=CH&callback=?', { postalcode: $(this).val() }, function(response) {
 					if (response && response.postalcodes.length && response.postalcodes[0].placeName) {
 						emergencyCityInput.val(response.postalcodes[0].placeName);
 						emergencyStateInput.val(response.postalcodes[0].adminName1);

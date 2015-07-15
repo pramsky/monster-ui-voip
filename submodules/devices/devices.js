@@ -24,9 +24,9 @@ define(function(require){
 
 		/* Users */
 		/* args: parent and deviceId */
-		devicesRender: function(args) {
+		devicesRender: function(pArgs) {
 			var self = this,
-				args = args || {},
+				args = pArgs || {},
 				parent = args.parent || $('.right-content'),
 				_deviceId = args.deviceId || '';
 
@@ -55,7 +55,7 @@ define(function(require){
 					});
 				}
 
-				if ( dataTemplate.devices.length == 0 ) {
+				if ( dataTemplate.devices.length === 0 ) {
 					parent.find('.no-devices-row').css('display', 'block');
 				} else {
 					parent.find('.no-devices-row').css('display', 'none');
@@ -73,8 +73,8 @@ define(function(require){
 					rows = template.find('.devices-rows .grid-row:not(.title)'),
 					emptySearch = template.find('.devices-rows .empty-search-row');
 
-				_.each(rows, function(row) {
-					var row = $(row);
+				_.each(rows, function(pRow) {
+					var row = $(pRow);
 
 					row.data('search').toLowerCase().indexOf(searchString) < 0 ? row.hide() : row.show();
 				});
@@ -127,9 +127,9 @@ define(function(require){
 			template.find('.settings').on('click', function() {
 				var $this = $(this),
 					dataDevice = {
-						id: $this.parents('.grid-row').data('id')
+						id: $this.parents('.grid-row').data('id'),
+						isRegistered: $this.parents('.grid-row').data('registered') === 'true'
 					};
-
 
 				self.devicesRenderEdit({ data: dataDevice, callbackSave: function(dataDevice) {
 					self.devicesRender({ deviceId: dataDevice.id });
@@ -264,7 +264,7 @@ define(function(require){
 			var self = this,
 				mode = data.id ? 'edit' : 'add',
 				type = data.device_type,
-				popupTitle = mode === 'edit' ? monster.template(self, '!' + self.i18n.active().devices[type].editTitle, { name: data.name }) : self.i18n.active().devices[type].addTitle;
+				popupTitle = mode === 'edit' ? monster.template(self, '!' + self.i18n.active().devices[type].editTitle, { name: data.name }) : self.i18n.active().devices[type].addTitle,
 				templateDevice = $(monster.template(self, 'devices-'+type, data)),
 				deviceForm = templateDevice.find('#form_device');
 
@@ -288,7 +288,7 @@ define(function(require){
 			}
 
 			if ( data.extra.hasE911Numbers ) {
-				var currentNumber = undefined;
+				var currentNumber;
 
 				if(data.caller_id && data.caller_id.emergency && data.caller_id.emergency.number) {
 					currentNumber = data.caller_id.emergency.number;
@@ -395,6 +395,14 @@ define(function(require){
 
 			templateDevice.find('#secure_rtp').on('change', function() {
 				templateDevice.find('#rtp_method').toggle();
+			});
+
+			templateDevice.find('#restart_device').on('click', function() {
+				if(!$(this).hasClass('disabled')) {
+					self.devicesRestart(data.id, function() {
+						toastr.success(self.i18n.active().devices.popupSettings.miscellaneous.restart.success);
+					});
+				}
 			});
 
 			templateDevice.find('.actions .save').on('click', function() {
@@ -541,6 +549,21 @@ define(function(require){
 			});
 		},
 
+		devicesRestart: function(deviceId, callback) {
+			var self = this;
+
+			self.callApi({
+				resource: 'device.restart',
+				data: {
+					accountId: self.accountId,
+					deviceId: deviceId
+				},
+				success: function(data) {
+					callback && callback(data.data);
+				}
+			});
+		},
+
 		devicesMergeData: function(originalData, template, audioCodecs, videoCodecs, tx_volume, rx_volume) {
 			var self = this,
 				hasCodecs = $.inArray(originalData.device_type, ['sip_device', 'landline', 'fax', 'ata', 'softphone', 'smartphone', 'mobile', 'sip_uri']) > -1,
@@ -658,7 +681,7 @@ define(function(require){
 			return mergedData;
 		},
 
-		devicesFormatData: function(data) {
+		devicesFormatData: function(data, dataList) {
 			var self = this,
 				defaults = {
 					extra: {
@@ -697,7 +720,7 @@ define(function(require){
 					sip_device: {
 						sip: {
 							password: monster.util.randomString(12),
-							realm: monster.apps['auth'].currentAccount.realm,
+							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
 						}
 					},
@@ -722,7 +745,7 @@ define(function(require){
 					ata: {
 						sip: {
 							password: monster.util.randomString(12),
-							realm: monster.apps['auth'].currentAccount.realm,
+							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
 						}
 					},
@@ -733,21 +756,21 @@ define(function(require){
 						outbound_flags: ['fax'],
 						sip: {
 							password: monster.util.randomString(12),
-							realm: monster.apps['auth'].currentAccount.realm,
+							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
 						}
 					},
 					softphone: {
 						sip: {
 							password: monster.util.randomString(12),
-							realm: monster.apps['auth'].currentAccount.realm,
+							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
 						}
 					},
 					mobile: {
 						sip: {
 							password: monster.util.randomString(12),
-							realm: monster.apps['auth'].currentAccount.realm,
+							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
 						}
 					},
@@ -761,7 +784,7 @@ define(function(require){
 						},
 						sip: {
 							password: monster.util.randomString(12),
-							realm: monster.apps['auth'].currentAccount.realm,
+							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
 						}
 					},
@@ -785,9 +808,7 @@ define(function(require){
 					}
 				}
 
-				if('call_restriction' in data.accountLimits 
-				&& name in data.accountLimits.call_restriction
-				&& data.accountLimits.call_restriction[name].action === 'deny') {
+				if('call_restriction' in data.accountLimits && name in data.accountLimits.call_restriction && data.accountLimits.call_restriction[name].action === 'deny') {
 					defaults.extra.restrictions[name].disabled = true;
 					defaults.extra.hasDisabledRestrictions = true;
 				}
@@ -812,6 +833,8 @@ define(function(require){
 			if(data.device.media && data.device.media.video && data.device.media.video.codecs) {
 				formattedData.media.video.codecs = data.device.media.video.codecs;
 			}
+
+			formattedData.extra.isRegistered = dataList.isRegistered;
 
 			return formattedData;
 		},
@@ -857,7 +880,8 @@ define(function(require){
 					type: device.device_type,
 					friendlyType: self.i18n.active().devices.types[device.device_type],
 					registered: false,
-					classStatus: device.enabled ? 'unregistered' : 'disabled' /* Display a device in black if it's disabled, otherwise, until we know whether it's registered or not, we set the color to red */
+					classStatus: device.enabled ? 'unregistered' : 'disabled' /* Display a device in black if it's disabled, otherwise, until we know whether it's registered or not, we set the color to red */,
+					isRegistered: false
 				}
 			});
 
@@ -870,6 +894,7 @@ define(function(require){
 					/* Now that we know if it's registered, we set the color to green */
 					if(device.enabled) {
 						device.classStatus = 'registered';
+						device.isRegistered = true;
 					}
 				}
 			});
@@ -1022,7 +1047,7 @@ define(function(require){
 					}
 				},
 				function(error, results) {
-					var formattedData = self.devicesFormatData(results);
+					var formattedData = self.devicesFormatData(results, dataDevice);
 
 					callback && callback(formattedData);
 				}

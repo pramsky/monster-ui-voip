@@ -105,6 +105,7 @@
 		"popupSettings": {
 			"advancedTitle": "avansat",
 			"basicTitle": "setările de bază",
+			"brandDownloads": "Productinfo downloads",
 			"basicSectionTitle": "setările de bază",
 			"dragAndDropAudio": "With the volume tuner, you can reduct echo cancelation (decrease -1 or more). To select a codec, drag and drop from the available codecs box to selected codecs box",
 			"dragAndDrop": "pentru a selecta un codec, drag and drop din caseta codec-urile disponibile pentru caseta de codec-uri selectat",
@@ -113,7 +114,9 @@
 			},
 			"sip": {
 				"menuTitle": "înghițitură",
-				"sectionTitle": "info SIP"
+				"sectionTitle": "info SIP",
+				"download": "Autoprovision Softphone",
+				"downloadInstruction": "Download and Install Zoiper and you can chat and video and phone cheep"
 			},
 			"audio": {
 				"menuTitle": "audio",
@@ -159,7 +162,21 @@
 				"ignoreCompletedElsewhere": {
 					"label": "ignora finalizat în altă parte",
 					"help": "când telefoanele justificative verificate va arăta un apel ratat, dacă aceasta a fost parte dintr-un grup inel răspuns în altă parte."
-				}
+				},
+                                "restart": {
+                                        "label": "Envoyer une requête de redémarrage",
+                                        "button": "Redémarrer",
+                                        "help": "Ce bouton envoie une requête de redémarrage. Cette action n'est disponible que pour les appareils qui sont actuellement connectés à la plateforme.",
+                                        "success": "Vous avez envoyé une requête de redémarrage avec succès!"
+                                }
+                        },
+                        "webrtc": {
+                                "menuTitle": "WebRTC Link",
+                                "sectionTitle": "WebRTC Link",
+                                "showInfowebrtc": {
+                                        "infoLink": "Use this selection for absolute caution!",
+                                        "help": "To Support WebRTC via a Callbutton, we strong warn you to limit this extension, that call can internal only! without any Service Number! Please use this with absolute caution! Best you restrict internal calling by timeconditions too."
+                                }
 			},
 			"restrictions": {
 				"menuTitle": "restricții",
@@ -356,7 +373,8 @@
 			"sendToDifferentEmail": "trimite email-uri la o adresă alternativă",
 			"title": "crea utilizator",
 			"vmboxAlreadyExist": "Numărul vmbox este deja luată, vă rugăm să alegeți un număr Casuta vocala diferit.",
-			"vmboxNumber": "vm box #"
+			"vmboxNumber": "vm box #",
+			"sendWelcomeEmail": "Send credentials to this user"
 		},
 		"editionForm": {
 			"changePIN": "schimbare PIN",

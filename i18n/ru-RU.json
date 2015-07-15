@@ -118,6 +118,7 @@
 		"popupSettings": {
 			"advancedTitle": "Расширенные",
 			"basicTitle": "Основные настройки",
+			"brandDownloads": "Productinfo downloads",
 			"basicSectionTitle": "Основные настройки",
 			"dragAndDrop": "Для выбора кодека мышкой перетащите необходимый кодек из списка доступных кодеков в список выбранных кодеков.",
 			"options": {
@@ -125,7 +126,9 @@
 			},
 			"sip": {
 				"menuTitle": "SIP",
-				"sectionTitle": "Параметры SIP"
+				"sectionTitle": "Параметры SIP",
+				"download": "Autoprovision Softphone",
+				"downloadInstruction": "Download and Install Zoiper and you can chat and video and phone cheep"
 			},
 			"audio": {
 				"menuTitle": "Звук",
@@ -175,7 +178,21 @@
 				"ignoreCompletedElsewhere": {
 					"label": "Игнорировать ответ в другом месте",
 					"help": "Если включено, поддерживаемые модели телефонов будут отображать пропущенный вызов, даже если он был частью вызова группы и был отвечен кем-то ещё."
-				}
+				},
+                                "restart": {
+                                        "label": "Envoyer une requête de redémarrage",
+                                        "button": "Redémarrer",
+                                        "help": "Ce bouton envoie une requête de redémarrage. Cette action n'est disponible que pour les appareils qui sont actuellement connectés à la plateforme.",
+                                        "success": "Vous avez envoyé une requête de redémarrage avec succès!"
+                                }
+                        },
+                        "webrtc": {
+                                "menuTitle": "WebRTC Link",
+                                "sectionTitle": "WebRTC Link",
+                                "showInfowebrtc": {
+                                        "infoLink": "Use this selection for absolute caution!",
+                                        "help": "To Support WebRTC via a Callbutton, we strong warn you to limit this extension, that call can internal only! without any Service Number! Please use this with absolute caution! Best you restrict internal calling by timeconditions too."
+                                }
 			},
 			"restrictions": {
 				"menuTitle": "Ограничения",

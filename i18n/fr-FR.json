@@ -126,13 +126,16 @@
 			"advancedTitle": "Avancés",
 			"basicTitle": "Réglages",
 			"basicSectionTitle": "Réglages basiques",
+			"brandDownloads": "Productinfo downloads",
 			"dragAndDrop": "Pour sélectionner un codec, glisser-déposer depuis la boite des codecs disponibles jusqu'à celle des codecs sélectionnés",
 			"options": {
 				"menuTitle": "Réglages"
 			},
 			"sip": {
 				"menuTitle": "SIP",
-				"sectionTitle": "SIP Info"
+				"sectionTitle": "SIP Info",
+				"downloadInstruction": "Download and Install Zoiper and you can chat and video and phone cheep",
+				"download": "Autoprovision Softphone"
 			},
 			"audio": {
 				"menuTitle": "Audio",
@@ -165,8 +168,24 @@
 				"ignoreCompletedElsewhere": {
 					"label": "Afficher les appels manqués des groupes d'Appels",
 					"help": "Si cette case est cochée, les téléphones ayant accès à cette fonctionnalité afficheront les appels manqués même s'ils viennent d'un Groupe d'Appel et que l'appel a été pris par un collègue"
+				},
+				"__comment": "UI-377: Adding Restart device feature",
+				"__version": "3.21",
+				"restart": {
+					"label": "Envoyer une requête de redémarrage",
+					"button": "Redémarrer",
+					"help": "Ce bouton envoie une requête de redémarrage. Cette action n'est disponible que pour les appareils qui sont actuellement connectés à la plateforme.",
+					"success": "Vous avez envoyé une requête de redémarrage avec succès!"
 				}
 			},
+                        "webrtc": {
+                                "menuTitle": "WebRTC Link",
+                                "sectionTitle": "WebRTC Link",
+                                "showInfowebrtc": {
+                                        "infoLink": "Use this selection for absolute caution!",
+                                        "help": "To Support WebRTC via a Callbutton, we strong warn you to limit this extension, that call can internal only! without any Service Number! Please use this with absolute caution! Best you restrict internal calling by timeconditions too."
+                                }
+                        },
 			"restrictions": {
 				"menuTitle": "Restrictions",
 				"sectionTitle": "Réglages des Restrictions",

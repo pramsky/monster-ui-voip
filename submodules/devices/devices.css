@@ -327,10 +327,6 @@
 	display: none;
 }
 
-.edit-device .restriction-list {
-	display: inline-block;
-}
-
 .edit-device .restriction-message {
 	width: 275px;
 	margin: 0 0 0 30px !important;
@@ -582,4 +578,12 @@
 	margin-bottom: 2px;
 	border-radius: 5px;
 
+/* Restart Button */
+.edit-device #restart_device {
+	margin-left: 10px;
+}
+
+.authentication-list {
+        width: 60%;
+        float: left;
 }

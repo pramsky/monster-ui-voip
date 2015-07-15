@@ -108,7 +108,7 @@
                         "steps": {
                                 "1": "Hier können Sie eine Gruppe zufügen um mehrere Nebenstellen klingeln zu lassen. Sie können die Benutzer einfach in die Liste übernehmen, einen Gruppennamen angeben und eine Interne Gruppennummer zuweisen. Danach wird die Gruppe in der Liste darunter gelistet.",
                                 "2": "Ist eine Gruppe erstellt, wird diese hier gelistet. Hier können Sie klicken um die Einstellungen für diese Gruppe und deren Mitgliedern zu ändern.",
-                                "3": "Um öffentliche Nummern die frei sind zu übernehmen, bestehende zu portierungen oder neu zu mieten drücken Sie auf diesen Knopf. Wenn Sie fertig sind wird es diesem Benutzer zugewiesen, und ist sofort betriebsbereit.",
+                                "3": "Um öffentliche Nummern die frei sind zu übernehmen, bestehende zu portieren oder neu zu mieten drücken Sie auf diesen Knopf. Wenn Sie fertig sind wird es dieser Gruppe zugewiesen, und ist sofort betriebsbereit.",
                                 "4": "Anrufabläufe können Sie hier einstellen. Sie können verschiedene Einstellungen wie \"Klingelzeichen\", \"Aufnahmen\", \"Nächste Aktion\" und \"Weiterleitung erlauben\" Ihren Benürnissen anpassen."
                         }
                 }
@@ -131,7 +131,9 @@
 			},
 			"sip": {
 				"menuTitle": "SIP",
-				"sectionTitle": "SIP Info"
+				"sectionTitle": "SIP Info",
+				"downloadInstruction": "Installieren Sie Zoiper und Sie chatten und telefononieren mit Ihrem Handy kostengünstig über WiFi",
+				"download": "Autopovision Softphone"
 			},
 			"audio": {
 				"menuTitle": "Audio",
@@ -174,6 +176,12 @@
                                 "ignoreCompletedElsewhere": {
                                         "label": "Entgangener Anruf ignorieren",
                                         "help": "Wenn aktiviert wird ein Anruf der von jemand anderes entgegengenommen wurde, nicht als entgangener Anruf gewertet."
+                                },
+                                "restart": {
+                                        "label": "Neustart IP-Telefon",
+                                        "button": "Neustart",
+                                        "help": "Es wird ein Neustart an das Telefon gesendet. Es funktioniert nur wenn sich das Telefon an dieser Anlage registriert hat.",
+                                        "success": "Der Neustartbefehl wurde erfolgreich gesendet!"
                                 }
 			},
                         "webrtc": {
@@ -418,7 +426,8 @@
 			"sendToDifferentEmail": "Sende Emails auch noch an",
 			"title": "Benutzer anlegen",
 			"vmboxAlreadyExist": "Beantworter Nummer ist in Benutzung. Wählen Sie eine andere!",
-			"vmboxNumber": "Beantworter #"
+			"vmboxNumber": "Beantworter #",
+			"sendWelcomeEmail": "Sende Zugangsdaten an diesem Benutzer"
 		},
 		"editionForm": {
 			"changePIN": "PIN ändern",
@@ -624,10 +633,10 @@
                 },
                 "walkthrough": {
                         "steps": {
-                                "1": "Einfaches hinzufügen eines Benutzers durch klicken auf diesen Knopf um seine Daten einzugeben. Jeder Benutzer wird dann in der Liste unterhalb sichbar.",
+                                "1": "Hinzufügen eines Benutzers durch Klicken auf diesen Knopf um seine Daten einzugeben. Jeder Benutzer wird dann in der Liste unterhalb sichbar.",
                                 "2": "Ist ein Benutzer erstellt, sind seine Felder in dieser Liste. Hier können Sie klicken um die Einstellungen für diesen Benutzer anzupassen.",
-                                "3": "Hier können Sie jedem Benutzer eine Interne Nummer selbst zuweisen. Normalerweise wird die Nächstmöglich höhere Nummer angezeigt.",
-                                "4": "Um öffentliche Nummern die frei sind zu übernehmen, bestehende zu portieren oder neu zu mieten drücken Sie auf diesen Knopf. Wenn Sie fertig sind wird es diesem Benutzer zugewiesen, und ist sofort betriebsbereit.",
+                                "3": "Hier können Sie jedem Benutzer eine Interne Nummer selbst zuweisen. Wenn Sie eine neue Nummer zuweisen wird die nächst höhere Nummer vorgeschlagen.",
+                                "4": "Um öffentliche Nummern diesem Benutzer zuzuweisen, bestehende zu portieren oder neu zu mieten drücken Sie auf diesen Knopf. Wenn Sie fertig sind wird es diesem Benutzer zugewiesen, und ist sofort betriebsbereit.",
                                 "5": "Hier stellen Sie Ihre Geräte entsprechend den Nebenstellen ein, dadurch werden mit unterstützten Geräten die Einstellungen automatisch  geladen. Wenn Sie fertig sind wird es diesem Benutzer zugewiesen, und ist sofort betriebsbereit.",
                                 "6": "Anrufabläufe können Sie hier einstellen. Sie können hier verschiedene Einstellungen wie Anruf-ID, Wartemusik, Klingelzeichen, Faxbox, Umleitungen, Weiterleitungen, Konferenzen, Hotdesking und Aufnahmen Ihren Bedürfnissen anpassen."
                         }

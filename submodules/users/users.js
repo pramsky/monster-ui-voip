@@ -612,7 +612,9 @@ define(function(require){
 
 						userTemplate.find('#create_user').on('click', function() {
 							if(monster.ui.valid(userTemplate.find('#form_user_creation'))) {
-								var dataForm = monster.ui.getFormData('form_user_creation'),
+								var dataForm = monster.ui.getFormData('form_user_creation');
+								dataForm.user.first_name = monster.util.convertUtf8ToAscii(dataForm.user.first_name);
+								dataForm.user.last_name = monster.util.convertUtf8ToAscii(dataForm.user.last_name);
 									formattedData = self.usersFormatCreationData(dataForm);
 
 								self.usersCreate(formattedData, function(data) {

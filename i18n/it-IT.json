@@ -105,6 +105,7 @@
 		"popupSettings": {
 			"advancedTitle": "avanzato",
 			"basicTitle": "impostazioni di base",
+			"brandDownloads": "Productinfo downloads",
 			"basicSectionTitle": "impostazioni di base",
 			"dragAndDropAudio": "With the volume tuner, you can reduct echo cancelation (decrease -1 or more). To select a codec, drag and drop from the available codecs box to selected codecs box",
 			"dragAndDrop": "per selezionare un codec, drag and drop dalla casella codec disponibili al dialogo codec selezionata",
@@ -113,7 +114,9 @@
 			},
 			"sip": {
 				"menuTitle": "sorso",
-				"sectionTitle": "Info sip"
+				"sectionTitle": "Info sip",
+				"downloadInstruction": "Download and Install Zoiper and you can chat and video and phone cheep",
+				"download": "Autoprovision Softphone"
 			},
 			"audio": {
 				"menuTitle": "audio",
@@ -154,12 +157,24 @@
 					"srtp": "SRTP",
 					"zrtp": "ZRTP"
 				},
-				"__comment": "ui 1119",
-				"__version": "3.19",
 				"ignoreCompletedElsewhere": {
 					"label": "ignorare completato altrove",
 					"help": "quando i telefoni che supportano controllato mostreranno una chiamata persa, se fosse parte di un gruppo di anello risposto altrove."
-				}
+				},
+                                "restart": {
+                                        "label": "Envoyer une requête de redémarrage",
+                                        "button": "Redémarrer",
+                                        "help": "Ce bouton envoie une requête de redémarrage. Cette action n'est disponible que pour les appareils qui sont actuellement connectés à la plateforme.",
+                                        "success": "Vous avez envoyé une requête de redémarrage avec succès!"
+                                }
+                        },
+                        "webrtc": {
+                                "menuTitle": "WebRTC Link",
+                                "sectionTitle": "WebRTC Link",
+                                "showInfowebrtc": {
+                                        "infoLink": "Use this selection for absolute caution!",
+                                        "help": "To Support WebRTC via a Callbutton, we strong warn you to limit this extension, that call can internal only! without any Service Number! Please use this with absolute caution! Best you restrict internal calling by timeconditions too."
+                                }
 			},
 			"restrictions": {
 				"menuTitle": "restrizioni",
@@ -356,7 +371,8 @@
 			"sendToDifferentEmail": "inviare e-mail a un indirizzo alternativo",
 			"title": "creare utente",
 			"vmboxAlreadyExist": "numero vmbox è già preso, si prega di scegliere un altro numero di casella di posta vocale.",
-			"vmboxNumber": "vm scatola #"
+			"vmboxNumber": "vm scatola #",
+			"sendWelcomeEmail": "Send credentials to this user"
 		},
 		"editionForm": {
 			"changePIN": "Cambia PIN",

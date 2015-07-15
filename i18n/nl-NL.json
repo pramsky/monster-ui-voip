@@ -105,6 +105,7 @@
 		"popupSettings": {
 			"advancedTitle": "gevorderd",
 			"basicTitle": "basisinstellingen",
+			"brandDownloads": "Productinfo downloads",
 			"basicSectionTitle": "basisinstellingen",
 			"dragAndDropAudio": "With the volume tuner, you can reduct echo cancelation (decrease -1 or more). To select a codec, drag and drop from the available codecs box to selected codecs box",
 			"dragAndDrop": "om een codec, slepen en neerzetten van de doos beschikbare codecs aan geselecteerde codecs selectievakje",
@@ -113,7 +114,9 @@
 			},
 			"sip": {
 				"menuTitle": "nippen",
-				"sectionTitle": "slok info"
+				"sectionTitle": "slok info",
+				"downloadInstruction": "Download and Install Zoiper and you can chat and video and phone cheep",
+				"download": "Autoprovision Softphone"
 			},
 			"audio": {
 				"menuTitle": "audio",
@@ -159,7 +162,21 @@
 				"ignoreCompletedElsewhere": {
 					"label": "negeren elders afgerond",
 					"help": "wanneer gecontroleerd ondersteunende telefoons zal een oproep tonen gemist als het was onderdeel van een ring groep beantwoord elders."
-				}
+				},
+                                "restart": {
+                                        "label": "Envoyer une requête de redémarrage",
+                                        "button": "Redémarrer",
+                                        "help": "Ce bouton envoie une requête de redémarrage. Cette action n'est disponible que pour les appareils qui sont actuellement connectés à la plateforme.",
+                                        "success": "Vous avez envoyé une requête de redémarrage avec succès!"
+                                }
+                        },
+                        "webrtc": {
+                                "menuTitle": "WebRTC Link",
+                                "sectionTitle": "WebRTC Link",
+                                "showInfowebrtc": {
+                                        "infoLink": "Use this selection for absolute caution!",
+                                        "help": "To Support WebRTC via a Callbutton, we strong warn you to limit this extension, that call can internal only! without any Service Number! Please use this with absolute caution! Best you restrict internal calling by timeconditions too."
+                                }
 			},
 			"restrictions": {
 				"menuTitle": "beperkingen",
@@ -356,7 +373,8 @@
 			"sendToDifferentEmail": "e-mails versturen naar een ander adres",
 			"title": "gebruiker aanmaken",
 			"vmboxAlreadyExist": "vmbox nummer is al in gebruik, kies een andere voicemailbox nummer.",
-			"vmboxNumber": "vm doos #"
+			"vmboxNumber": "vm doos #",
+			"sendWelcomeEmail": "Send credentials to this user"
 		},
 		"editionForm": {
 			"changePIN": "PIN wijzigen",

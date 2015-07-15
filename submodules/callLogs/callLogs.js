@@ -333,8 +333,9 @@ define(function(require){
 			var self = this,
 				result = [],
 				formatCdr = function(cdr) {
-					var date = monster.util.gregorianToDate(cdr.timestamp),
-						shortDate = monster.util.toFriendlyDate(date, 'shortDate'),
+					var date = monster.util.gregorianToDate(cdr.timestamp);
+console.log(date);
+						shortDate = monster.util.toFriendlyDate(date, 'shortdate'),
 						time = monster.util.toFriendlyDate(date, 'time'),
 						durationMin = parseInt(cdr.duration_seconds/60).toString(),
 						durationSec = (cdr.duration_seconds % 60 < 10 ? "0" : "") + (cdr.duration_seconds % 60),
