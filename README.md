@@ -9,3 +9,4 @@
 ![smartpbx8](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx8.png)
 ![smartpbx9](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx9.png)
 ![smartpbx10](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx10.png)
+![smartpbx11](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx11.png)
