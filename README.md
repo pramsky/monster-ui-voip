@@ -6,3 +6,6 @@
 ![smartpbx5](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx5.png)
 ![smartpbx6](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx6.png)
 ![smartpbx7](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx7.png)
+![smartpbx8](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx8.png)
+![smartpbx9](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx9.png)
+![smartpbx10](https://raw.githubusercontent.com/urueedi/monster-ui-voip/master/metadata/icon/smartpbx10.png)
