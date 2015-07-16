@@ -577,13 +577,23 @@
 	margin-top: 2px;
 	margin-bottom: 2px;
 	border-radius: 5px;
-
+}
 /* Restart Button */
 .edit-device #restart_device {
 	margin-left: 10px;
 }
 
-.authentication-list {
-        width: 60%;
-        float: left;
+/* Provision list */
+.sips-left {
+	width: 58%;
+	float: left;
+}
+.sips-right {
+	width: 38%;
+	float: left;
+	margin: 2px;
+	text-align: center;
+}
+.sip-list {
+	float: left;
 }

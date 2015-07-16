@@ -34,7 +34,6 @@ define(function(require){
 				var dataTemplate = self.devicesFormatListData(data),
 					template = $(monster.template(self, 'devices-layout', dataTemplate)),
 					templateDevice;
-
 				_.each(dataTemplate.devices, function(device) {
 					templateDevice = monster.template(self, 'devices-row', device);
 
@@ -150,7 +149,7 @@ define(function(require){
 
 		devicesRenderEdit: function(args) {
 			var self = this,
-				data = args.data,
+				data = args.data;
 				callbackSave = args.callbackSave,
 				callbackDelete = args.callbackDelete || function(device) {
 					self.devicesRender();
@@ -264,8 +263,9 @@ define(function(require){
 			var self = this,
 				mode = data.id ? 'edit' : 'add',
 				type = data.device_type,
-				popupTitle = mode === 'edit' ? monster.template(self, '!' + self.i18n.active().devices[type].editTitle, { name: data.name }) : self.i18n.active().devices[type].addTitle,
-				templateDevice = $(monster.template(self, 'devices-'+type, data)),
+				popupTitle = mode === 'edit' ? monster.template(self, '!' + self.i18n.active().devices[type].editTitle, { name: data.name }) : self.i18n.active().devices[type].addTitle;
+                                data.account = monster.apps.auth.currentAccount;
+				templateDevice = $(monster.template(self, 'devices-'+type, data));
 				deviceForm = templateDevice.find('#form_device');
 
 			if (data.hasOwnProperty('provision') && data.provision.hasOwnProperty('feature_keys')) {
@@ -542,6 +542,16 @@ define(function(require){
 				});
 			});
 
+			templateDevice.find('.tabs-section[data-section="provision"] .type-info a').on('click', function() {
+				var $this = $(this);
+
+				setTimeout(function() {
+					var action = ($this.hasClass('collapsed') ? 'show' : 'hide').concat('Info');
+
+					$this.find('.text').text(self.i18n.active().devices.popupSettings.sip.info.link[action]);
+				});
+			});
+
 			var popup = monster.ui.dialog(templateDevice, {
 				position: ['center', 20],
 				title: popupTitle,
@@ -799,6 +809,7 @@ define(function(require){
 					}
 				};
 			
+
 			_.each(data.listClassifiers, function(restriction, name) {
 				if(name in self.i18n.active().devices.classifiers) {
 					defaults.extra.restrictions[name].friendly_name = self.i18n.active().devices.classifiers[name].name;
@@ -817,7 +828,7 @@ define(function(require){
 					defaults.extra.restrictions[name].action = data.device.call_restriction[name].action;
 				}
 				else {
-					defaults.extra.restrictions[name].action = 'inherit';
+					defaults.extra.restrictions[name].action = 'deny';
 				}
 			});
 

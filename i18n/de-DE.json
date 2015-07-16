@@ -132,8 +132,26 @@
 			"sip": {
 				"menuTitle": "SIP",
 				"sectionTitle": "SIP Info",
-				"downloadInstruction": "Installieren Sie Zoiper und Sie chatten und telefononieren mit Ihrem Handy kostengünstig über WiFi",
-				"download": "Autopovision Softphone"
+				"download": "Softphone installieren",
+                                "info": {
+                                        "link": {
+                                                "showInfo": "Wie installiere ich ein Softwaretelefon einfach und schnell",
+                                                "hideInfo": "Keine Info"
+                                        },
+                                        "types": {
+                                                "autoprovision": "Sie können automatisch, die Einstellungen des Softphones ausführen lassen, ohne die technischen Details zu kennen.",
+                                                "software": "Über den Download-Link 'Softphone installieren' laden Sie das Softwaretelefon und installieren es, wie gewohnt.",
+                                                "qrcode": "Nun scannen Sie mit dem installierten Softwaretelefon den angezeigen QR-Code (Im Wählfeld unten links), und sofort ist das Telefon beriebsbereit.",
+                                                "security": "Erfreuen Sie sich einer einfachen und sicheren Installation."
+                                        }
+                                },
+                                "types": {
+                                        "none": "Keine",
+                                        "autoprovision": "Automatisch einstellen",
+                                        "software": "Software installation",
+                                        "qrcode": "QR-Code",
+                                        "security": "Sicherheit"
+                                }
 			},
 			"audio": {
 				"menuTitle": "Audio",
@@ -230,8 +248,8 @@
                                 },
                                 "info": {
                                         "link": {
-                                                "showInfo": "Zeige Info",
-                                                "hideInfo": "Keine Info"
+                                                "showInfo": "Wie stelle ich die Funktionstasten ein?",
+                                                "hideInfo": "Keine Info zeigen"
                                         },
                                         "types": {
                                                 "presence": "Lampe zeigt dass die Nebenstelle besetzt ist. Diese kann benutzt werden um einen Anruf zu übernehmen oder um die Nebenstelle anzurufen.",

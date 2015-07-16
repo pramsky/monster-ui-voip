@@ -34,34 +34,61 @@
 
 	<div class="content">
 		<form id="form_device" class="form-horizontal">
-			<div class="tabs-section active" data-section="basic">
-				<div class="control-group">
+			<div class="tabs-section clearfix" data-section="basic">
+
+                            <div id="howtosoftphone" class="type-info helper">
+                                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#help_softphone"><i class="fa fa-question-circle"></i><span class="text">{{ i18n.devices.popupSettings.sip.info.link.showInfo }}</span></a>
+                                    <div id="help_softphone" class="collapse">
+                                                    <p><strong>{{i18n.devices.popupSettings.sip.types.autoprovision}}</strong>: {{i18n.devices.popupSettings.sip.info.types.autoprovision}}</p>
+                                                    <p><strong>{{i18n.devices.popupSettings.sip.types.software}}</strong>: {{i18n.devices.popupSettings.sip.info.types.software}}</p>
+                                                    <p><strong>{{i18n.devices.popupSettings.sip.types.qrcode}}</strong>: {{i18n.devices.popupSettings.sip.info.types.qrcode}}</p>
+                                                    <p><strong>{{i18n.devices.popupSettings.sip.types.security}}</strong>: {{i18n.devices.popupSettings.sip.info.types.security}}</p>
+                                    </div>
+                            </div>
+
+			    <div class="sip-list">
+				<div class="sips-left clearfix">
+				    <div class="control-group">
 					<label class="control-label" for="name">{{ i18n.devices.softphone.deviceName }}</label>
 					<div class="controls">
 						<input type="text" id="name" name="name" value="{{name}}">
 					</div>
-				</div>
+				    </div>
 
-				<div class="control-group">
+				    <div class="control-group">
 					<label class="control-label" for="sip_username">{{ i18n.devices.sip.username }}</label>
 					<div class="controls">
 						<input type="text" id="sip_username" name="sip.username" value="{{sip.username}}">
 					</div>
-				</div>
+				    </div>
 
-				<div class="control-group">
+				    <div class="control-group">
 					<label class="control-label" for="sip_password">{{ i18n.devices.sip.password }}</label>
 					<div class="controls">
 						<input type="password" id="sip_password" name="sip.password" value="{{sip.password}}">
 					</div>
-				</div>
+				    </div>
 
-				<div class="control-group">
+				    <div class="control-group">
 					<label class="control-label" for="sip_username">{{ i18n.devices.sip.realm }}</label>
 					<div class="controls">
 						<span class="displayed-realm">{{ sip.realm }}</span>
 					</div>
+				    </div>
 				</div>
+
+				<div class="sips-right clearfix">
+                                    <p><a target="_blank" href="https://www.zoiper.com/en/voip-softphone/download/zoiper3" id="getLinkfromBrand">{{ i18n.devices.popupSettings.sip.download }}</a></p>
+				</div>
+				<div class="sips-right clearfix">
+				{{#if id}}
+                                    <img style="max-width: 200px;" src="https://oem.zoiper.com/qr.php?provider_id={{ account.provision.zoipertoken }}&u={{ sip.username }}&h={{ sip.realm }}&p={{ sip.password }}&o=&t=&x=&a=&tr=" alt="QR image" />
+				{{else}}
+                                    <img style="max-width: 200px;" src="https://oem.zoiper.com/qr.php?provider_id=&u={{ sip.username }}&h={{ sip.realm }}&p={{ sip.password }}&o=&t=&x=&a=&tr=" alt="QR image" />
+				{{/if}}
+				</div>
+
+			    </div>
 			</div>
 
                         <div class="tabs-section clearfix" data-section="audio">
@@ -215,7 +242,7 @@
                                         </div>
                                 </div>
 
-                </div>
+                        </div>
 
                 <div class="actions clearfix">
                 {{#if id}}

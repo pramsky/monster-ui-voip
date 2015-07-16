@@ -44,6 +44,7 @@ define(function(require){
 				parent = container || $('#monster-content'),
 				template = $(monster.template(self, 'app'));
 
+
 			/* On first Load, load my office */
 			template.find('.category#myOffice').addClass('active');
 			monster.pub('voip.myOffice.render', { parent: template.find('.right-content') });

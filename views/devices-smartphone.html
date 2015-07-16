@@ -33,9 +33,19 @@
 
 	<div class="content">
 		<form id="form_device" class="form-horizontal">
-			<div class="tabs-section" data-section="basic">
-			    <div class="authentication-list" data-section="basic">
-				<div class="clearfix">
+			<div class="tabs-section clearfix" data-section="basic">
+                            <div id="howtosoftphone" class="type-info helper">
+                                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#help_smartphone"><i class="fa fa-question-circle"></i><span class="text">{{ i18n.devices.popupSettings.sip.info.link.showInfo }}</span></a>
+                                    <div id="help_smartphone" class="collapse">
+                                                    <p><strong>{{i18n.devices.popupSettings.sip.types.autoprovision}}</strong>: {{i18n.devices.popupSettings.sip.info.types.autoprovision}}</p>
+                                                    <p><strong>{{i18n.devices.popupSettings.sip.types.software}}</strong>: {{i18n.devices.popupSettings.sip.info.types.software}}</p>
+                                                    <p><strong>{{i18n.devices.popupSettings.sip.types.qrcode}}</strong>: {{i18n.devices.popupSettings.sip.info.types.qrcode}}</p>
+                                                    <p><strong>{{i18n.devices.popupSettings.sip.types.security}}</strong>: {{i18n.devices.popupSettings.sip.info.types.security}}</p>
+                                    </div>
+                            </div>
+
+			    <div class="sip-list">
+				<div class="sips-left clearfix">
 				    <div class="control-group">
 					<label class="control-label" for="name">{{ i18n.devices.smartphone.deviceName }}</label>
 					<div class="controls">
@@ -69,27 +79,19 @@
 					</div>
 				    </div>
 				</div>
-			    </div>
 
-			    <div class="type-info helper"><a href="javascript:void(0);" data-toggle="collapse" data-target="#info_content">
-				<i class="fa fa-question-circle"></i><span class="text">Keine Info</span></a>
-				<div id="info_content" class="in collapse" style="height: auto;">
-					<p></p>
-					<p><strong>Nebenstelle</strong>: Lampe zeigt dass die Nebenstelle besetzt ist. Diese kann benutzt werden um einen Anruf zu übernehmen oder um die Nebenstelle anzurufen.</p>
-					<p><strong>Parken</strong>: Lampe zeigt dass ein Anruf geparkt ist, für die Firma. Dies kann für einen Transfer zu oder von geparkten Anrufen bentuzt werden.</p>
-					<p><strong>Parkplatz Benutzer</strong>: Lampe zeigt dass ein Anruf geparkt ist, für diesen Benutzer. Dies kann für einen Transfer zu oder von geparkten Anrufen bentuzt werden.</p>
-					<p><strong>Direktwahl</strong>: Lmape zeigt keinen Status. Kann zum Anrufen einer Nummer benutzt werden.</p>
+				<div class="sips-right clearfix">
+                                    <p><a target="_blank" href="https://www.zoiper.com/en/voip-softphone/download/zoiper3" id="getLinkfromBrand">{{ i18n.devices.popupSettings.sip.download }}</a></p>
+				</div>
+				<div class="sips-right clearfix">
+				{{#if id}}
+                                    <img style="max-width: 200px;" src="https://oem.zoiper.com/qr.php?provider_id={{ account.provision.zoipertoken }}&u={{ sip.username }}&h={{ sip.realm }}&p={{ sip.password }}&o=&t=&x=&a=&tr=" alt="QR image" />
+				{{else}}
+                                    <img style="max-width: 200px;" src="https://oem.zoiper.com/qr.php?provider_id=&u={{ sip.username }}&h={{ sip.realm }}&p={{ sip.password }}&o=&t=&x=&a=&tr=" alt="QR image" />
+				{{/if}}
 				</div>
 			    </div>
 
-
-			    <div class="clearfix right">
-                                <i class="help-popover fa fa-question-circle fa-lg monster-tooltip-loaded" data-original-title="{{ i18n.devices.popupSettings.sip.downloadInstruction }}" data-placement="top" data-toggle="tooltip"></i>
-                                <img style="max-width: 100px;" src="https://oem.zoiper.com/qr.php?provider_id=9fe2acdd1023b9d05cbf97ef746500fe{{ providerid }}&u={{ sip.username }}&h={{ sip.realm }}&p={{ sip.password }}&o=&t=&x=&a=&tr=" alt="QR image" />
-			    </div>
-			    <div class="clearfix right">
-                                    <p><a target="_blank" href="http://www.zoiper.com/en/voip-softphone/download/zoiper3" id="getLinkfromBrand">{{ i18n.devices.popupSettings.sip.download }}</a></p>
-			    </div>
 			</div>
 
 			<div class="tabs-section" data-section="options">
