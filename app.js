@@ -13,6 +13,7 @@ define(function(require){
 			'fr-FR': { customCss: false },
 			'ru-RU': { customCss: false },
                         'de-DE': { customCss: false },
+                        'es-ES': { customCss: false },
                         'it-IT': { customCss: false },
                         'ro-RO': { customCss: false }
 		},
