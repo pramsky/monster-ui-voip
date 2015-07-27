@@ -335,7 +335,6 @@ define(function(require){
 				result = [],
 				formatCdr = function(cdr) {
 					var date = monster.util.gregorianToDate(cdr.timestamp);
-console.log(date);
 						shortDate = monster.util.toFriendlyDate(date, 'shortdate'),
 						time = monster.util.toFriendlyDate(date, 'time'),
 						durationMin = parseInt(cdr.duration_seconds/60).toString(),
