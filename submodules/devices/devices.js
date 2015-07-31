@@ -127,7 +127,7 @@ define(function(require){
 				var $this = $(this),
 					dataDevice = {
 						id: $this.parents('.grid-row').data('id'),
-						isRegistered: $this.parents('.grid-row').data('registered') === 'true'
+						isRegistered: $this.parents('.grid-row').data('registered') === true
 					};
 
 				self.devicesRenderEdit({ data: dataDevice, callbackSave: function(dataDevice) {
