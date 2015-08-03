@@ -111,6 +111,12 @@
                                 "3": "Um öffentliche Nummern die frei sind zu übernehmen, bestehende zu portieren oder neu zu mieten drücken Sie auf diesen Knopf. Wenn Sie fertig sind wird es dieser Gruppe zugewiesen, und ist sofort betriebsbereit.",
                                 "4": "Anrufabläufe können Sie hier einstellen. Sie können verschiedene Einstellungen wie \"Klingelzeichen\", \"Aufnahmen\", \"Nächste Aktion\" und \"Weiterleitung erlauben\" Ihren Benürnissen anpassen."
                         }
+                },
+                "prepend": {
+                        "title": "Anruf-ID Vorstellen",
+                        "headline": "Anruf-ID Vorstellen",
+                        "cidNameLabel": "Anruf-ID Name Präfix",
+                        "cidNumberLabel": "Anruf-ID Nummer Präfix"
                 }
 	},
 	"devices": {
@@ -1077,5 +1083,6 @@
                         }
                 }
         },
-        "numberPrepend": "Vorgestellter Text"
+        "numberPrepend": "Vorgestellter Text",
+        "portIconHelp": "Diese Nummer ist im Portierungprozess und wird gelöscht wenn die Portierung abgelehnt wird. Diese Nummer wird nicht vermittelt, darum können Sie diese nicht bentuzen."
 }
