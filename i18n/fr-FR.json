@@ -79,6 +79,9 @@
 			"headline": "Options de la tonalité d'appel du groupe",
 			"dropdownLabel": "Tonalité d'appel:",
 			"silence": "Silence",
+                        "germanRing": "Ringback Geramany",
+                        "usaRing": "Ringback USA",
+                        "asiaRing": "Ringback China",
 			"defaultRingback": "Tonalité par défaut",
 			"emptyUploadAlert": "Veuillez sélectionner un fichier à uploader",
 			"fileTooBigAlert": "Vous ne pouvez pas uploader un fichier de taille excédant 5MB"

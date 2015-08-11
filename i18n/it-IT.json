@@ -78,6 +78,9 @@
 			"headline": "Impostazioni gruppo risponderie",
 			"dropdownLabel": "supporti risponderie",
 			"silence": "il silenzio",
+                        "germanRing": "Ringback Geramany",
+                        "usaRing": "Ringback USA",
+                        "asiaRing": "Ringback China",
 			"defaultRingback": "richiamata predefinito",
 			"emptyUploadAlert": "selezionare un file da caricare",
 			"fileTooBigAlert": "non è possibile caricare un file con una dimensione superiore a 5MB"

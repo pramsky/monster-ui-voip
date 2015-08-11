@@ -78,6 +78,9 @@
 			"headline": "Setările ringback grup",
 			"dropdownLabel": "mass-media ringback",
 			"silence": "tăcere",
+                        "germanRing": "Ringback Geramany",
+                        "usaRing": "Ringback USA",
+                        "asiaRing": "Ringback China",
 			"defaultRingback": "implicit ringback",
 			"emptyUploadAlert": "selectați un fișier de încărcat",
 			"fileTooBigAlert": "nu se poate încărca un fișier cu o dimensiune mai mare de 5MB"

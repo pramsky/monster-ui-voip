@@ -78,6 +78,9 @@
 			"headline": "groep terugbellen instellingen",
 			"dropdownLabel": "terugbellen media",
 			"silence": "stilte",
+                        "germanRing": "Ringback Geramany",
+                        "usaRing": "Ringback USA",
+                        "asiaRing": "Ringback China",
 			"defaultRingback": "default terugbellen",
 			"emptyUploadAlert": "Selecteer een bestand om te uploaden",
 			"fileTooBigAlert": "U kunt een bestand niet uploaden met een grootte van meer dan 5MB"

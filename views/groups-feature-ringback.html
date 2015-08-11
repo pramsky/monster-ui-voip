@@ -16,6 +16,9 @@
 			<span>{{ i18n.groups.ringback.dropdownLabel }}</span>
 			<select name="format" class="media-dropdown">
 				<option value="{{silenceMedia}}" {{#compare media '===' silenceMedia}}selected{{/compare}}>{{ i18n.groups.ringback.silence }}</option>
+				<option value="{{usaRingMedia}}" {{#compare media '===' usaRingMedia}}selected{{/compare}}>{{ i18n.groups.ringback.usaRing }}</option>
+				<option value="{{germanRingMedia}}" {{#compare media '===' germanRingMedia}}selected{{/compare}}>{{ i18n.groups.ringback.germanRing }}</option>
+				<option value="{{chinaRingMedia}}" {{#compare media '===' asiaRingMedia}}selected{{/compare}}>{{ i18n.groups.ringback.asiaRing }}</option>
 				{{#each mediaList}}
 					<option value="{{this.id}}" {{#compare ../media '===' this.id}}selected{{/compare}}>{{this.name}}</option>
 				{{/each}}

@@ -569,6 +569,9 @@ define(function(require){
 		groupsRenderRingback: function(data) {
 			var self = this,
 				silenceMediaId = 'silence_stream://300000',
+				usaRingMediaId = 'tone_stream://%(2000,2000,425,450);loops=-1',
+				germanRingMediaId = 'tone_stream://%(1000,4000,425);loops=-1',
+				chinaRingMediaId = 'tone_stream://%(1000,4000,450);loops=-1',
 				ringGroupNode = data.baseCallflow.flow,
 				mediaToUpload = undefined;
 
@@ -580,6 +583,9 @@ define(function(require){
 				var templateData = {
 						group: data.group,
 						silenceMedia: silenceMediaId,
+						usaRingMedia: usaRingMediaId,
+						germanRingMedia: germanRingMediaId,
+						chinaRingMedia: chinaRingMediaId,
 						mediaList: medias,
 						media: ringGroupNode.data.ringback || ''
 					},

@@ -341,6 +341,7 @@ define(function(require){
 						durationSec = (cdr.duration_seconds % 60 < 10 ? "0" : "") + (cdr.duration_seconds % 60),
 						hangupI18n = self.i18n.active().hangupCauses,
 						hangupHelp = '',
+						hangupCausei18n = hangupI18n[cdr.hangup_cause].friendlyName,
 						isOutboundCall = "authorizing_id" in cdr && cdr.authorizing_id.length > 0;
 
 					// Only display help if it's in the i18n.
@@ -364,7 +365,7 @@ define(function(require){
 						toName: cdr.callee_id_name,
 						toNumber: cdr.callee_id_number || ("request" in cdr) ? cdr.request.replace(/@.*/, '') : cdr.to.replace(/@.*/, ''),
 						duration: durationMin + ":" + durationSec,
-						hangupCause: cdr.hangup_cause,
+						hangupCause: hangupI18n[cdr.hangup_cause].friendlyName,
 						hangupHelp: hangupHelp,
 						isOutboundCall: isOutboundCall,
 						mailtoLink: "mailto:" + monster.config.whitelabel.callReportEmail

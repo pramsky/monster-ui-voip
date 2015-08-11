@@ -84,6 +84,9 @@
 			"headline": "Klingelzeichen für Gruppe",
 			"dropdownLabel": "Klingeln Abspielen:",
 			"silence": "Stille",
+			"germanRing": "Klingelton Deutschland",
+			"usaRing": "Klingelton USA",
+			"asiaRing": "Klingelton China",
 			"defaultRingback": "Normal Klingelton",
 			"emptyUploadAlert": "Bitte eine Datei für den Upload auswählen",
 			"fileTooBigAlert": "Sie können keine Datei die grösser als 5MB hinaufladen."
@@ -101,7 +104,7 @@
                 "forward": {
                         "title": "Erlaube Rufweiterleitung",
                         "headline": "Erlaube Rufweitereitung",
-                        "description": "Wenn aktiv, ist die Anrufeweiterleitung von Gruppenteilnehmer möglich. Wenn ausgeschaltet ist eine Weiterleitung innerhalb einer Gruppe nicht möglich."
+                        "description": "Wenn aktiv, ist die Anrufeweiterleitung von Gruppenteilnehmer möglich. Wenn ausgeschaltet ist eine Weiterleitung aus dieser Gruppe nicht möglich."
                 },
  
                 "walkthrough": {
@@ -861,7 +864,7 @@
 			"report1": "Übermittlung",
 			"report2": "Report"
 		},
-		"reportCall": "Anruf Report",
+		"reportCall": "Melden",
 		"loaderMessage": "Drücken Sie HIER für erweiterte Ansicht der Verbindungen.",
 		"loadingMessage": "Laden erweiterte Ansicht der Verbindungen...",
 		"alertMessages": {
