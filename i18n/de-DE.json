@@ -981,7 +981,7 @@
                         "voicemail[action=\"direct\"]": "Mein Beantworter abhören",
                         "intercom": "Durchsage",
                         "privacy[mode=full]": "Privatmodus",
-                        "park_and_retrieve": "Parken und Endparken",
+                        "park_and_retrieve": "Ein- und Ausparken",
                         "valet": "Service",
                         "retrieve": "Abrufen",
                         "donotdisturb[action=\"enable\"]": "Ruhemodus EIN",
@@ -992,7 +992,8 @@
                         "call_waiting[action=enable]": "Anrufinfo EIN",
                         "call_waiting[action=disable]": "Anrufinfo AUS",
                         "sound_test_service": "Verbindungstest",
-                        "call_recording": "Gespräch aufnehmen"
+                        "call_recording": "Gespräch aufnehmen",
+                        "voicemail[single_mailbox_login]": "Mein Beantworter abhören (Autologin)"
                 },
                 "categories": {
                         "call_forward": "Umleitung",

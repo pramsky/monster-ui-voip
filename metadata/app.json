@@ -76,7 +76,7 @@
        }
    },
    "tags": [
-       "reseller", "carrier", "all"
+       "reseller", "carrier", "business"
    ],
    "icon": "SmartPBX_app.png",
    "api_url": "http://kazoo.allip.ovh:8000/v2",
