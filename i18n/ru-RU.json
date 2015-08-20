@@ -134,6 +134,7 @@
 			"basicTitle": "Основные настройки",
 			"brandDownloads": "Productinfo downloads",
 			"basicSectionTitle": "Основные настройки",
+			"dragAndDropAudio": "With the volume tuner, you can reduct echo cancelation (decrease -1 or more). To select a codec, drag and drop from the available codecs box to selected codecs box",
 			"dragAndDrop": "Для выбора кодека мышкой перетащите необходимый кодек из списка доступных кодеков в список выбранных кодеков.",
 			"options": {
 				"menuTitle": "Параметры"

@@ -133,6 +133,7 @@
 			"advancedTitle": "Avanzadas",
 			"basicTitle": "Características basicas",
 			"basicSectionTitle": "Características Basicas ",
+			"dragAndDropAudio": "With the volume tuner, you can reduct echo cancelation (decrease -1 or more). To select a codec, drag and drop from the available codecs box to selected codecs box",
 			"dragAndDrop": "La seleccion de codec, corta y pega los codecs de la caja disponible a la caja seleccionada",
 			"options": {
 				"menuTitle": "Opciónes"

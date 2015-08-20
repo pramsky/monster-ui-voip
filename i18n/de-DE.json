@@ -133,7 +133,7 @@
 			"brandDownloads": "Produkteinfo Hersteller",
 			"basicTitle": "Basis Einstellungen",
 			"basicSectionTitle": "Basis Einstellungen",
-			"dragAndDropAudio": "Mit den Sprech- und Höhrregler können Sie das Volume der Übertragung anpassen. Speziell bei (Echo Reduzierung) Volume unter -1 fahren. Um einen Codec auszuwählen, müssen Sie in per Drag und Drop von der \"Möglichen\" in die \"Ausgewählte\" Box verschieben",
+			                        "dragAndDropAudio": "Mit den Sprech- und Höhrregler können Sie das Volume der Übertragung anpassen. Speziell bei (Echo Reduzierung) Volume unter -1 fahren. Um einen Codec auszuwählen, müssen Sie in per Drag und Drop von der \"Möglichen\" in die \"Ausgewählte\" Box verschieben",
 			"dragAndDrop": "Um einen Codec auszuwählen, müssen Sie in per Drag und Drop von der \"Möglichen\" in die \"Ausgewählte\" Box verschieben",
 			"options": {
 				"menuTitle": "Optionen"
