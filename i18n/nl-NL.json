@@ -94,7 +94,6 @@
 			"voicemails": "voicemail- boxen",
 			"users": "gebruikers"
 		},
-		"__comment": "ui-819, v3.19_s1",
 		"outdatedGroupsError": "uw groepen gegevens is verouderd en kan niet worden weergegeven. Neem contact op met uw beheerder om uw gegevens bij te werken."
 	},
 
@@ -174,12 +173,10 @@
 				"sectionTitle": "Diversen",
 				"rtp": {
 					"enable": "versleutelen audio",
-					"type": "type codering"
+					"type": "type codering",
 					"srtp": "SRTP",
 					"zrtp": "zrtp"
 				},
-				"__comment": "ui 1119"
-				"__version": "3.19",
 				"ignoreCompletedElsewhere": {
 					"label": "negeren elders afgerond",
 					"help": "wanneer gecontroleerd ondersteunende telefoons zal een oproep tonen gemist als het was onderdeel van een ring groep beantwoord elders."
@@ -209,11 +206,9 @@
 					"placeholder": "+18554443333",
 					"button": "test",
 					"label": "het bovenstaande nummer geëvenaard deze regel.",
-					"__comment": "ui-727, v3.19_s2"
 					"allowMessage": "dit apparaat zal worden toegestaan om een oproep te plaatsen om {{ telefoonnummer }}",
 					"denyMessage": "Dit apparaat zal niet worden toegestaan om een oproep te plaatsen {{ telefoonnummer }}."
 				},
-				"__comment": "ui-727, v3.19_s2"
 				"allow": "toestaan",
 				"disabledRestrictionsInfo": "sommige soorten oproepen zijn beperkt voor uw gehele account en kan niet worden ingeschakeld per apparaat."
 			},
@@ -240,8 +235,8 @@
 		"noMatchingDevices": "er waren geen apparaten gevonden die voldoen aan uw zoekopdracht",
 		"noDevicesConfigured": "er geen apparaten geconfigureerd",
 		"provisionerPopup": {
-			"brandHeadline": "Selecteer het merk van het apparaat"
-			"deviceHeadline": "Selecteer het model van het apparaat"
+			"brandHeadline": "Selecteer het merk van het apparaat",
+			"deviceHeadline": "Selecteer het model van het apparaat",
 			"deviceSelected": "u hebt gekozen voor de {{ merk }} {{ model }}",
 			"missingBrand": "het merk van mijn toestel wordt hier niet genoemd",
 			"missingDevice": "mijn toestel wordt hier niet genoemd",
@@ -249,25 +244,25 @@
 		},
 		"sip_device": {
 			"addTitle": "het toevoegen van een slokje apparaat",
-			"editTitle": "editing slok apparaat"
+			"editTitle": "editing slok apparaat",
 			"macAddress": "mac -adres",
-			"macAddressPlaceholder": "19"
+			"macAddressPlaceholder": "19",
 			"new": "nieuwe SIP -apparaat",
 			"deviceName": "toestelnaam"
 		},
 		"sip_uri": {
 			"addTitle": "het toevoegen van een sip uri",
 			"deviceName": "naam",
-			"editTitle": "editing sip uri"
+			"editTitle": "editing sip uri",
 			"new": "nieuwe sip uri",
 			"uri": "sip uri",
-			"uriPlaceholder": "nippen"
+			"uriPlaceholder": "nippen",
 			"hideContactList": "verbergen voor de lijst met contactpersonen"
 		},
 		"landline": {
 			"addTitle": "het toevoegen van een vaste lijn",
 			"deviceName": "toestelnaam",
-			"editTitle": "editing vaste lijn"
+			"editTitle": "editing vaste lijn",
 			"new": "nieuwe vaste lijn",
 			"number": "aantal",
 			"numberPlaceholder": "+14152231121",
@@ -278,7 +273,7 @@
 		"cellphone": {
 			"addTitle": "toevoegen van een mobiele telefoon",
 			"deviceName": "toestelnaam",
-			"editTitle": "editing mobiele telefoon"
+			"editTitle": "editing mobiele telefoon",
 			"new": "nieuwe mobiele telefoon",
 			"number": "aantal",
 			"numberPlaceholder": "+14152231121",
@@ -289,7 +284,7 @@
 		"mobile": {
 			"addTitle": "toevoegen van een mobiel",
 			"deviceName": "toestelnaam",
-			"editTitle": "editing mobiel"
+			"editTitle": "editing mobiel",
 			"mdn": "MDN",
 			"mdnPlaceholder": "10 cijfers telefoonnummer",
 			"new": "nieuwe mobiele"
@@ -297,7 +292,7 @@
 		"smartphone": {
 			"addTitle": "het toevoegen van een smartphone",
 			"deviceName": "toestelnaam",
-			"editTitle": "editing smartphone"
+			"editTitle": "editing smartphone",
 			"new": "nieuwe smartphone",
 			"requireKeypress": "toestaan gebruik van mobiele telefoon voicemail",
 			"keepCallerId": "Bewaar de originele beller-id",
@@ -305,9 +300,9 @@
 		},
 		"fax": {
 			"addTitle": "het toevoegen van een faxapparaat",
-			"editTitle": "editing faxapparaat"
+			"editTitle": "editing faxapparaat",
 			"macAddress": "mac -adres",
-			"macAddressPlaceholder": "19"
+			"macAddressPlaceholder": "19",
 			"new": "fax",
 			"deviceName": "toestelnaam",
 			"t38": "T38",
@@ -317,13 +312,13 @@
 		},
 		"softphone": {
 			"addTitle": "het toevoegen van een softphone",
-			"editTitle": "editing softphone"
+			"editTitle": "editing softphone",
 			"new": "nieuwe softphone",
 			"deviceName": "toestelnaam"
 		},
 		"ata": {
 			"addTitle": "het toevoegen van een ata",
-			"editTitle": "editing ata"
+			"editTitle": "editing ata",
 			"new": "nieuwe ata",
 			"deviceName": "toestelnaam"
 		},
@@ -362,7 +357,7 @@
 		"admin": "admin",
 		"add": "toe te voegen gebruiker",
 		"addExtension": "voeg een uitbreiding van deze gebruiker",
-		"addNewExtension": "toestelnummer"
+		"addNewExtension": "toestelnummer",
 		"addFromSpare": "toevoegen van reserve nummers",
 		"addFromSpareDevices": "toevoegen van reserve -apparaten",
 		"buy": "kopen nummers",
@@ -383,7 +378,7 @@
 		},
 		"dialogCreationUser": {
 			"createUser": "gebruiker aanmaken",
-			"errorOnCreation": "een fout opgetreden tijdens het proberen om deze gebruiker aan te maken"
+			"errorOnCreation": "een fout opgetreden tijdens het proberen om deze gebruiker aan te maken",
 			"extension": "belangrijkste toestelnummer",
 			"extensionAlreadyExist": "deze uitbreiding is al in gebruik, kies dan een ander toestelnummer.",
 			"firstName": "voornaam",
@@ -463,8 +458,6 @@
 			"userDelete": "je succesvol verwijderd {{ naam }} uit de slimme pbx!",
 			"userUpdated": "u met succes {{ naam }} instellingen bijgewerkt.",
 			"pinUpdated": "je met succes de pin van bijgewerkte {{ naam }}.",
-			"__comment": "ui-1033"
-			"__version": "3.20",
 			"callerIDDeleted": "de beller-ID-nummer van deze gebruiker werd ingesteld op een getal dat niet meer aan hem was toegewezen, dus we uitgeschakeld de functie beller-id."
 		},
 		"uploadPicture": "Een foto uploaden",
@@ -473,7 +466,7 @@
 			"directCallsOnly": "alleen vooruit directe gesprekken",
 			"headline": "gebruiker doorschakeling instellingen",
 			"keepCallerId": "houd uw beller-id",
-			"label": "Alle oproepen doorsturen naar"
+			"label": "Alle oproepen doorsturen naar",
 			"mobile": "een gsm",
 			"deskphone": "een bureautelefoon",
 			"number": "dit getal",
@@ -485,10 +478,10 @@
 		"callRecording": {
 			"title": "inbound call opname",
 			"headline": "gebruiker oproep opname-instellingen",
-			"formatLabel": "formaat"
-			"urlLabel": "url"
-			"urlPlaceholder": "http"
-			"timeLimitLabel": "tijdslimiet (sec)"
+			"formatLabel": "formaat",
+			"urlLabel": "url",
+			"urlPlaceholder": "http",
+			"timeLimitLabel": "tijdslimiet (sec)",
 			"noNumber": "voor het configureren van de inbound call opname functie voor deze gebruiker, moet je hem een nummer of een extensie toewijzen"
 		},
 		"conferencing": {
@@ -542,7 +535,7 @@
 		"music_on_hold": {
 			"title": "music -on- hold",
 			"headline": "gebruiker muziek -on- hold instellingen",
-			"dropdownLabel": "wachtmuziek"
+			"dropdownLabel": "wachtmuziek",
 			"silence": "stilte",
 			"emptyUploadAlert": "Selecteer een bestand om te uploaden",
 			"fileTooBigAlert": "U kunt een bestand niet uploaden met een grootte van meer dan 5MB"
@@ -555,23 +548,19 @@
 			"headline": "gebruiker flexwerkplekken instellingen",
 			"help": "de flexwerkplekken id wordt automatisch als de gebruikers extensies nummer."
 		},
-		"__comment": "ui-1129"
-		"__version": "3.19",
 		"migration": {
 			"confirmMigration": "vonden we een bestaande callflow met het nummer youre probeert toe te voegen, lijkt het erop kunnen we dit callflow migreren naar de smartpbx. voordat we verder gaan, willen we ervoor zorgen dat u begrijpt dat je gewoon worden toegestaan ​​om deze callflow in kazoo-ui of in de monster-ui callflows app na deze verandering te werken. wilt u doorgaan?",
 			"tooManyCallflows": "het lijkt de nummers youre proberen te behoren tot meerdere kazoo-ui callflows voegen. er is geen manier om goed te migreren deze callflows in monster-gebruikersinterface kunt u contact met uw steun om het te bevestigen."
 		},
-		"__commment": "ui-1109"
-		"__version": "3.19",
 		"presenceIDPopup": {
 			"title": "selecteer uw nieuwe hoofdtoestelnummer",
-			"header": "lijkt het erop dat u het nummer dat u had ingesteld als uw belangrijkste extensie te verwijderen. selecteer uw nieuwe hoofdtoestelnummer uit de onderstaande keuzes"
+			"header": "lijkt het erop dat u het nummer dat u had ingesteld als uw belangrijkste extensie te verwijderen. selecteer uw nieuwe hoofdtoestelnummer uit de onderstaande keuzes",
 			"none": "Ik wil niet een nieuwe hoofdsponsor uitbreidingsset"
 		}
 	},
 
 	"strategy": {
-		"noNumberHelp": "notitie"
+		"noNumberHelp": "notitie",
 		"sectionTitles": {
 			"numbers": "belangrijkste bedrijf getallen",
 			"confnum": "belangrijkste conferentie nummer",
@@ -598,11 +587,9 @@
 			"customHoursTitle": "aangepaste kantooruren",
 			"customHoursDescription": "Kies deze optie als u wilt dat inkomende gesprekken anders te behandelen wanneer uw kantoor gesloten is.",
 			"listTitle": "aangepaste uur",
-			"timezone": "bedrijf tijdzone"
+			"timezone": "bedrijf tijdzone",
 			"to": "om het",
 			"lunchbreakTitle": "bent u gesloten voor de lunch uren ?",
-			"__comment": "ui -1250"
-			"__version": "3.20_s2",
 			"helpAfterHours": "vergeet niet om de oproep routing voor wanneer uw kantoor is gesloten voor de nacht te stellen! om het op te zetten, gaan in de inkomende oproep afhandeling sectie van deze pagina en selecteer het na uren tabblad.",
 			"helpLunchHours": "als uw kantoor tijdens de lunch uur gesloten is, moet u ook de oproep routing voor dat kiezen. U kunt het op te zetten in de inkomende oproep afhandeling sectie ook, onder het tabblad lunch."
 		},
@@ -612,8 +599,6 @@
 			"singleLink": "enkele dag",
 			"rangeLink": "datumbereik",
 			"advancedLink": "gevorderd",
-			"__comment": "ui -1250"
-			"__version": "3.20_s2",
 			"helpHolidays": "vergeet niet om de oproep routing voor wanneer uw kantoor is gesloten voor de vakantie in te stellen! om het op te zetten, gaan in de inkomende oproep hanteren sectie van deze pagina en selecteer het tabblad feestdagen."
 		},
 		"calls": {
@@ -643,11 +628,11 @@
 			"ttsGreetingPlaceholder": "vul dan hier uw begroeting.",
 			"uploadGreetingTitle": "upload uw eigen bestand",
 			"recordGreetingTitle": "opnemen via de telefoon",
-			"recordGreetingInfo": "noteer de begroeting zelf via de telefoon, door het volgen van de onderstaande stappen"
+			"recordGreetingInfo": "noteer de begroeting zelf via de telefoon, door het volgen van de onderstaande stappen",
 			"recordGreetingLines": {
 				"line1": "pick-up van een telefoon in deze account zijn geregistreerd.",
 				"line2": "kies uw kantoor hoofdnummer.",
-				"line3": "voer deze PIN in wanneer gevraagd"
+				"line3": "voer deze PIN in wanneer gevraagd",
 				"line4": "neem uw groeten/menu."
 			},
 			"pressKey": "druk op",
@@ -716,7 +701,7 @@
 			"title": "kenmerken",
 			"questionPartOne": "wilt u functies uit te verwijderen",
 			"questionPartTwo": "?",
-			"featuresToRemove": "Controleer de functie (s) te verwijderen"
+			"featuresToRemove": "Controleer de functie (s) te verwijderen",
 			"features": {
 				"cnam": "beller-id",
 				"dash_e911": "E911"
@@ -766,7 +751,7 @@
 		"musicOnHold": {
 			"title": "music -on- hold",
 			"headline": "setup music-on -hold voor rekening",
-			"dropdownLabel": "wachtmuziek"
+			"dropdownLabel": "wachtmuziek",
 			"silence": "stilte",
 			"default": "standaardmuziek",
 			"emptyUploadAlert": "Selecteer een bestand om te uploaden",
@@ -786,7 +771,7 @@
 			"emergencyCity": "stad",
 			"emergencyState": "staat",
 			"emergencyHelp1": "Dit adres zal verschijnen als uw beller-ID -adres wanneer u uitgaande noodoproep naar een overheidsinstelling (bv 911 in de VS).",
-			"emergencyHelp2": "notitie"
+			"emergencyHelp2": "notitie",
 			"mandatoryE911Alert": "je moet e911 informatie voor uw bedrijf beller-ID -nummer op te geven."
 		},
 		"missingMainNumberForCallerId": "je nodig hebt om een van de belangrijkste nummer toe te voegen aan uw kantoor voor het configureren van de beller-id!",
@@ -801,8 +786,8 @@
 		"faxNumberLabel": "faxnummer",
 		"totalNumbers": "totaal aantal",
 		"unregisteredDevices": "niet-geregistreerde apparaten",
-		"accountId": "account id"
-		"accountRealm": "rekening rijk"
+		"accountId": "account id",
+		"accountRealm": "rekening rijk",
 		"numberChartLegend": {
 			"assigned": "nummers toegewezen",
 			"spare": "spare nummers",
@@ -831,15 +816,15 @@
 			"hotdesk[action=logout]": "flexwerkplekken uitschakelen",
 			"hotdesk[action=toggle]": "toggle flexwerkplekken",
 			"voicemail[action=check]": "check voicemail",
-			"voicemail[action="direct"]": "direct naar de voicemail",
+			"voicemail[action=direct]": "direct naar de voicemail",
 			"intercom": "intercom",
 			"privacy[mode=full]": "privacy",
 			"park_and_retrieve": "parkeren en ophalen",
 			"valet": "de keuze",
 			"retrieve": "terugvinden",
-			"donotdisturb[action="enable"]": "staat niet storen",
-			"donotdisturb[action="disable"]": "schakelen niet storen",
-			"donotdisturb[action="toggle"]": "schakelen niet storen",
+			"donotdisturb[action=enable]": "staat niet storen",
+			"donotdisturb[action=disable]": "schakelen niet storen",
+			"donotdisturb[action=toggle]": "schakelen niet storen",
 			"directory": "adresboek",
 			"time": "check tijd",
 			"call_waiting[action=enable]": "staat wisselgesprekservice",
@@ -847,7 +832,6 @@
 			"sound_test_service": "sound test dienst",
 			"call_recording": "gespreksopname"
 		},
-		"__comment": "ui-1028, v3.20_s0"
 		"categories": {
 			"call_forward": "call- forward",
 			"hotdesk": "flexwerkplekken",
@@ -857,11 +841,9 @@
 		}
 	},
 
-	"__comment": "ui-1220"
-	"__version": "3.19",
 	"vmboxes": {
 		"addTitle": "het toevoegen van een voicemailbox",
-		"editTitle": "het bewerken van een voicemailbox"
+		"editTitle": "het bewerken van een voicemailbox",
 		"title": "totale voicemail- boxen",
 		"add": "add voicemailbox",
 		"new": "nieuwe voicemailbox",
@@ -939,11 +921,18 @@
 				"sectionTitle": "ontvangers",
 				"header": "dit paneel kunt u beheren wie wordt verwittigd wanneer iemands laat een bericht achter op deze voicemailbox. klik op voeg nieuwe ontvanger om een e-mailadres toe te voegen aan de lijst",
 				"create": "voeg nieuwe ontvanger"
-			}
-		}
+			},
+                        "greeting": {
+                                "menuTitle": "Greeting Media",
+                                "sectionTitle": "Greeting Media",
+                                "dropdownLabel": "Media:",
+                                "noGreeting": "- None -",
+                                "audioUploadButton": "Browse...",
+                                "fileTooBigAlert": "You can not upload a file with a size exceeding 5MB",
+                                "emptyUploadAlert": "Please select a file to upload"
+                        }
+                }
 	},
-
-	"__comment": "ui-1219"
-	"__version": "v3.20_s1",
-	"numberPrepend": "prepend"
+	"numberPrepend": "prepend",
+	"portIconHelp": "This number is in the process of being ported and will be deleted if the port fails. It only appears for setting up purposes and is not configured to handle calls"
 }

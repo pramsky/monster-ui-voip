@@ -944,11 +944,18 @@
 				"sectionTitle": "destinatari",
 				"header": "Questo pannello consente di gestire, che sarà notificato quando qualcuno lascia un messaggio su questa casella di posta vocale. Fare clic su Aggiungi nuovo destinatario per aggiungere un indirizzo e-mail alla lista",
 				"create": "aggiungere nuovo destinatario"
-			}
-		}
-	},
-
-	"__comment": "ui-1219",
-	"__version": "v3.20_s1",
-	"numberPrepend": "prepend"
+			},
+                        "greeting": {
+                                "menuTitle": "Greeting Media",
+                                "sectionTitle": "Greeting Media",
+                                "dropdownLabel": "Media:",
+                                "noGreeting": "- None -",
+                                "audioUploadButton": "Browse...",
+                                "fileTooBigAlert": "You can not upload a file with a size exceeding 5MB",
+                                "emptyUploadAlert": "Please select a file to upload"
+                        }
+                }
+        },
+	"numberPrepend": "prepend",
+	"portIconHelp": "This number is in the process of being ported and will be deleted if the port fails. It only appears for setting up purposes and is not configured to handle calls"
 }

@@ -523,18 +523,18 @@
                         "userUpdated": "Sie haben erfolgreich die Benutzereinstellungen von {{name}} aktualisiert.",
                         "pinUpdated": "Sie haben erfolgreich die PIN von {{name}} aktualisiert."
 		},
-		"uploadPicture": "Ein Bild Hinaufladen",
+		"uploadPicture": "Ein Bild hinaufladen",
 		"user": "Benutzer",
 		"call_forward": {
-			"directCallsOnly": "Umleitung, NUR direkt",
-			"headline": "Benutzer Umleitungseinstellungen",
-			"keepCallerId": "Behalte die Anruf-ID",
-			"label": "Unleitung zu" ,
+			"directCallsOnly": "Umleitung nur bei Direktwahl",
+			"headline": "Benutzer Umleitung aktiv",
+			"keepCallerId": "Bei Umleitung die originale Anruf-ID anzeigen",
+			"label": "Alle umleiten zu" ,
 			"mobile": "ein Mobile Telefon",
 			"deskphone": "Ein Bürotelefon",
-			"number": "Diese Nummer",
-			"placeholder": "+41",
-			"requireKeyPress": "Ansage, wenn die Umleitung aktiv ist.",
+			"number": "Umleitung zu",
+			"placeholder": "+41791235599",
+			"requireKeyPress": "Der Anrufer erhält eine Ansage, dass Umgeleitet wird.",
 			"title": "Umleitung",
 			"timeoutWarning": "Um den Beantworter zu benützen, muss bei aktivierter Umleitung die Klingelzeit mindestens 30 Sek betragen."
 		},
@@ -834,7 +834,7 @@
                         },
                         "second": {
                                 "steps": {
-                                        "1": "Setzen Sie Ihre Geschäftszeiten für Ihree Bedürfnisse fest. Sie können die Anrufstrategie gemäss Ihren Öffnungszeiten einstellen oder aber auch 24h die selbe lassen, ebenso können Sie in der Mittagszeit entsprechende Einstellungen vornehmen.",
+                                        "1": "Setzen Sie die Anrufstrategie gemäss Ihren Öffnungszeiten einstellen, oder 24h die selbe lassen, ebenso können Sie in der Mittagszeit entsprechende Einstellungen vornehmen.",
                                         "2": "Falls Ihr Geschäft, während den Feiertagen oder wegen Urlaubs geschlossen ist, können Sie dies entsprechend behandeln.",
                                         "3": "Mit dem Virtuellen Portier können Sie eingehende Anrufe vorbehandeln, z.B. Ansagen abspielen oder eine automatische Weiterleitung durchführen.",
                                         "4": "Hier können Sie eine öffentliche Hauptkonferenznummer für Ihr Geschäft zufügen. Die Miete und die Zuweisung von Nummern können Sie selbst vornehmen."
@@ -1084,6 +1084,15 @@
                                 "sectionTitle": "Empfänger",
                                 "header": "In diesem Fenster können Sie einstellen, wer per Email darüber informiert wird. Drücken Sie auf 'Zufügen eines Empängers', um der Liste eine Adresse zuzufügen.",
                                 "create": "Zufügen eines neuen Empfängers"
+                        },
+                        "greeting": {
+                                "menuTitle": "Beantworter Ansage",
+                                "sectionTitle": "Ansage Medium",
+                                "dropdownLabel": "Medium:",
+                                "noGreeting": "- Keine -",
+                                "audioUploadButton": "Auswählen...",
+                                "fileTooBigAlert": "Sie können eine Datei die max. 5MB gross ist hochladen",
+                                "emptyUploadAlert": "Wählen Sie eine Datei aus."
                         }
                 }
         },

@@ -1106,15 +1106,19 @@
                                 "sectionTitle": "Получатели",
                                 "header": "Эта панель позволяет управлять получателями уведомлений об оставлеенных сообщениях ГП. Нажмите на \"Добавить получателя\", чтобы добавить адрес e-mail ",
                                 "create": "Добавить получателя"
+                        },
+                        "greeting": {
+                                "menuTitle": "Greeting Media",
+                                "sectionTitle": "Greeting Media",
+                                "dropdownLabel": "Media:",
+                                "noGreeting": "- None -",
+                                "audioUploadButton": "Browse...",
+                                "fileTooBigAlert": "You can not upload a file with a size exceeding 5MB",
+                                "emptyUploadAlert": "Please select a file to upload"
                         }
                 }
         },
-
-        "__comment": "UI-1219: Adding the prepend feature to numbers",
-        "__version": "v3.20_s1",
         "numberPrepend": "Префикс",
-        "__comment": "UI-1153: Show warning icon next to numbers being transfered",
-        "__version": "v3.20_s3",
         "portIconHelp": "Этот номер находится в процессе портирования и будет удалён, если этот процесс окончится неудачей. Он не участвует в обработке звонков и приведён здесь исключительно для целей настройки системы",
 		"dialogInProgress": {
 			"title": "Внимание",

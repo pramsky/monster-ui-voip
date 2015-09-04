@@ -1915,13 +1915,7 @@ define(function(require){
 				}
 			});
 
-			if (currentUser.hasOwnProperty('call_forward') && currentUser.call_forward.number && /^(\+1)/.test(currentUser.call_forward.number)) {
-				featureTemplate.find('#phoneType').val('mobile');
-			} else {
-				featureTemplate.find('#phoneType').val('deskphone');
-			}
-
-			featureTemplate.find('#number').mask(self.i18n.active().users.defaultPhoneMask);
+//			featureTemplate.find('#number').mask(self.i18n.active().users.defaultPhoneMask);
 
 			var popup = monster.ui.dialog(featureTemplate, {
 				title: currentUser.extra.mapFeatures.call_forward.title,

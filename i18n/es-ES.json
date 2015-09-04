@@ -1075,14 +1075,18 @@
 				"sectionTitle": "Recipiente",
 				"header": "Este panel le permite administrar quienes serán notificados cuando alguien deje un mensaje en el buzón de voz. Haga clic en \"Añada el Nuevo Recipiente\" para añadir una dirección de correo electrónico a la lista",
 				"create": "Añada el Nuevo Recipiente"
-			}
-		}
-	},
-
-	"__comment": "UI-1219: Adding the prepend feature to numbers",
-	"__version": "v3.20_s1",
+			},
+                        "greeting": {
+                                "menuTitle": "Greeting Media",
+                                "sectionTitle": "Greeting Media",
+                                "dropdownLabel": "Media:",
+                                "noGreeting": "- None -",
+                                "audioUploadButton": "Browse...",
+                                "fileTooBigAlert": "You can not upload a file with a size exceeding 5MB",
+                                "emptyUploadAlert": "Please select a file to upload"
+                        }
+                }
+        },
 	"numberPrepend": "Prepend",
-	"__comment": "UI-1153: Show warning icon next to numbers being transfered",
-	"__version": "v3.20_s3",
 	"portIconHelp": "Este número está en proceso de ser portado y serán eliminados si el puerto falla. Sólo aparece para el establecimiento de objetivos y no está configurado para manejar las llamadas"
 }
