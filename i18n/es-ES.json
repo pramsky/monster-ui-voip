@@ -436,7 +436,7 @@
 			"timezone": "Zona de tiempo",
 			"vmboxNumber": "# de correo de voz",
 			"timeout": "Tiempo de espera de llamada",
-			"timeoutSec": "Segundos",
+			"timeoutSec": "Seg",
 			"timeoutEdit": "Editar en función Find-Me-Follow-Me",
 			"timeoutEditHint": "El tiempo de supervisión de llamada se anula por ls función de Find-Me - Follow-Me. Seleccione el siguiente enlace para editarlo.",
 			"disabledTimeoutHint": "Necesita al menos un número o extensión para configurar el tiempo de espera de llamada.",
@@ -658,7 +658,8 @@
 			"confnum": "Número de conferencia principal",
 			"hours": "Estrategia de horas de oficina",
 			"holidays": "Vacaciones de la oficina",
-			"calls": "Manejo de la llamada entrante"
+			"calls": "Manejo de la llamada entrante",
+			"faxingnum": "Main Faxbox Number"
 		},
 		"noNumberTitle": "Agregar número principal",
 		"noNumberMessage": "Por favor agregar o comprar un número de los enlaces de abajo para continuar.",
@@ -734,12 +735,9 @@
 			},
 			"pressKey": "Presionar",
 			"for": "Para",
-			"__comment": "UI-1025: Updating media file uploads throughout the UI",
-			"__version": "3.20_s3",
 			"fileUploadButton": "Seleccione Archivo",
-			"__comment": "UI-1185: Adding a help message to the greetings",
-			"__version": "3.20_s4",
-			"greetingsHelp": "Es necesario que haga clic en el botón \"Actualizar\" para guardar los cambios para el mensaje de saludo."
+			"greetingsHelp": "Es necesario que haga clic en el botón \"Actualizar\" para guardar los cambios para el mensaje de saludo.",
+			"defaultAction": "Default action"
 		},
 		"open": "Abrir",
 		"closed": "Cerrar",
@@ -779,9 +777,8 @@
 			"device": "Dispositivo",
 			"ring_group": "Grupos",
 			"voicemail": "Cajas de correo de voz",
-			"__comment": "UI-1353: Add directory support for the virtual receptionist",
-			"__version": "v3.20_s4",
-			"directory": "Directorio"
+			"directory": "Directorio",
+                        "advancedCallflows": "Advanced Callflows"
 		},
 		"confirmMessages": {
 			"deleteHoliday": "Este día feriado se eliminará permanentemente. Continuar?",
@@ -827,10 +824,16 @@
 					"1": "Establezca su estrategia del teléfono de horas de consulta a su conveniencia. Usted puede configurar una estrategia de oficina abierta 24 horas o si su oficina está siempre cerrada, crear horas personalizados. Incluso puede cerrar su oficina durante las horas de almuerzo.",
 					"2": "¿Esta cerrada su oficinadias feriadas? Cree fechas específicas o margenes de tiempo cuando su oficina estará cerrada ",
 					"3": "Recepcionista virtual le permite perfectamente contestar llamadas entrantes. Añada rutas de llamada para ponerse en contacto con el departamento o persona correspondiente dentro del sistema. También puede crear saludos personalizados usando texto a voz, cargar su propio archivo o grabación por teléfono.",
-					"4": "Cree un Número de la Conferencia principal para su negocio. Se puede Comprar, portar o añadir un número existente y establecer un número de conferencia facilmente."
-				}
-			}
-		}
+					"4": "Cree un Número de la Conferencia principal para su negocio. Se puede Comprar, portar o añadir un número existente y establecer un número de conferencia facilmente.",
+                                        "5": "Create a main Faxbox Number for your business. Purchase, port or add an existing number and set up a Faxbox Number seamlessly."
+                                }
+                        }
+                },
+                "noFaxingNumMessage": "Please add a main faxbox number.",
+                "faxing": {
+                        "nameExtension": "'s Main Faxbox",
+                        "headerExtension": " Fax Printer"
+                }
 	},
 
 	"callLogs": {
@@ -932,11 +935,9 @@
 			"noNumber": "No hay ningún número disponible"
 		},
 		"__comment": "UI-1220: Adding a Main VMBox automatically when they first load the SmartPBX if they don't have one",
-		"__version": "3.19",
 		"mainVMBoxName": "Buzón de voz principal",
 
 		"__comment": "UI-1604: Walkthrough dashboard",
-		"__version": "3.21",
 		"walkthrough": {
 			"steps": {
 				"1": "Examine su sistema de la oficina entero incluso sus usuarios, dispositivos, números, número principal y número de la conferencia.",
@@ -944,10 +945,10 @@
 				"3": "Una vez que ha creado suficientes usuarios, crear grupos de usuarios. Esto es muy útil si tienes usuarios que trabajan en el mismo departamento, como un equipo de ventas.",
 				"4": "Crear un número principal para su negocio. Maneje gestión de llamadas con el Recepcionista Virtual, y enrutar las llamadas en función de horas de oficina y Días Festivos."
 			}
-		}
+		},
+		"faxingNumberLabel": "Faxbox Number"
 	},
 
-	"__comment": "UI-299, v3.19_s2: Added the Feature Codes tab to SmartPBX.",
 	"featureCodes": {
 		"title": "Códigos de función disponible",
 		"noFeatureCodeMessage": "No hay códigos de función activado en su cuenta. Códigos de función se crean automáticamente cuando se carga la página principal.",
@@ -979,11 +980,8 @@
 			"call_waiting[action=disable]": "Desactivar llamada en espera",
 			"sound_test_service": "Comprovar de prueba de sonido",
 			"call_recording": "Grabación de llamadas",
-			"__comment": "UI-1395: Added voicemail[single_mailbox_login] feature code",
-			"__version": "3.20",
 			"voicemail[single_mailbox_login]": "Revisar correo de voz (inicio de sesión automático)"
 		},
-		"__comment": "UI-1028, v3.20_s0: Added categories for the feature codes.",
 		"categories": {
 			"call_forward": "Desvío de llamadas",
 			"hotdesk": "Hot-Desking",
@@ -993,8 +991,6 @@
 		}
 	},
 
-	"__comment": "UI-1220: Added VMBox module",
-	"__version": "3.19",
 	"vmboxes": {
 		"addTitle": "Agregar un buzón de voz",
 		"editTitle": "Editar un buzón de voz: {{ name }}",

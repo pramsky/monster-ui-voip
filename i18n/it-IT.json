@@ -404,7 +404,7 @@
 			"timezone": "fuso orario",
 			"vmboxNumber": "vmbox #",
 			"timeout": "timeout di chiamata",
-			"timeoutSec": "secondo",
+			"timeoutSec": "sec",
 			"timeoutEdit": "Modifica in find-me-follow -me feature",
 			"timeoutEditHint": "il timeout di chiamata viene sovrascritto dalla funzione find- me-follow -me. clicca sul link sottostante per modificarlo.",
 			"disabledTimeoutHint": "avete bisogno di almeno un numero o un interno per impostare il timeout di chiamata.",
@@ -575,7 +575,8 @@
 			"confnum": "numero conferenza principale",
 			"hours": "orario di ufficio strategia",
 			"holidays": "vacanze ufficio",
-			"calls": "gestione delle chiamate in arrivo"
+			"calls": "gestione delle chiamate in arrivo",
+			"faxingnum": "Main Faxbox Number"
 		},
 		"noNumberTitle": "aggiungere il numero principale",
 		"noNumberMessage": "si prega di aggiungere o comprare un numero dai link qui sotto per continuare.",
@@ -649,7 +650,10 @@
 				"line4": "registrare il/menù saluti."
 			},
 			"pressKey": "la stampa",
-			"for": "per"
+			"for": "per",
+			"fileUploadButton": "Choisir fichier",
+			"greetingsHelp": "Vous devez cliquer sur le bouton \"Mettre à jour\" pour sauvegarder les changements apportés au message d'accueil.",
+			"defaultAction": "Default action"
 		},
 		"open": "aperto",
 		"closed": "chiuso",
@@ -689,7 +693,8 @@
 			"device": "dispositivi",
 			"ring_group": "gruppi",
 			"voicemail": "caselle vocali",
-			"directory": "elenco"
+			"directory": "elenco",
+                        "advancedCallflows": "Advanced Callflows"
 		},
 		"confirmMessages": {
 			"deleteHoliday": "questa festa verrà eliminato definitivamente. continuare?",
@@ -720,7 +725,29 @@
 				"cnam": "caller-id",
 				"dash_e911": "E911"
 			}
-		}
+		},
+
+                "walkthrough": {
+                        "first": {
+                                "steps": {
+                                        "1": "Setup your main company number within SmartPBX by purchasing or porting a number. This is different than User Phone Numbers because it represents the main phone number for the entire company."
+                                }
+                        },
+                        "second": {
+                                "steps": {
+                                        "1": "Set up your office hours phone strategy to your convenience. You can set up a 24 hour open office strategy or if your office is ever closed, create custom hours. You can even close your office during lunch hours.",
+                                        "2": "Is your office closed on holidays? Create specific dates or time frames when your office will be closed",
+                                        "3": "Virtual Receptionist allows you to seamlessly answer incoming calls. Add call routes to contact the appropriate department or person within the system. You can also create customized greetings using text-to-speech, uploading your own file or recording it over the phone.",
+                                        "4": "Create a main Conference Number for your business. Purchase, port or add an existing number and set up a Conference Number seamlessly.",
+                                        "5": "Create a main Faxbox Number for your business. Purchase, port or add an existing number and set up a Faxbox Number seamlessly."
+                                }
+                        }
+                },
+                "noFaxingNumMessage": "Please add a main faxbox number.",
+                "faxing": {
+                        "nameExtension": "'s Main Faxbox",
+                        "headerExtension": " Fax Printer"
+                }
 	},
 
 	"callLogs": {
@@ -816,7 +843,8 @@
 			"international": "numeri internazionali",
 			"noNumber": "no numero disponibile"
 		},
-		"mainVMBoxName": "casella vocale principale"
+		"mainVMBoxName": "casella vocale principale",
+		"faxingNumberLabel": "Faxbox Number"
 	},
 
 	"featureCodes": {

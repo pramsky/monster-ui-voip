@@ -651,7 +651,8 @@
 			"confnum": "Numéro principal de conférence",
 			"hours": "Horaires d'entreprise",
 			"holidays": "Jours fériés & Vacances",
-			"calls": "Gestion des appels entrants"
+			"calls": "Gestion des appels entrants",
+			"faxingnum": "Main Faxbox Number"
 		},
 		"noNumberTitle": "Ajouter numéro principal",
 		"noNumberMessage": "Veuillez ajouter un numéro principal pour continuer.",
@@ -764,7 +765,8 @@
 			"device": "Téléphones",
 			"ring_group": "Groupes",
 			"voicemail": "Répondeurs",
-			"directory": "Annuaire"
+			"directory": "Annuaire",
+                        "advancedCallflows": "Advanced Callflows"
 		},
 		"confirmMessages": {
 			"deleteHoliday": "Ces vacances seront supprimées. Continuer?",
@@ -933,7 +935,6 @@
 		"faxingNumberLabel": "Numéro de Fax"
 	},
 
-	"__comment": "UI-299, v3.19_s2: Added the Feature Codes tab to SmartPBX.",
 	"featureCodes": {
 		"title": "Codes d'appel disponibles",
 		"noFeatureCodeMessage": "Aucun code d'appel n'est actuellement disponible sur votre compte. Les codes d'appel sont crées automatiquement lorsque vous chargez la page \"Numéro principal\".",

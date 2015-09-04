@@ -577,7 +577,8 @@
 			"confnum": "Numărul principal conferință",
 			"hours": "orelor de strategie",
 			"holidays": "Vacanța de birou",
-			"calls": "Manipularea apel"
+			"calls": "Manipularea apel",
+			"faxingnum": "Main Faxbox Number"
 		},
 		"noNumberTitle": "adăuga numărul principal",
 		"noNumberMessage": "vă rugăm să adăugați sau să cumpere un număr de linkurile de mai jos pentru a continua.",
@@ -651,7 +652,10 @@
 				"line4": "înregistra salutări/meniu."
 			},
 			"pressKey": "presa",
-			"for": "pentru"
+			"for": "pentru",
+			"fileUploadButton": "Choisir fichier",
+			"greetingsHelp": "Vous devez cliquer sur le bouton \"Mettre à jour\" pour sauvegarder les changements apportés au message d'accueil.",
+			"defaultAction": "Default action"
 		},
 		"open": "deschis",
 		"closed": "închis",
@@ -690,7 +694,8 @@
 			"user": "utilizatorii",
 			"device": "dispozitive",
 			"ring_group": "grupuri",
-			"voicemail": "cutii vocale"
+			"voicemail": "cutii vocale",
+                        "advancedCallflows": "Advanced Callflows"
 		},
 		"confirmMessages": {
 			"deleteHoliday": "aceasta sarbatoare vor fi șterse definitiv. continua ?",
@@ -721,8 +726,29 @@
 				"cnam": "apelantului-id",
 				"dash_e911": "E911"
 			}
-		}
-	},
+		},
+                "walkthrough": {
+                        "first": {
+                                "steps": {
+                                        "1": "Setup your main company number within SmartPBX by purchasing or porting a number. This is different than User Phone Numbers because it represents the main phone number for the entire company."
+                                }
+                        },
+                        "second": {
+                                "steps": {
+                                        "1": "Set up your office hours phone strategy to your convenience. You can set up a 24 hour open office strategy or if your office is ever closed, create custom hours. You can even close your office during lunch hours.",
+                                        "2": "Is your office closed on holidays? Create specific dates or time frames when your office will be closed",
+                                        "3": "Virtual Receptionist allows you to seamlessly answer incoming calls. Add call routes to contact the appropriate department or person within the system. You can also create customized greetings using text-to-speech, uploading your own file or recording it over the phone.",
+                                        "4": "Create a main Conference Number for your business. Purchase, port or add an existing number and set up a Conference Number seamlessly.",
+                                        "5": "Create a main Faxbox Number for your business. Purchase, port or add an existing number and set up a Faxbox Number seamlessly."
+                                }
+                        }
+                },
+                "noFaxingNumMessage": "Please add a main faxbox number.",
+                "faxing": {
+                        "nameExtension": "'s Main Faxbox",
+                        "headerExtension": " Fax Printer"
+                }
+        },
 
 	"callLogs": {
 		"title": "jurnale de apeluri",
@@ -817,7 +843,8 @@
 			"international": "numerele internaționale",
 			"noNumber": "nici un număr disponibil"
 		},
-		"mainVMBoxName": "Casuta vocala principal"
+		"mainVMBoxName": "Casuta vocala principal",
+		"faxingNumberLabel": "Faxbox Number"
 	},
 
 	"featureCodes": {

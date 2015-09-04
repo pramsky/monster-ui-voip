@@ -397,7 +397,7 @@
 			"sip_device": "SIP Telefon",
 			"smartphone": "Smartphone",
 			"mobile": "Mobile",
-			"softphone": "Soft Phone",
+			"softphone": "Softphone",
 			"landline": "Festnetz",
 			"fax": "Fax-Maschine",
 			"ata": "ATA-Gerät",
@@ -417,7 +417,7 @@
 	},
 
 	"users": {
-		"Sec": "Sek",
+		"timeoutSec": "Sek",
 		"admin": "Administrator",
 		"add": "Benutzer zufügen",
 		"addExtension": "Dem Benutzer eine Nebenstelle zufügen",
@@ -676,7 +676,8 @@
 			"confnum": "Hauptkonferenz-Nummer",
 			"hours": "Bürozeiten",
 			"holidays": "Betriebsferien",
-			"calls": "Behandlung der eingehenden Anrufe"
+			"calls": "Behandlung der eingehenden Anrufe",
+			"faxingnum": "Haupt Faxnummer"
 		},
 		"noNumberTitle": "Hauptnummer zufügen",
 		"noNumberMessage": "Kaufen Sie eine Nummer oder fügen Sie eine freie Nummer hinzu.",
@@ -749,7 +750,8 @@
                     "pressKey": "Drücken Sie",
                     "for": "für",
                     "fileUploadButton": "Datei wählen",
-                    "greetingsHelp": "Sie müssen auf den Knopf \"Aktualisieren\" drücken, um die Ansage zu übernehmen."
+                    "greetingsHelp": "Sie müssen auf den Knopf \"Aktualisieren\" drücken, um die Ansage zu übernehmen.",
+                    "defaultAction": "nöchste Aktion"
                 },
                 "open": "Offen",
 		"closed": "Geschlossen",
@@ -789,7 +791,8 @@
 			"device": "Geräte",
 			"ring_group": "Gruppen",
 			"voicemail": "Beantworter",
-			"directory": "Verzeichnisse"
+			"directory": "Verzeichnisse",
+                        "advancedCallflows": "Anrufleitung"
 		},
 		"confirmMessages": {
 			"deleteHoliday": "Diese Ferienzeit wird vollständig gelöscht. Weiter?",
@@ -837,9 +840,15 @@
                                         "1": "Setzen Sie die Anrufstrategie gemäss Ihren Öffnungszeiten einstellen, oder 24h die selbe lassen, ebenso können Sie in der Mittagszeit entsprechende Einstellungen vornehmen.",
                                         "2": "Falls Ihr Geschäft, während den Feiertagen oder wegen Urlaubs geschlossen ist, können Sie dies entsprechend behandeln.",
                                         "3": "Mit dem Virtuellen Portier können Sie eingehende Anrufe vorbehandeln, z.B. Ansagen abspielen oder eine automatische Weiterleitung durchführen.",
-                                        "4": "Hier können Sie eine öffentliche Hauptkonferenznummer für Ihr Geschäft zufügen. Die Miete und die Zuweisung von Nummern können Sie selbst vornehmen."
+                                        "4": "Hier können Sie eine öffentliche Hauptkonferenznummer für Ihr Geschäft zufügen. Die Miete und die Zuweisung von Nummern können Sie selbst vornehmen.",
+                                        "5": "Benötigen Sie eine Hauptfaxnummer für Ihr Geschäft? Sie können dazu eine Nummer mieten, portieren oder eine freie Nummer als Faxnummer übernehmen, und sofort ist der Faxserver aktiv."
                                 }
                         }
+                },
+                "noFaxingNumMessage": "Bitte fügen sie eine Hauptfaxnummer hinzu.",
+                "faxing": {
+                        "nameExtension": "'s Haupfaxnummer",
+                        "headerExtension": " Fax Drucker"
                 }
         },
 	"callLogs": {
@@ -959,7 +968,8 @@
                                 "3": "Wenn Sie alle Benutzer erstellt haben, fahren Sie fort mit den Gruppeneinstellungen. Die ist vor allem sinnvoll, wenn mehrere in der selben Abteilung arbeiten. z.B der Verkaufsabteilung.",
                                 "4": "Fügen Sie eine Nummer für Ihr Geschäft hinzu, und leiten Sie diese entsprechned Ihren zeilichen Bedürfnisse z.B. mit dem Virtuellen Portier weiter."
                         }
-                }
+                },
+                "faxingNumberLabel": "Hauptfax Nummer"
         },
         "featureCodes": {
                 "title": "Verfügbare Service-Nummern",
