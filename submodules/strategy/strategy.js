@@ -188,10 +188,12 @@ define(function(require){
 				},
 				function(err, results) {
 					var hasMainNumber = (results.callflows["MainCallflow"].numbers.length > 1),
-						hasConfNumber = (results.callflows["MainConference"].numbers.length > 0 && results.callflows["MainConference"].numbers[0] !== "undefinedconf")
+						hasConfNumber = (results.callflows["MainConference"].numbers.length > 0 && results.callflows["MainConference"].numbers[0] !== "undefinedconf"),
+						hasFaxingNumber = (results.callflows["MainFaxing"].numbers.length > 0 && results.callflows["MainFaxing"].numbers[0] !== "undefinedfaxing"),
 					templateData = {
 						mainNumbers: hasMainNumber ? results.callflows["MainCallflow"].numbers.slice(1) : [self.i18n.active().strategy.noNumberTitle],
-						confNumbers: hasConfNumber ? results.callflows["MainConference"].numbers : [self.i18n.active().strategy.noNumberTitle]
+						confNumbers: hasConfNumber ? results.callflows["MainConference"].numbers : [self.i18n.active().strategy.noNumberTitle],
+						faxingNumbers: hasFaxingNumber ? results.callflows["MainFaxing"].numbers : [self.i18n.active().strategy.noNumberTitle]
 					}
 					template = $(monster.template(self, 'strategy-layout', templateData));
 					self.strategyBindEvents(template, results);
@@ -252,7 +254,7 @@ define(function(require){
 
 		strategyHasWalkthrough: function(name, callback) {
 			var self = this,
-				flag = self.helpSettings.user.get(name);
+				flag = self.uiFlags.user.get(name);
 
 			if(flag !== false) {
 				callback && callback();
@@ -261,7 +263,7 @@ define(function(require){
 
 		strategyUpdateWalkthroughFlagUser: function(flagName, callback) {
 			var self = this,
-				userToSave = self.helpSettings.user.set(flagName, false);
+				userToSave = self.uiFlags.user.set(flagName, false);
 
 			self.strategyUpdateOriginalUser(userToSave, function(user) {
 				callback && callback(user);
@@ -307,6 +309,11 @@ define(function(require){
 						element: mainTemplate.find('.element-container.strategy-confnum')[0],
 						intro: self.i18n.active().strategy.walkthrough.second.steps['4'],
 						position: 'top'
+					},
+					{
+						element: mainTemplate.find('.element-container.strategy-faxingnum')[0],
+						intro: self.i18n.active().strategy.walkthrough.second.steps['5'],
+						position: 'top'
 					}
 				];
 
@@ -320,6 +327,7 @@ define(function(require){
 				containers = template.find('.element-container'),
 				strategyNumbersContainer = template.find('.element-container.main-number .element-content'),
 				strategyConfNumContainer = template.find('.element-container.strategy-confnum .element-content'),
+				strategyFaxingNumContainer = template.find('.element-container.strategy-faxingnum .element-content'),
 				strategyHoursContainer = template.find('.element-container.strategy-hours .element-content'),
 				strategyHolidaysContainer = template.find('.element-container.strategy-holidays .element-content'),
 				strategyCallsContainer = template.find('.element-container.strategy-calls .element-content');
@@ -357,6 +365,7 @@ define(function(require){
 
 			self.strategyNumbersBindEvents(strategyNumbersContainer, strategyData);
 			self.strategyConfNumBindEvents(strategyConfNumContainer, strategyData);
+			self.strategyFaxingNumBindEvents(strategyFaxingNumContainer, strategyData);
 			self.strategyHoursBindEvents(strategyHoursContainer, strategyData);
 			self.strategyHolidaysBindEvents(strategyHolidaysContainer, strategyData);
 			self.strategyCallsBindEvents(strategyCallsContainer, strategyData);
@@ -409,6 +418,28 @@ define(function(require){
 											};
 										}
 									}),
+									spareLinkEnabled: (_.countBy(accountNumbers, function(number) {return number.used_by ? 'assigned' : 'spare';})['spare'] > 0),
+								},
+								template = monster.template(self, 'strategy-'+templateName, templateData);
+
+							container.find('.element-content').empty()
+															  .append(template);
+							callback && callback();
+						});
+						break;
+					case 'faxingnum':
+						self.strategyListAccountNumbers(function (accountNumbers) {
+							var callflow = strategyData.callflows["MainFaxing"],
+								numbers = callflow.numbers,
+								templateData = {
+									numbers: $.map(numbers, function(val, key) {
+										if(val!=="undefinedfaxing") {
+											return {
+												number: val
+											};
+										}
+									}),
+									actionLinksEnabled: _.isEmpty(callflow.flow.data),
 									spareLinkEnabled: (_.countBy(accountNumbers, function(number) {return number.used_by ? 'assigned' : 'spare';})['spare'] > 0),
 								},
 								template = monster.template(self, 'strategy-'+templateName, templateData);
@@ -583,6 +614,7 @@ define(function(require){
 									callOption: {
 										type: "default"
 									},
+									hideAdvancedCallflows: _.isEmpty(strategyData.callEntities.advancedCallflows),
 									callflow: callflowName,
 									callEntities: self.strategyGetCallEntitiesDropdownData(strategyData.callEntities, true, true),
 									voicemails: strategyData.voicemails,
@@ -590,7 +622,10 @@ define(function(require){
 								};
 
 
-							if(strategyData.callflows[callflowName].flow.module === "voicemail") {
+							if (strategyData.callflows[callflowName].flow.hasOwnProperty("is_main_number_cf")) {
+								tabData.callOption.callEntityId = strategyData.callflows[callflowName].flow.data.id;
+								tabData.callOption.type = "advanced-callflow";
+							} else if(strategyData.callflows[callflowName].flow.module === "voicemail") {
 								tabData.callOption.callEntityId = 'none';
 								tabData.callOption.voicemailId = strategyData.callflows[callflowName].flow.data.id;
 								tabData.callOption.type = "user-voicemail";
@@ -619,6 +654,7 @@ define(function(require){
 						});
 
 						template.find('.voicemail-select select').chosen({ search_contains: true, width: '160px' });
+						template.find('.advancedCallflows-select select').chosen({ search_contains: true, width: '160px' });
 
 						callback && callback();
 						break;
@@ -653,6 +689,7 @@ define(function(require){
 							headerSpan.append(", "+monster.util.formatPhoneNumber(mainCallflow.numbers[2]));
 						}
 						container.parents('#strategy_container').find('.element-container:not(.main-number,.strategy-confnum)').show();
+						container.parents('#strategy_container').find('.element-container:not(.main-number,.strategy-faxingnum)').show();
 						container.parents('#strategy_container').find('.element-container.helper').hide();
 						container.parents('#strategy_container').find('.element-container.main-number').css('margin-top', '0px');
 
@@ -660,6 +697,7 @@ define(function(require){
 					} else {
 						headerSpan.html(self.i18n.active().strategy.noNumberTitle);
 						container.parents('#strategy_container').find('.element-container:not(.main-number,.strategy-confnum)').hide();
+						container.parents('#strategy_container').find('.element-container:not(.main-number,.strategy-faxingnum)').hide();
 						container.parents('#strategy_container').find('.element-container.helper').show();
 						container.parents('#strategy_container').find('.element-container.main-number').css('margin-top', '10px');
 					}
@@ -956,6 +994,120 @@ define(function(require){
 						strategyData.callflows["MainConference"] = updatedCallflow;
 						refreshConfNumHeader(parentContainer);
 						self.strategyRefreshTemplate(parentContainer, strategyData);
+					});
+				}
+			});
+		},
+
+		strategyFaxingNumBindEvents: function(container, strategyData) {
+			var self = this,
+				addNumbersToMainFaxing = function(numbers) {
+					if(numbers.length) {
+						var mainFaxing = strategyData.callflows["MainFaxing"],
+							updateCallflow = function () {
+								self.strategyUpdateCallflow(mainFaxing, function(updatedCallflow) {
+									var parentContainer = container.parents('.element-container');
+									strategyData.callflows["MainFaxing"] = updatedCallflow;
+									refreshFaxingNumHeader(parentContainer);
+									self.strategyRefreshTemplate(parentContainer, strategyData);
+								});
+							};
+						if(mainFaxing.numbers.length <= 1
+						&& mainFaxing.numbers[0] === "undefinedfaxing") {
+							mainFaxing.numbers = [];
+						}
+						mainFaxing.numbers = mainFaxing.numbers.concat(numbers);
+						if (mainFaxing.flow.data.hasOwnProperty('id')) {
+							updateCallflow();
+						}
+						else {
+							self.strategyBuildFaxbox({
+								data: {
+									number: mainFaxing.numbers[0]
+								},
+								success: function(data) {
+									mainFaxing.flow.data.id = data.id;
+									updateCallflow();
+								}
+							});
+						}
+					}
+				},
+				refreshFaxingNumHeader = function(parentContainer) {
+					var mainFaxing = strategyData.callflows["MainFaxing"],
+						headerSpan = parentContainer.find('.element-header-inner .summary > span');
+					if(mainFaxing.numbers.length > 0 && mainFaxing.numbers[0] !== "undefinedfaxing") {
+						headerSpan.html(monster.util.formatPhoneNumber(mainFaxing.numbers[0]));
+						if(mainFaxing.numbers.length > 2) {
+							headerSpan.append('<i class="icon-telicon-multiple-items icon-small"></i>')
+						} else if(mainFaxing.numbers.length === 2) {
+							headerSpan.append(", "+monster.util.formatPhoneNumber(mainFaxing.numbers[1]))
+						}
+					} else {
+						headerSpan.html(self.i18n.active().strategy.noNumberTitle);
+					}
+				};
+
+			container.on('click', '.action-links .spare-link:not(.disabled)', function(e) {
+				e.preventDefault();
+
+				var args = {
+					accountName: monster.apps['auth'].currentAccount.name,
+					accountId: self.accountId,
+					singleSelect: true,
+					callback: function(numberList) {
+						var numbers = $.map(numberList, function(val) {
+							return val.phoneNumber;
+						});
+						addNumbersToMainFaxing(numbers);
+					}
+				}
+
+				monster.pub('common.numbers.dialogSpare', args);
+			});
+
+			container.on('click', '.action-links .buy-link', function(e) {
+				e.preventDefault();
+				monster.pub('common.buyNumbers', {
+					searchType: $(this).data('type'),
+					singleSelect: true,
+					callbacks: {
+						success: function(numbers) {
+							addNumbersToMainFaxing(Object.keys(numbers));
+							toastr.success(self.i18n.active().strategy.toastrMessages.buyNumbersSuccess);
+						},
+						error: function(error) {
+							toastr.error(self.i18n.active().strategy.toastrMessages.buyNumbersError);
+						}
+					}
+				});
+			});
+
+			container.on('click', '.number-element .remove-number', function(e) {
+				e.preventDefault();
+				var numberToRemove = $(this).data('number'),
+					mainFaxing = strategyData.callflows["MainFaxing"],
+					indexToRemove = mainFaxing.numbers.indexOf(numberToRemove);
+
+				if(indexToRemove >= 0) {
+					mainFaxing.numbers.splice(indexToRemove, 1);
+					if(mainFaxing.numbers.length === 0) {
+						mainFaxing.numbers = ["undefinedfaxing"];
+					}
+					self.strategyDeleteFaxbox({
+						data: {
+							id: mainFaxing.flow.data.id
+						},
+						success: function(data) {
+							delete mainFaxing.flow.data.id;
+							self.strategyUpdateCallflow(mainFaxing, function(updatedCallflow) {
+								var parentContainer = container.parents('.element-container');
+								toastr.success(self.i18n.active().strategy.toastrMessages.removeNumberSuccess);
+								strategyData.callflows["MainFaxing"] = updatedCallflow;
+								refreshFaxingNumHeader(parentContainer);
+								self.strategyRefreshTemplate(parentContainer, strategyData);
+							});
+						}
 					});
 				}
 			});
@@ -1318,7 +1470,8 @@ define(function(require){
 						callOption = $this.find('.call-option.active'),
 						menu = callOption.find('.menu-div'),
 						callEntity = callOption.find('.user-select'),
-						voicemail = callOption.find('.voicemail-select')
+						voicemail = callOption.find('.voicemail-select'),
+						advancedCallflow = callOption.find('.advancedCallflows-select'),
 						flow = {};
 
 					if(callEntity.length) {
@@ -1385,6 +1538,17 @@ define(function(require){
 								flow = flowElement;
 							}
 						}
+					}
+
+					if (advancedCallflow.length) {
+						flow = {
+							children: {},
+							module: 'callflow',
+							data: {
+								id: advancedCallflow.find('option:selected').val()
+							},
+							is_main_number_cf: true
+						};
 					}
 
 					flows[callflowName] = flow;
@@ -1922,6 +2086,38 @@ define(function(require){
 			return results;
 		},
 
+		strategyBuildFaxbox: function(args) {
+			var self = this;
+
+			self.strategyGetAccount({
+				success: function(account) {
+					args.data = {
+						name: account.name + self.i18n.active().strategy.faxing.nameExtension,
+						caller_name: account.name,
+						caller_id: args.data.number,
+						fax_header: monster.config.whitelabel.companyName + self.i18n.active().strategy.faxing.headerExtension,
+						fax_timezone: account.timezone,
+						fax_identity: monster.util.formatPhoneNumber(args.data.number),
+						owner_id: account.id,
+						notifications: {
+							inbound: {
+								email: {
+									send_to: account.contact.technical.email
+								}
+							},
+							outbound: {
+								email: {
+									send_to: account.contact.technical.email
+								}
+							}
+						}
+					};
+
+					self.strategyCreateFaxbox(args);
+				}
+			});
+		},
+
 		strategyGetMainCallflows: function(callback) {
 			var self = this;
 			self.callApi({
@@ -1939,7 +2135,13 @@ define(function(require){
 
 					_.each(data.data, function(val, key) {
 						if(val.type === "main" || val.type === "conference")
-						var name = val.type === "conference" ? "MainConference" : val.name || val.numbers[0];
+						var name = val.name || val.numbers[0];
+						if (val.type === 'conference') {
+							name = "MainConference"
+						}
+						else if (val.type === "faxing") {
+							name = "MainFaxing";
+						}
 						parallelRequests[name] = function(callback) {
 							self.callApi({
 								resource: 'callflow.get',
@@ -1971,6 +2173,33 @@ define(function(require){
 											children: {},
 											data: {},
 											module: "conference"
+										}
+									}
+								},
+								success: function(data, status) {
+									callback(null, data.data);
+								}
+							});
+						}
+					}
+
+					if (!parallelRequests["MainFaxing"]) {
+						parallelRequests["MainFaxing"] = function(callback) {
+							self.callApi({
+								resource: 'callflow.create',
+								data: {
+									accountId: self.accountId,
+									data: {
+										contact_list: {
+											exclude: false
+										},
+										numbers: ["undefinedfaxing"],
+										name: "MainFaxing",
+										type: "faxing",
+										flow: {
+											children: {},
+											data: {},
+											module: "faxing"
 										}
 									}
 								},
@@ -2371,7 +2600,14 @@ define(function(require){
 								_callback(null, data.data);
 							}
 						});
-					}
+					},
+					advancedCallflows: function(_callback) {
+						self.strategyGetCallflows(function (advancedCallflowsData) {
+							_callback(null, advancedCallflowsData);
+						}, {
+							'filter_ui_is_main_number_cf': true
+						});
+					},
 				},
 				function(err, results) {
 					var callEntities = {
@@ -2384,7 +2620,8 @@ define(function(require){
 							val.name = group && group.name || val.name;
 							val.module = 'callflow';
 							return val;
-						})
+						}),
+						advancedCallflows: results.advancedCallflows
 					};
 
 					_.each(callEntities.device, function(device) {
@@ -2411,6 +2648,10 @@ define(function(require){
 							group.module = 'ring_group';
 						}
 						callEntities.ring_group.push(group);
+					});
+
+					_.each(results.advancedCallflows, function(callflow) {
+						callflow.module = 'callflow';
 					});
 
 					callback(callEntities);
@@ -2592,6 +2833,7 @@ define(function(require){
 				}
 			});
 		},
+
 		play_audio: function() {
 			var audioElement = document.createElement('audio');
 			audioElement.setAttribute('src', 'audio.mp3');
@@ -2608,6 +2850,60 @@ define(function(require){
 			    audioElement.pause();
 			});
 		},
+
+		strategyGetAccount: function(args) {
+			var self = this;
+
+			self.callApi({
+				resource: 'account.get',
+				data: {
+					accountId: self.accountId
+				},
+				success: function(data, status) {
+					args.hasOwnProperty('success') && args.success(data.data);
+				},
+				error: function(data, status) {
+					args.hasOwnProperty('error') && args.error();
+				}
+			});
+		},
+
+		strategyCreateFaxbox: function(args) {
+			var self = this;
+
+			self.callApi({
+				resource: 'faxbox.create',
+				data: {
+					accountId: self.accountId,
+					data: args.data
+				},
+				success: function(data, status) {
+					args.hasOwnProperty('success') && args.success(data.data);
+				},
+				error: function(data, status) {
+					args.hasOwnProperty('error') && args.error();
+				}
+			});
+		},
+
+		strategyDeleteFaxbox: function(args) {
+			var self = this;
+
+			self.callApi({
+				resource: 'faxbox.delete',
+				data: {
+					accountId: self.accountId,
+					faxboxId: args.data.id
+				},
+				success: function(data, status) {
+					args.hasOwnProperty('success') && args.success(data.data);
+				},
+				error: function(data, status) {
+					args.hasOwnProperty('error') && args.error();
+				}
+			});
+		}
+
 	};
 
 	return app;

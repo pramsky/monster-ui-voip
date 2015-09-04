@@ -809,9 +809,14 @@
 					"1": "Configurez les heures d'ouverture de votre bureau ici. Vous avez le choix de laisser votre ligne ouverte 24h/24h ou bien de créer des horaires personnalisés. Vous pourrez même sélectionner des horaires de repas.",
 					"2": "Votre bureau ferme t'il pendant les vacances? Gérez tout cela dans cette section.",
 					"3": "Le \"Virtual Receptionist\" disponible dans ce menu vous permet de répondre intelligemment à tous les appels entrants sur votre numéro d'entreprise.",
-					"4": "Sélectionnez un numéro de conférence pour votre entreprise ici."
+					"4": "Sélectionnez un numéro de conférence pour votre entreprise ici.",
+					"5": "Sélectionnez un numéro de fax pour votre entreprise ici."
 				}
 			}
+		},
+		"faxing": {
+			"nameExtension": "'s Faxbox",
+			"headerExtension": " Fax Printer"
 		}
 	},
 
@@ -924,7 +929,8 @@
 				"3": "Une fois les utilisateurs créés, dirigez-vous vers la section \"Groupes\". Ceci est très pratique pour les utilisateurs travaillant dans une même section (Marketing, Ventes...) afin de définir un répondeur global etc...",
 				"4": "Créer votre numéro d'entreprise dans cette section. Vous pourrez gérer les appels entrants et les router differemment en fonction de vos réglages d'horaires ou de vacances..."
 			}
-		}
+		},
+		"faxingNumberLabel": "Numéro de Fax"
 	},
 
 	"__comment": "UI-299, v3.19_s2: Added the Feature Codes tab to SmartPBX.",

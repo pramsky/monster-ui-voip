@@ -41,6 +41,7 @@ define(function(require){
 						totalChannels: myOfficeData.totalChannels,
 						mainNumbers: myOfficeData.mainNumbers || [],
 						confNumbers: myOfficeData.confNumbers || [],
+						faxingNumbers: myOfficeData.faxingNumbers || [],
 						faxNumbers: myOfficeData.faxNumbers || [],
 						topMessage: myOfficeData.topMessage,
 						devicesList: _.toArray(myOfficeData.devicesData).sort(function(a, b) { return b.count - a.count ; }),
@@ -457,12 +458,14 @@ define(function(require){
 					numberArrayName = 'mainNumbers';
 				} else if(val.type === "conference" && val.name === "MainConference") {
 					numberArrayName = 'confNumbers';
+				} else if (val.type === "faxing" && val.name === "MainFaxing") {
+					numberArrayName = "faxingNumbers";
 				}
 
 				if(numberArrayName.length > 0) {
 					if(!(numberArrayName in data)) { data[numberArrayName] = []; }
 					_.each(val.numbers, function(num) {
-						if(num !== '0' && num !== 'undefined' && num !== 'undefinedconf') {
+						if(num !== '0' && num !== 'undefined' && num !== 'undefinedconf' && num !== 'undefinedfaxing') {
 							var number = {
 								number: num,
 								features: $.extend(true, {}, data.numberFeatures)
@@ -883,7 +886,7 @@ define(function(require){
 
 		myOfficeHasWalkthrough: function(callback) {
 			var self = this,
-				flag = self.helpSettings.user.get('showDashboardWalkthrough');
+				flag = self.uiFlags.user.get('showDashboardWalkthrough');
 
 			if(flag !== false) {
 				callback && callback();
@@ -924,7 +927,7 @@ define(function(require){
 
 		myOfficeUpdateWalkthroughFlagUser: function(callback) {
 			var self = this,
-				userToSave = self.helpSettings.user.set('showDashboardWalkthrough', false);
+				userToSave = self.uiFlags.user.set('showDashboardWalkthrough', false);
 
 			self.myOfficeUpdateOriginalUser(userToSave, function(user) {
 				callback && callback(user);
