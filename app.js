@@ -15,6 +15,7 @@ define(function(require){
                         'de-DE': { customCss: false },
                         'es-ES': { customCss: false },
                         'it-IT': { customCss: false },
+                        'nl-NL': { customCss: false },
                         'ro-RO': { customCss: false }
 		},
 

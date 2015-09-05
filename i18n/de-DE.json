@@ -677,7 +677,7 @@
 			"hours": "Bürozeiten",
 			"holidays": "Betriebsferien",
 			"calls": "Behandlung der eingehenden Anrufe",
-			"faxingnum": "Haupt Faxnummer"
+			"faxingnum": "Faxnummer"
 		},
 		"noNumberTitle": "Hauptnummer zufügen",
 		"noNumberMessage": "Kaufen Sie eine Nummer oder fügen Sie eine freie Nummer hinzu.",
@@ -969,7 +969,7 @@
                                 "4": "Fügen Sie eine Nummer für Ihr Geschäft hinzu, und leiten Sie diese entsprechned Ihren zeilichen Bedürfnisse z.B. mit dem Virtuellen Portier weiter."
                         }
                 },
-                "faxingNumberLabel": "Hauptfax Nummer"
+                "faxingNumberLabel": "Faxnummer"
         },
         "featureCodes": {
                 "title": "Verfügbare Service-Nummern",
@@ -1061,32 +1061,32 @@
                                         "label": "Zeitzone"
                                 },
                                 "alreadySetup": {
-                                        "label": "Schon eingestellt?",
-                                        "help": "Ist dieser Beantworter eingerichtet? Das erste mal, wird der Benutzer dazu aufgeforder seinen PIN zu ändern, und die Ansagen einzustellen."
+                                        "label": "Einstellungshilfe wird nicht abspielt",
+                                        "help": "Der Beantworter ist bereits initialisiert. Sonst wird der Benutzer aufgefordert, seine PIN und eine Ansage zu erzeugen."
                                 },
                                 "requirePIN": {
-                                        "label": "Benötigen Sie einen PIN?",
-                                        "help": "Überprüfen Sie ob Sie einen PIN benötigen."
+                                        "label": "PIN-Eingabe ist erforderlich",
+                                        "help": "Wenn aktiviert ist für diesen Beantworter eine PIN-Eingabe erforderlich."
                                 },
                                 "autoLogin": {
-                                        "label": "Ist Autologin eingeschaltet?",
-                                        "help": "Überprüfe ob Autologin für den Beantworter? (Wenn der Benutzer seinen eigenen Beantworter anruft, wird diese Ansagen abgespielt)"
+                                        "label": "Auto-Login aktiviert",
+                                        "help": "Auto-Login für diesen Beantworter eingeschaltet? (Wenn der Benutzer seine eigenen Beantworter anzuruft, geht es direkt zu seinem Nachrichten)"
                                 },
                                 "skipGreetings": {
-                                        "label": "Überspringe Ansagen?",
-                                        "help": "Überprüfe ob Ansagen überspringen normalerweise eingeschaltet ist."
+                                        "label": "Ihre Ansage überspringen",
+                                        "help": "Ihre aufgenomene Ansage wird nicht abgespielt."
                                 },
                                 "skipInstructions": {
-                                        "label": "Anleitung überspringen?",
-                                        "help": "Überprüfe ob Anleitung normal eingeschaltet ist"
+                                        "label": "Systemanweisung überspringen",
+                                        "help": "Die Systemanweisung 'Sie können nach dem Signalton eine Meldung hinterlassen' wird nicht abgespielt."
                                 },
                                 "deleteAfterNotify": {
-                                        "label": "Löschen aller Nachrichten?",
-                                        "help": "Löschen der Nachrichten sobald die Nachricht versendet wurde"
+                                        "label": "Löschen der Beantworternachricht nach dem Versenden",
+                                        "help": "Löscht Nachricht auf dem Beantworter nachdem die Mitteilung gesendet wurde."
                                 },
                                 "configurable": {
-                                        "label": "Einstellungen via Menü?",
-                                        "help": " Wenn ausgeschaltet, ist es nicht erlaubt dass Benutzer, Einstellungen am Beantwortermenü vornehmen"
+                                        "label": "Beantworteränderungen via Telefon erlaubt",
+                                        "help": "Es ist erlaubt dass Benutzer per Telefon Änderungen am Beantworter vornehmen."
                                 }
                         },
                         "recipients": {
