@@ -1749,7 +1749,8 @@ define(function(require){
 
 			container.find('.target-select').chosen({ search_contains: true, width: '150px' });
 
-			ttsvoice.populateDropdown(container.find('#tts_voice'), greeting.tts.voice||'inherit', {inherit: self.i18n.defaultttsvoice});
+			if(typeof greeting == "undefined") ttsvoice.populateDropdown(container.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
+			else ttsvoice.populateDropdown(container.find('#tts_voice'), greeting.tts.voice||'inherit', {inherit: self.i18n.defaultttsvoice});
 
 			container.find('.upload-input').fileUpload({
 				inputOnly: true,
@@ -1817,10 +1818,10 @@ define(function(require){
 					if(greeting && greeting.id) {
 						greeting.type = 'virtual_receptionist';
 						greeting.description = "<Text to Speech>";
-						greeting.media_source = "tts";
+			    			greeting.media_source = "tts";
 						var voice = document.getElementById("tts_voice").value;
 						greeting.tts = {
-							voice: voice,
+							voice: greeting.tts.voice,
 							text: text
 						};
 						self.callApi({
@@ -1849,7 +1850,7 @@ define(function(require){
 									media_source: "tts",
 									description: "<Text to Speech>",
 									tts: {
-										voice: "",
+										voice: "female/de-DE",
 										text: text
 									}
 								}

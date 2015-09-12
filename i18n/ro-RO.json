@@ -1,4 +1,5 @@
 {
+	"defaultttsvoice": "female/ro-RO",
 	"callerId": "apelantului-id",
 	"e911": "E911",
 	"failover": "failover",

@@ -1,4 +1,5 @@
 {
+	"defaultttsvoice": "female/de-DE",
 	"callerId": "Anruf-ID",
 	"e911": "Notrufe",
 	"failover": "Ausfallumleitung",
@@ -321,9 +322,9 @@
 			"new": "Neuer Festnetzanschluss",
 			"number": "Nummer",
 			"numberPlaceholder": "+41445223121",
-			"requireKeypress": "Require Key Press",
-			"keepCallerId": "Behalte Original Anruf-ID",
-			"hideContactList": "Nicht in die Kontaktliste"
+			"requireKeypress": "Bestätigung vor dem verbinden",
+			"keepCallerId": "Herkunftnummer verwenden",
+			"hideContactList": "Ausblenden von Kontaktliste"
 		},
 		"cellphone": {
 			"addTitle": "Handy zufügen",
@@ -866,8 +867,8 @@
 			"to": "Zu",
 			"duration1": "Dauer",
 			"duration2": "(Min)",
-			"hangup1": "Ende",
-			"hangup2": "Grund",
+			"hangup1": "Status",
+			"hangup2": "Auflegen",
 			"details1": "Verbindung",
 			"details2": "Detail",
 			"report1": "Übermittlung",

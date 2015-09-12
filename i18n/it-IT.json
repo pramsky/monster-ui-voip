@@ -1,4 +1,5 @@
 {
+	"defaultttsvoice": "female/it-IT",
 	"callerId": "caller-id",
 	"e911": "E911",
 	"failover": "failover",

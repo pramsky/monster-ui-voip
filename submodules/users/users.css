@@ -715,7 +715,7 @@
 }
 .feature-popup-container[data-feature="music_on_hold"] .upload-toggle {
 	margin-left: 10px;
-	min-width: 117px;
+	min-width: 100px;
 }
 .feature-popup-container[data-feature="music_on_hold"] .upload-div {
 	display: none;
@@ -744,7 +744,10 @@
 	padding: 6px;
 	width: 192px;
 }
-
+.feature-popup-container[data-feature="music_on_hold"] .player-div > audio {
+	margin-left: 10px;
+	max-width: 50px;
+}
 /* Faxing Feature Popup */
 .feature-popup-container[data-feature='faxing'] {
 	overflow: hidden;
@@ -873,4 +876,11 @@
 
 .presence-id-change-wrapper .actions {
 	margin-top: 10px;
+}
+select.media-dropdown.media-sel {
+    width: 30%;
+}
+.player-div {
+    width: 75px;
+    height: auto;
 }

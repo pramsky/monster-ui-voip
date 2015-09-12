@@ -1,4 +1,5 @@
 {
+	"defaultttsvoice": "female/nl-NL",
 	"callerId": "beller-id",
 	"e911": "E911",
 	"failover": "failover",

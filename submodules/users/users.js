@@ -443,7 +443,8 @@ define(function(require){
 							}
 						},
 						function(error, results) {
-							self.usersRenderFindMeFollowMe($.extend(true, results, { currentUser: currentUser, saveCallback: featureCallback }));
+							self.usersRenderFindMeFollowMe($.extend(true, results, { 
+								currentUser: currentUser, saveCallback: featureCallback }));
 						}
 					);
 				};
@@ -804,7 +805,7 @@ define(function(require){
 												while(flow.module != 'user' && '_' in flow.children) {
 													flow = flow.children['_'];
 												}
-												flow.data.timeout = parseInt(userToSave.extra.ringingTimeout);
+												flow.data.timeout = parseInt(userToSave.extra.ringingTimeout),
 												self.usersUpdateCallflow(mainCallflow, function(updatedCallflow) {
 													callback(null, updatedCallflow);
 												});
@@ -1926,142 +1927,169 @@ define(function(require){
 		usersRenderFindMeFollowMe: function(params) {
 			var self = this;
 
-			if(!params.userCallflow) {
-				monster.ui.alert('error', self.i18n.active().users.find_me_follow_me.noNumber);
-			} else if(!params.userDevices || params.userDevices.length === 0) {
-				monster.ui.alert('error', self.i18n.active().users.find_me_follow_me.noDevice);
-			} else {
-				var currentUser = params.currentUser,
-					userCallflow = params.userCallflow,
-					featureTemplate = $(monster.template(self, 'users-feature-find_me_follow_me', { currentUser: currentUser })),
-					switchFeature = featureTemplate.find('.switch-state'),
-					featureForm = featureTemplate.find('#find_me_follow_me_form'),
-					args = {
-						callback: function() {
-							popup.dialog('close').remove();
+                        silenceMediaId = 'silence_stream://300000',
+                        usaRingMediaId = 'tone_stream://%(2000,2000,425,450);loops=-1',
+                        germanRingMediaId = 'tone_stream://%(1000,4000,425);loops=-1',
+                        chinaRingMediaId = 'tone_stream://%(1000,4000,450);loops=-1';
+			var groupName = params.userCallflow.flow.data.name;
+
+			self.usersListMedias(function(medias) {
+				if(!params.userCallflow) {
+					monster.ui.alert('error', self.i18n.active().users.find_me_follow_me.noNumber);
+				} else if(!params.userDevices || params.userDevices.length === 0) {
+					monster.ui.alert('error', self.i18n.active().users.find_me_follow_me.noDevice);
+				} else {
+					var currentUser = params.currentUser,
+						userCallflow = params.userCallflow,
+						featureTemplate = $(monster.template(self, 'users-feature-find_me_follow_me', { 
+							currentUser: currentUser,
+							groupName: groupName,
+	                                                silenceMedia: silenceMediaId,
+	                                                usaRingMedia: usaRingMediaId,
+	                                                germanRingMedia: germanRingMediaId,
+	                                                chinaRingMedia: chinaRingMediaId,
+	                                                mediaList: medias,
+	                                                media: params.userCallflow.flow.data.ringback || ''
+						})),
+						switchFeature = featureTemplate.find('.switch-state'),
+						featureForm = featureTemplate.find('#find_me_follow_me_form'),
+						args = {
+							callback: function() {
+								popup.dialog('close').remove();
+							},
+							openedTab: 'features'
 						},
-						openedTab: 'features'
-					},
-					endpoints = (userCallflow.flow.module === 'ring_group' ? userCallflow.flow.data.endpoints : []),
-					userDevices = {};
-
-				_.each(params.userDevices, function(val) {
-					userDevices[val.id] = val;
-				});
-
-				endpoints = $.map(endpoints, function(endpoint) {
-					if(userDevices[endpoint.id]) {
-						var device = userDevices[endpoint.id];
-						delete userDevices[endpoint.id];
-						return {
-							id: endpoint.id,
-							delay: endpoint.delay,
-							timeout: endpoint.timeout,
-							name: device.name,
-							icon: self.deviceIcons[device.device_type],
-							disabled: false
-						}
-					}
-				});
-
-				_.each(userDevices, function(device) {
-					endpoints.push({
-						id: device.id,
-						delay: 0,
-						timeout: 0,
-						name: device.name,
-						icon: self.deviceIcons[device.device_type],
-						disabled: true
-					})
-				});
-
-				monster.pub('common.ringingDurationControl.render', {
-					container: featureForm,
-					endpoints: endpoints,
-					hasDisableColumn: true
-				});
-
-				featureTemplate.find('.cancel-link').on('click', function() {
-					popup.dialog('close').remove();
-				});
-
-				switchFeature.on('change', function() {
-					$(this).prop('checked') ? featureTemplate.find('.content').slideDown() : featureTemplate.find('.content').slideUp();
-				});
-
-				featureTemplate.find('.save').on('click', function() {
-					var enabled = switchFeature.prop('checked');
-
-					monster.pub('common.ringingDurationControl.getEndpoints', { 
-						container: featureForm,
-						callback: function(endpoints) {
-
-							currentUser.smartpbx = currentUser.smartpbx || {};
-							currentUser.smartpbx.find_me_follow_me = currentUser.smartpbx.find_me_follow_me || {};
-							currentUser.smartpbx.find_me_follow_me.enabled = (enabled && endpoints.length > 0);
-
-							if(enabled && endpoints.length > 0) {
-								userCallflow.flow.module = 'ring_group';
-								userCallflow.flow.data = {
-									strategy: "simultaneous",
-									timeout: 20,
-									endpoints: []
-								}
-								_.each(endpoints, function(endpoint) {
-									userCallflow.flow.data.endpoints.push({
-										id: endpoint.id,
-										endpoint_type: "device",
-										delay: endpoint.delay,
-										timeout: endpoint.timeout
-									});
-
-									if((endpoint.delay+endpoint.timeout) > userCallflow.flow.data.timeout) { userCallflow.flow.data.timeout = (endpoint.delay+endpoint.timeout); }
-								});
-							} else {
-								userCallflow.flow.module = 'user';
-								userCallflow.flow.data = {
-									can_call_self: false,
-									id: currentUser.id,
-									timeout: 20
-								}
+						endpoints = (userCallflow.flow.module === 'ring_group' ? userCallflow.flow.data.endpoints : []),
+						userDevices = {};
+	
+					_.each(params.userDevices, function(val) {
+						userDevices[val.id] = val;
+					});
+	
+					endpoints = $.map(endpoints, function(endpoint) {
+						if(userDevices[endpoint.id]) {
+							var device = userDevices[endpoint.id];
+							delete userDevices[endpoint.id];
+							return {
+								id: endpoint.id,
+								delay: endpoint.delay,
+								timeout: endpoint.timeout,
+								name: device.name,
+								icon: self.deviceIcons[device.device_type],
+		                                                silenceMedia: silenceMediaId,
+		                                                usaRingMedia: usaRingMediaId,
+		                                                germanRingMedia: germanRingMediaId,
+		                                                chinaRingMedia: chinaRingMediaId,
+		                                                mediaList: medias,
+		                                                media: params.userCallflow.flow.data.ringback || '',
+								disabled: false
 							}
-
-							monster.parallel({
-									callflow: function(callbackParallel) {
-										self.usersUpdateCallflow(userCallflow, function(data) {
-											callbackParallel && callbackParallel(null, data.data);
-										});
-									},
-									user: function(callbackParallel) {
-										self.usersUpdateUser(currentUser, function(data) {
-											callbackParallel && callbackParallel(null, data.data);
-										});
-									}
-								},
-								function(err, results) {
-									args.userId = results.user.id;
-									if(typeof params.saveCallback === 'function') {
-										params.saveCallback(args);
-									} else {
-										self.usersRender(args);
-									}
-								}
-							);
 						}
 					});
-				});
 
-				var popup = monster.ui.dialog(featureTemplate, {
-					title: currentUser.extra.mapFeatures.find_me_follow_me.title,
-					position: ['center', 20]
-				});
-			}
+					_.each(userDevices, function(device) {
+						endpoints.push({
+							id: device.id,
+							delay: 0,
+							timeout: 0,
+							name: device.name,
+							icon: self.deviceIcons[device.device_type],
+							disabled: true
+						})
+					});
+
+					monster.pub('common.ringingDurationControl.render', {
+						container: featureForm,
+						endpoints: endpoints,
+						hasDisableColumn: true
+					});
+
+					featureTemplate.find('.cancel-link').on('click', function() {
+						popup.dialog('close').remove();
+					});
+
+					switchFeature.on('change', function() {
+						$(this).prop('checked') ? featureTemplate.find('.content').slideDown() : featureTemplate.find('.content').slideUp();
+					});
+
+					featureTemplate.find('.save').on('click', function() {
+						var enabled = switchFeature.prop('checked');
+
+						monster.pub('common.ringingDurationControl.getEndpoints', { 
+							container: featureForm,
+							callback: function(endpoints) {
+
+								currentUser.smartpbx = currentUser.smartpbx || {};
+								currentUser.smartpbx.find_me_follow_me = currentUser.smartpbx.find_me_follow_me || {};
+								currentUser.smartpbx.find_me_follow_me.enabled = (enabled && endpoints.length > 0);
+								var selectedMedia = featureTemplate.find('.media-dropdown option:selected').val();
+
+								if(enabled && endpoints.length > 0) {
+									userCallflow.flow.module = 'ring_group';
+									userCallflow.flow.data = {
+										strategy: "simultaneous",
+										timeout: 25,
+										name: "groupname",
+										ringback: selectedMedia,
+										endpoints: []
+									}
+									_.each(endpoints, function(endpoint) {
+
+										userCallflow.flow.data.endpoints.push({
+											id: endpoint.id,
+											endpoint_type: "device",
+											delay: endpoint.delay,
+											timeout: endpoint.timeout
+										});
+	
+										if((endpoint.delay+endpoint.timeout) > userCallflow.flow.data.timeout) { userCallflow.flow.data.timeout = (endpoint.delay+endpoint.timeout); }
+									});
+								} else {
+									userCallflow.flow.module = 'user';
+									userCallflow.flow.data = {
+										can_call_self: false,
+										id: currentUser.id,
+										timeout: 25
+									}
+								}
+
+								monster.parallel({
+										callflow: function(callbackParallel) {
+											self.usersUpdateCallflow(userCallflow, function(data) {
+												callbackParallel && callbackParallel(null, data.data);
+											});
+										},
+										user: function(callbackParallel) {
+											self.usersUpdateUser(currentUser, function(data) {
+												callbackParallel && callbackParallel(null, data.data);
+											});
+										}
+									},
+									function(err, results) {
+										args.userId = results.user.id;
+										if(typeof params.saveCallback === 'function') {
+											params.saveCallback(args);
+										} else {
+											self.usersRender(args);
+										}
+									}
+								);
+							}
+						});
+					});
+
+					var popup = monster.ui.dialog(featureTemplate, {
+						title: currentUser.extra.mapFeatures.find_me_follow_me.title,
+						position: ['center', 20]
+					});
+				}
+			});
 		},
 
 		usersRenderCallRecording: function(params) {
 			var self = this,
 				templateData = $.extend(true, {
-												user: params.currentUser
+											user: params.currentUser
 											},
 											(params.currentUser.extra.mapFeatures.call_recording.active ? {
 												url: params.userCallflow.flow.data.url,
@@ -2781,7 +2809,7 @@ define(function(require){
 							},
 							data: {
 								can_call_self: false,
-								timeout: 20
+								timeout: 25
 							},
 							module: 'user'
 						},
@@ -2991,7 +3019,7 @@ define(function(require){
 							data: {
 								id: user.id,
 								can_call_self: false,
-								timeout: 20
+								timeout: 25
 							},
 							module: 'user'
 						},
@@ -3715,7 +3743,7 @@ define(function(require){
 								userCallflow.flow.data = {
 									can_call_self: false,
 									id: userId,
-									timeout: "20"
+									timeout: "25"
 								}
 								listFnParallel.push(function(callback) {
 									self.usersGetUser(userId, function(user) {
@@ -4180,7 +4208,24 @@ define(function(require){
 
 		usersRemoveOverlay: function() {
 			$('body').find('#users_container_overlay').remove();
-		}
+		},
+
+                usersListMedias: function(callback) {
+                        var self = this;
+                        self.callApi({  
+                                resource: 'media.list',
+                                data: {
+                                        accountId: self.accountId,
+                                        filters: {
+                                                'paginate': 'false',
+                                                'key_missing':'type'
+                                        }
+                                },
+                                success: function(medias) {
+                                        callback && callback(medias.data);
+                                }
+                        });
+                }
 	};
 
 	return app;
