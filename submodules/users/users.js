@@ -34,7 +34,8 @@ define(function(require){
 				args = args || {},
 				parent = args.parent || $('.right-content'),
 				_userId = args.userId,
-				_openedTab = args.openedTab;
+				_openedTab = args.openedTab,
+				callback = args.callback;
 
 			self.usersRemoveOverlay();
 
@@ -83,6 +84,8 @@ define(function(require){
 
 					args.callback && args.callback();
 				}
+
+				callback && callback();
 			});
 		},
 
