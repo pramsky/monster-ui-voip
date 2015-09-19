@@ -78,6 +78,20 @@
 						<span class="displayed-realm">{{ sip.realm }}</span>
 					</div>
 				    </div>
+
+                                    <div class="control-group">
+                                            <label class="control-label">{{ i18n.devices.unregistinfo }}
+                                            <i class="help-popover fa fa-question-circle" data-original-title="{{ i18n.devices.unregistinfoHelp }}" data-placement="top" data-toggle="tooltip"></i>
+                                            </label>
+                                            <div class="controls">
+                                                    <div class="switch">
+                                                    {{#monsterSwitch}}
+                                                            <input class="switch_state" type="checkbox" name="suppress_unregister_notifications" id="suppress_unregister_notifications" data-on="{{i18n.enabled}}" data-off="{{i18n.disabled}}">
+{{#compare suppress_unregister_notifications '===' 'false'}}{{#unless this.disabled}} checked{{/unless}}{{/compare}}{{#if this.disabled}} disabled{{/if}}</input>
+                                                    {{/monsterSwitch}}
+                                                    </div>
+                                            </div>
+                                    </div>
 				</div>
 
 				<div class="sips-right clearfix">

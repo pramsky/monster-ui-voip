@@ -106,6 +106,8 @@
 		"confirmDeleteDevice": "acest dispozitiv vor fi șterse definitiv. continua ?",
 		"deleteDevice": "șterge dispozitiv",
 		"deletedDevice": "ați șters cu succes următorul dispozitiv {{ devicename }}.",
+                "unregistinfo": "Info per email, if device not registerd",
+                "unregistinfoHelp": "If you want that the administrator become a email, when the phone is unregistered.",
 		"popupSettings": {
 			"advancedTitle": "avansat",
 			"basicTitle": "setările de bază",

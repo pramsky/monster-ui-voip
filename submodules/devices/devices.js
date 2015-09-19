@@ -409,8 +409,7 @@ define(function(require){
 				if(monster.ui.valid(deviceForm)) {
 					templateDevice.find('.feature-key-value:not(.active)').remove();
 
-					var dataToSave = self.devicesMergeData(data, templateDevice, audioCodecs, videoCodecs, slider_tx.slider('value'), slider_rx.slider('value'));
-
+					var dataToSave = self.devicesMergeData(data, templateDevice, audioCodecs, videoCodecs, slider_tx.slider('value'), slider_rx.slider('value')), suppress_unregister_notifications;
 					self.devicesSaveDevice(dataToSave, function(data) {
 						popup.dialog('close').remove();
 
@@ -625,6 +624,10 @@ define(function(require){
 				});
 			}
 
+			if('suppress_unregister_notifications' in formData) {
+				suppress_unregister_notifications = suppress_unregister_notifications === true ? 'false' : 'true';
+			}
+
 			/**
 			 * form2object sends feature_keys back as an array even if the first key is 1
 			 * feature_key needs to be coerced into an object to match the datatype in originalData
@@ -716,7 +719,7 @@ define(function(require){
 							enforce_security: false,
 						},
 						audio: {
-							codecs: ['PCMU', 'PCMA'],
+							codecs: ['g722', 'PCMU', 'GSM'],
 							tx_volume: "0",
 							rx_volume: "0"
 						},
@@ -757,7 +760,8 @@ define(function(require){
 							password: monster.util.randomString(12),
 							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
-						}
+						},
+						codecs: ['PCMU']
 					},
 					fax: {
 						media: {
@@ -768,21 +772,26 @@ define(function(require){
 							password: monster.util.randomString(12),
 							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
-						}
+						},
+						codecs: ['PCMU']
 					},
 					softphone: {
 						sip: {
 							password: monster.util.randomString(12),
 							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
-						}
+						},
+						codecs: ['GSM'],
+						suppress_unregister_notifications: true
 					},
 					mobile: {
 						sip: {
 							password: monster.util.randomString(12),
 							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
-						}
+						},
+						codecs: ['GSM'],
+						suppress_unregister_notifications: true
 					},
 					smartphone: {
 						call_forward: {
@@ -796,7 +805,9 @@ define(function(require){
 							password: monster.util.randomString(12),
 							realm: monster.apps.auth.currentAccount.realm,
 							username: 'user_' + monster.util.randomString(10)
-						}
+						},
+						codecs: ['GSM'],
+						suppress_unregister_notifications: true
 					},
 					sip_uri: {
 						sip: {
@@ -805,7 +816,9 @@ define(function(require){
 							expire_seconds: 360,
 							invite_format: 'route',
 							method: 'password'
-						}
+						},
+						codecs: ['PCMU'],
+						suppress_unregister_notifications: true
 					}
 				};
 			
@@ -825,7 +838,8 @@ define(function(require){
 				}
 
 				if('call_restriction' in data.device && name in data.device.call_restriction) {
-					defaults.extra.restrictions[name].action = data.device.call_restriction[name].action;
+					if(typeof data.device.call_restriction[name].action !== 'undefined')
+					    defaults.extra.restrictions[name].action = data.device.call_restriction[name].action;
 				}
 				else {
 					defaults.extra.restrictions[name].action = 'deny';

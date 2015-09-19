@@ -139,6 +139,8 @@
 		"confirmDeleteDevice": "This device will be permanently deleted. Continue?",
 		"deleteDevice": "Delete Device",
 		"deletedDevice": "You successfully deleted the following device \"{{deviceName}}\".",
+                "unregistinfo": "Info per email, if device not registerd",
+                "unregistinfoHelp": "If you want that the administrator become a email, when the phone is unregistered.",
 		"popupSettings": {
 			"advancedTitle": "Advanced",
 			"brandDownloads": "Productinfo downloads",

@@ -130,6 +130,8 @@
 		"confirmDeleteDevice": "Это устройство будет удалено без возможности восстановления. Продолжить?",
 		"deleteDevice": "Удалить устройство",
 		"deletedDevice": "Вы успешно удалили следующее устройство \"{{deviceName}}\".",
+                "unregistinfo": "Info per email, if device not registerd",
+                "unregistinfoHelp": "If you want that the administrator become a email, when the phone is unregistered.",
 		"popupSettings": {
 			"advancedTitle": "Расширенные",
 			"basicTitle": "Основные настройки",

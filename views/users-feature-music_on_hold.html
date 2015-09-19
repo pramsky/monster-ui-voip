@@ -13,6 +13,9 @@
 
 	<div class="content{{#unless user.extra.mapFeatures.music_on_hold.active}} disabled{{/unless}}">
 		<div>
+			<div class="player-div">
+				<audio controls="" src="{{ VMURI }}"></audio>
+			</div>
 			<span>{{ i18n.users.music_on_hold.dropdownLabel }}</span>
 			<select name="format" class="media-dropdown media-sel">
 				<option value="{{silenceMedia}}" {{#compare media '===' silenceMedia}}selected{{/compare}}>{{ i18n.users.music_on_hold.silence }}</option>
@@ -20,9 +23,6 @@
 					<option value="{{this.id}}" {{#compare ../media '===' this.id}}selected{{/compare}}>{{this.name}}</option>
 				{{/each}}
 			</select>
-			<div class="player-div">
-				<audio controls="" src="{{ VMURI }}"></audio>
-			</div>
 			<button type="button" class="monster-button monster-button-primary non-fixed upload-toggle" data-toggle="button">
 				{{ i18n.upload }}
 			</button>

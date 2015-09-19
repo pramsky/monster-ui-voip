@@ -126,6 +126,8 @@
 		"confirmDeleteDevice": "Ce téléphone sera supprimé de façon permanente. Continuer quand même?",
 		"deleteDevice": "Supprimer téléphone",
 		"deletedDevice": "Le téléphone \"{{deviceName}}\" a été supprimé avec succès.",
+                "unregistinfo": "Info per email, if device not registerd",
+                "unregistinfoHelp": "If you want that the administrator become a email, when the phone is unregistered.",
 		"popupSettings": {
 			"advancedTitle": "Avancés",
 			"basicTitle": "Réglages",

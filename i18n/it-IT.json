@@ -106,6 +106,8 @@
 		"confirmDeleteDevice": "questo dispositivo verrà eliminato definitivamente. continuare?",
 		"deleteDevice": "eliminare dispositivo",
 		"deletedDevice": "è stato eliminato con successo il seguente dispositivo {{ device }}.",
+                "unregistinfo": "Info per email, if device not registerd",
+                "unregistinfoHelp": "If you want that the administrator become a email, when the phone is unregistered.",
 		"popupSettings": {
 			"advancedTitle": "avanzato",
 			"basicTitle": "impostazioni di base",

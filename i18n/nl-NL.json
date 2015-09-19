@@ -105,6 +105,8 @@
 		"confirmDeleteDevice": "dit apparaat wordt permanent verwijderd. verder gaan?",
 		"deleteDevice": "verwijderen apparaat",
 		"deletedDevice": "je succes verwijderd het volgende apparaat {{ devicename }}.",
+                "unregistinfo": "Info per email, if device not registerd",
+                "unregistinfoHelp": "If you want that the administrator become a email, when the phone is unregistered.",
 		"popupSettings": {
 			"advancedTitle": "gevorderd",
 			"basicTitle": "basisinstellingen",

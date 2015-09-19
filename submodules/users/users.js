@@ -163,7 +163,7 @@ define(function(require){
 					additionalExtensions: 0,
 					additionalNumbers: 0,
 					devices: [],
-					extension: dataUser.hasOwnProperty('presence_id') ? dataUser.presence_id : '',
+//					extension: dataUser.hasOwnProperty('presence_id') ? dataUser.presence_id : '',
 					hasFeatures: false,
 					isAdmin: dataUser.priv_level === 'admin',
 					listCallerId: [],
@@ -298,7 +298,7 @@ define(function(require){
 					hasValidPresenceID = true;
 				}
 
-				addNumberToPresenceOptions(extension);
+//				addNumberToPresenceOptions(extension);
 			});
 
 			// Sort it from lower number to greater number

@@ -83,7 +83,7 @@
 		"ringback": {
 			"title": "Klingelzeichen",
 			"headline": "Klingelzeichen für Gruppe",
-			"dropdownLabel": "Klingeln Abspielen:",
+			"dropdownLabel": "Medium Auswahl:",
 			"silence": "Stille",
 			"germanRing": "Klingelton Deutschland",
 			"usaRing": "Klingelton USA",
@@ -129,6 +129,8 @@
 		"confirmDeleteDevice": "Dieses Gerät wird vollständig gelöscht. Weiter?",
 		"deleteDevice": "Gerät löschen",
 		"deletedDevice": "Sie haben erfolgreich das Gerät von \"{{deviceName}}\" gelöscht.",
+		"unregistinfo": "Benachrichtigen, wenn nicht registriert",
+		"unregistinfoHelp": "Möchten Sie den Administrator benachrichtigen wenn dieses Gerät abgemeldet ist?",
 		"popupSettings": {
 			"advancedTitle": "Erweitert",
 			"brandDownloads": "Produkteinfo Hersteller",
@@ -509,11 +511,11 @@
 		"resendInstructions": "Anleitung nochmals senden",
 		"title": "Total Benutzer",
 		"titleGrid": {
-			"users": "Benutzer Einstellungen",
-			"extensions": "Nebenstellen",
+			"users": "Benutzer",
+			"extensions": "Nebenstelle",
 			"phoneNumbers": "Telefonnummer",
 			"devices": "Geräte",
-			"features": "Benutzer Funktonen"
+			"features": "Benutzerfunktionen"
 		},
 		"toastrMessages": {
 			"devicesUpdated": "Sie haben das Gerät {{name}} erfolgreich aktualisiert.",
@@ -608,7 +610,7 @@
                         }
                 },
 		"vm_to_email": {
-			"deleteAfterNotify": "Löschen der Nachricht in der Datenbank, nach dem versenden.",
+			"deleteAfterNotify": "Die Nachricht nach dem versenden, im Beantworter löschen.",
 			"headline": "Beantworter-zu-Email Einstellungen",
 			"help": "Wenn Sie die Email-Adresse für den Empfang der Nachrichten ändern möchten, benutzen Sie dazu die Email-Adresse dieses Benutzers.",
 			"label": "Ein Email wird bei jeder Nachricht an {{variable}} gesendet.",
@@ -632,7 +634,7 @@
 		"music_on_hold": {
 			"title": "Benutzerdefinierte Wartemusik",
 			"headline": "Wartemusik",
-			"dropdownLabel": "Wartemusik:",
+			"dropdownLabel": "Medium auswählen:",
 			"silence": "Stille",
 			"emptyUploadAlert": "Bitte eine Datei auswählen",
 			"fileTooBigAlert": "Sie können maximal eine Datei mit 5MB auswählen"

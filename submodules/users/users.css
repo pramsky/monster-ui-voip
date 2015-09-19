@@ -745,7 +745,6 @@
 	width: 192px;
 }
 .feature-popup-container[data-feature="music_on_hold"] .player-div > audio {
-	margin-left: 10px;
 	max-width: 50px;
 }
 /* Faxing Feature Popup */
@@ -878,9 +877,10 @@
 	margin-top: 10px;
 }
 select.media-dropdown.media-sel {
-    width: 30%;
+	width: 30%;
 }
 .player-div {
-    width: 75px;
-    height: auto;
+	width: 60px;
+	height: 21px;
+	float: left;
 }
