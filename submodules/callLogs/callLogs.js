@@ -251,14 +251,18 @@ define(function(require){
 					break;
 				case 'thisWeek':
 					// First we need to know how many days separate today and monday.
-					// Since Sunday is 0 and Monday is 1, we do this little substraction to get the result.
+					// Since Sunday is 0 and Monday is 1, we do this little substraction to get the right result.
 					var day = from.getDay(),
-						countDaysFromMonday = (day||7) - 1;
+						countDaysFromMonday = (day||7) + 1;
 					from.setDate(from.getDate() - countDaysFromMonday);
 
 					break;
 				case 'thisMonth':
 					from.setDate(1);
+					break;
+				case 'lastMonth':
+					from.setDate(-30);
+					to.setDate(0);
 					break;
 				default:
 					break;
