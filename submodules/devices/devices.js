@@ -657,6 +657,10 @@ define(function(require){
 				}
 			}
 
+			if(mergedData.extra.hasOwnProperty('notify_unregister')) {
+				mergedData.suppress_unregister_notifications = !mergedData.extra.notify_unregister;
+			}
+
 			if(hasCodecs) {
 				if(audioCodecs) {
 					mergedData.media.audio.codecs = audioCodecs.getSelectedItems();
@@ -730,7 +734,7 @@ define(function(require){
 							codecs: []
 						}
 					},
-					suppress_unregister_notifications: false
+					suppress_unregister_notifications: true
 				},
 				typedDefaults = {
 					sip_device: {

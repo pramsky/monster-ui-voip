@@ -231,6 +231,12 @@
 					"button": "Restart",
 					"help": "This sends a request to restart the device. This action is only available if the device is currently registered to the platform.",
 					"success": "You successfully sent a Restart request to this device!"
+				},
+				"__comment": "UI-1818: Adding notify unregister",
+				"__version": "3.22",
+				"unregisterNotifications": {
+					"label": "Notify when unregistered",
+					"help": "Do you want to notify the administrator each time this device unregisters?"
 				}
 			},
 			"webrtc": {
@@ -680,9 +686,6 @@
 			"header": "It appears that you want to remove the number you had set as your Main Extension. Please select your new Main Extension from the choices below:",
 			"none": "I don't want to set a new Main Extension"
 		},
-		"__comment": "UI-1289: Masks should be in i18n",
-		"__version": "v3.20_s3",
-		"defaultPhoneMask": "+1 (999) 999-9999",
 		"__comment": "UI-1393: Updating user devices to use the monsterListing common control",
 		"__version": "v3.20_s4",
 		"devices": {
@@ -910,7 +913,8 @@
 			"title": "Custom Conference Greeting",
 			"link": "Custom Greeting",
 			"info": "Customize your conference greeting message using our Text-to-Speech feature. Simply type your greeting message in the input field below.",
-			"mainConfMissing": "Your Main Conference could not be found."
+			"mainConfMissing": "Your Main Conference could not be found.",
+			"tooltip": "Your Main Conference has a custom greeting message."
 		}
 	},
 

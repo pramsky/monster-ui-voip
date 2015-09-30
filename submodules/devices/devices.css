@@ -597,3 +597,8 @@
 .sip-list {
 	float: left;
 }
+
+/* Special checkbox case */
+.edit-device .form-horizontal .control-label.checkbox-basic {
+	margin-left: 160px;
+}
