@@ -852,6 +852,12 @@
                 "faxing": {
                         "nameExtension": "'s Haupfaxnummer",
                         "headerExtension": " Fax Drucker"
+                },
+                "customConferenceGreeting": {
+                        "title": "Eigene Konferenz Begrüssung",
+                        "link": "Eigene Begrüssung",
+                        "info": "Für die Konferenzbegrüssung wird eine syntetische Stimme Ihren eingegebenen Text vorlesen. Schreiben Sie Ihren Text, einfach in die darunterligende Feld.",
+                        "mainConfMissing": "Ihre Haupt-Konferenznummer konnte nicht gefunden werden."
                 }
         },
 	"callLogs": {
@@ -966,10 +972,10 @@
                 "mainVMBoxName": "Firma Beantworter",
                 "walkthrough": {
                         "steps": {
-                                "1": "In der Übersicht können Sie mit einen Blick Ihre Einstellungen überprüfen, inkl. Benutzer, Geräte, Rreie und Zugewiesene sowie, Haupt- und Konferenznummern.",
-                                "2": "Im Menü Benutzer, fügen Sie neue Benutzer hinzu, ändern deren Eintellungen. Ebenso können Sie Nummern mieten, portieren oder zuweisen. Geräte und Einstellungen zuweisen, und deren Eigenschaften anpassen.",
-                                "3": "Wenn Sie alle Benutzer erstellt haben, fahren Sie fort mit den Gruppeneinstellungen. Die ist vor allem sinnvoll, wenn mehrere in der selben Abteilung arbeiten. z.B der Verkaufsabteilung.",
-                                "4": "Fügen Sie eine Nummer für Ihr Geschäft hinzu, und leiten Sie diese entsprechned Ihren zeilichen Bedürfnisse z.B. mit dem Virtuellen Portier weiter."
+                                "1": "In der Übersicht können Sie mit einen Blick Ihre Einstellungen überprüfen, inkl. Benutzer, Geräte und Zugewiesene sowie, Haupt- Fax- und Konferenznummern.",
+                                "2": "Im Menü Benutzer, fügen Sie neue Benutzer hinzu, oder ändern Einstellung. Sie können für einen Benutzr externe Nummern mieten, portieren oder zuweisen, und Geräte und deren Eigenschaften anpassen.",
+                                "3": "Wenn Sie alle Benutzer erstellt haben, können Sie mit den Gruppeneinstellungen fortfahren. Gruppen Sind für mehrere Benutzer gedacht um diese über eine gemeinsame Nummer z.B eine Verkaufsabteilung anzurufen.",
+                                "4": "Hier werden Abfolge für die eingehenden Anrufe auf die Hauptnummern definiert. Fügen Sie als erstes eine Nummer für Ihr Geschäft hinzu, und leiten Sie diese entsprechned Ihren zeilichen Bedürfnissen z.B. mit dem Virtuellen Portier weiter."
                         }
                 },
                 "faxingNumberLabel": "Faxnummer"

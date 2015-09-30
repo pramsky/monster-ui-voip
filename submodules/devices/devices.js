@@ -722,7 +722,7 @@ define(function(require){
 							enforce_security: false,
 						},
 						audio: {
-							codecs: ['g722', 'PCMU', 'GSM'],
+							codecs: ['G722', 'PCMU', 'GSM'],
 							tx_volume: "0",
 							rx_volume: "0"
 						},
