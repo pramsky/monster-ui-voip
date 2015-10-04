@@ -117,8 +117,8 @@
                         }
                 },
                 "prepend": {
-                        "title": "Anruf-ID Vorstellen",
-                        "headline": "Anruf-ID Vorstellen",
+                        "title": "Anruf-ID verändern",
+                        "headline": "Anruf-ID verändern",
                         "cidNameLabel": "Anruf-ID Name Präfix",
                         "cidNumberLabel": "Anruf-ID Nummer Präfix",
                         "cidNumberLabelSuffix": "Anruf-ID Nummer Suffix"
@@ -861,7 +861,8 @@
                         "title": "Eigene Konferenz Begrüssung",
                         "link": "Eigene Begrüssung",
                         "info": "Für die Konferenzbegrüssung wird eine syntetische Stimme Ihren eingegebenen Text vorlesen. Schreiben Sie Ihren Text, einfach in die darunterligende Feld.",
-                        "mainConfMissing": "Ihre Haupt-Konferenznummer konnte nicht gefunden werden."
+                        "mainConfMissing": "Ihre Haupt-Konferenznummer konnte nicht gefunden werden.",
+                        "tooltip": "Die Konferenz begrüsst Sie mit einer eigenen Ansage."
                 }
         },
 	"callLogs": {
@@ -982,7 +983,8 @@
                                 "4": "Hier werden Abfolge für die eingehenden Anrufe auf die Hauptnummern definiert. Fügen Sie als erstes eine Nummer für Ihr Geschäft hinzu, und leiten Sie diese entsprechned Ihren zeilichen Bedürfnissen z.B. mit dem Virtuellen Portier weiter."
                         }
                 },
-                "faxingNumberLabel": "Faxnummer"
+                "faxingNumberLabel": "Faxnummer",
+                "directoryLabel": "Firmenverzeichnis Benutzer:"
         },
         "featureCodes": {
                 "title": "Verfügbare Service-Nummern",

@@ -110,8 +110,8 @@
                         }
                 },
                 "prepend": {
-                        "title": "Caller ID Prepend",
-                        "headline": "Caller ID Prepend",
+                        "title": "Caller ID change",
+                        "headline": "Caller ID change",
                         "cidNameLabel": "Caller ID Name prefix",
                         "cidNumberLabel": "Caller ID Number prefix"
                 },
@@ -771,6 +771,13 @@
                 "faxing": {
                         "nameExtension": "'s Main Faxbox",
                         "headerExtension": " Fax Printer"
+                },
+                "customConferenceGreeting": {
+                        "title": "Custom Conference Greeting",
+                        "link": "Custom Greeting",
+                        "info": "Customize your conference greeting message using our Text-to-Speech feature. Simply type your greeting message in the input field below.",
+                        "mainConfMissing": "Your Main Conference could not be found.",
+                        "tooltip": "Your Main Conference has a custom greeting message."
                 }
         },
 
@@ -868,7 +875,8 @@
 			"noNumber": "nici un număr disponibil"
 		},
 		"mainVMBoxName": "Casuta vocala principal",
-		"faxingNumberLabel": "Faxbox Number"
+		"faxingNumberLabel": "Faxbox Number",
+                "directoryLabel": "Company Directory Users:"
 	},
 
 	"featureCodes": {

@@ -982,6 +982,10 @@ define(function(require){
 								position: ['center', 20]
 							});
 
+						if(typeof greetingMedia == "undefined") ttsvoice.populateDropdown(greetingTemplate.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
+						else if(greetingMedia == null) ttsvoice.populateDropdown(greetingTemplate.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
+						else ttsvoice.populateDropdown(greetingTemplate.find('#tts_voice'), greetingMedia.tts.voice||'inherit', {inherit: self.i18n.defaultttsvoice});
+
 						greetingTemplate.find('.switch-state').on('change', function() {
 							$(this).prop('checked') ? greetingTemplate.find('.content').slideDown() : greetingTemplate.find('.content').slideUp();
 						});
@@ -996,9 +1000,10 @@ define(function(require){
 										if(greetingMedia) {
 											greetingMedia.description = "<Text to Speech>";
 											greetingMedia.media_source = "tts";
-											greetingMedia.tts = {
-												text: greetingTemplate.find('.custom-greeting-text').val(),
-												voice: "female/en-US"
+											var voice = document.getElementById("tts_voice").value;
+												greetingMedia.tts = {
+													voice: voice,
+													text: greetingTemplate.find('.custom-greeting-text').val()
 											}
 											self.callApi({
 												resource: 'media.update',
@@ -1011,6 +1016,7 @@ define(function(require){
 													callback && callback(data.data);
 												}
 											});
+console.log(greetingMedia);
 										} else {
 											self.callApi({
 												resource: 'media.create',
@@ -1032,6 +1038,7 @@ define(function(require){
 													callback && callback(data.data);
 												}
 											});
+//console.log(greetingMedia);
 										}
 									};
 
@@ -1886,6 +1893,7 @@ define(function(require){
 			container.find('.target-select').chosen({ search_contains: true, width: '150px' });
 
 			if(typeof greeting == "undefined") ttsvoice.populateDropdown(container.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
+			else if(greeting == null) ttsvoice.populateDropdown(container.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
 			else ttsvoice.populateDropdown(container.find('#tts_voice'), greeting.tts.voice||'inherit', {inherit: self.i18n.defaultttsvoice});
 
 			container.find('.upload-input').fileUpload({
@@ -1986,7 +1994,7 @@ define(function(require){
 									media_source: "tts",
 									description: "<Text to Speech>",
 									tts: {
-										voice: "female/de-DE",
+										voice: "female/en-US",
 										text: text
 									}
 								}

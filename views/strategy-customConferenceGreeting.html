@@ -19,9 +19,10 @@
 	</div>
 
 	<div class="actions clearfix">
-		<div class="pull-right">
-			<button type="button" class="monster-button cancel">{{ i18n.cancel }}</button>
-			<button type="button" class="monster-button-success save">{{ i18n.save }}</button>
+		<div class="tts_voice greeting-option-actions clearfix">
+                        <select id="tts_voice" name="greetingMedia.tts.voice" data-original_value="{{greetingMedia.tts.voice}}" class="pull-left monster-button-mini" style="width: 150px;"></select>
+			<button type="button" class="pull-right monster-button-success save">{{ i18n.save }}</button>
+			<button type="button" class="pull-right monster-button cancel">{{ i18n.cancel }}</button>
 		</div>
 	</div>
 </div>

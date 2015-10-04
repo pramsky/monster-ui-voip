@@ -125,8 +125,8 @@
 		"__comment": "UI-1206: Adding a feature to add a Caller ID prepend on groups",
 		"__version": "3.22",
 		"prepend": {
-			"title": "Caller ID Prepend",
-			"headline": "Caller ID Prepend",
+			"title": "Caller ID change",
+			"headline": "Caller ID change",
 			"cidNameLabel": "Caller ID Name prefix",
 			"cidNumberLabel": "Caller ID Number prefix"
 		},
