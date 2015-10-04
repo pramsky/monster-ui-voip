@@ -119,8 +119,16 @@
 				"3": "Приобретите и назначьте городской номер для группы.",
 				"4": "Включайте, выключайте и управляйте возможностями группы пользователей."
 			}
+		},
+                "prepend": {
+                        "title": "Caller ID Prepend",
+                        "headline": "Caller ID Prepend",
+                        "cidNameLabel": "Caller ID Name prefix",
+                        "cidNumberLabel": "Caller ID Number prefix"
+                },
+                "suffix": {
+                        "cidNumberLabel": "Caller ID Number suffix"
 		}
-		
 	},
 
 	"devices": {

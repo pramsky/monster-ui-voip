@@ -120,7 +120,16 @@
 				"3": "Comprar, transferir, y asignar numeros. Cuanto antes completado, automaticamente sera asignado al grupo de usuarios especifico.",
 				"4": "encienda y apaga consistentemente cualquier característica del usuario especificamente del grupo."
 			}
-		}
+		},
+                "prepend": {
+                        "title": "Caller ID Prepend",
+                        "headline": "Caller ID Prepend",
+                        "cidNameLabel": "Caller ID Name prefix",
+                        "cidNumberLabel": "Caller ID Number prefix"
+                },
+                "suffix": {
+                        "cidNumberLabel": "Caller ID Number suffix"
+                }
 	},
 
 	"devices": {

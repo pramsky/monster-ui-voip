@@ -69,15 +69,14 @@
 					</div>
 				</div>
 
-                                <div class="control-group">
-                                        <label class="control-label">{{ i18n.devices.unregistinfo }}
+                               <div class="control-group">
+                                        <label class="control-label">{{ i18n.devices.unregistinfo }} {{suppress_unregister_notifications}}
                                         <i class="help-popover fa fa-question-circle" data-original-title="{{ i18n.devices.unregistinfoHelp }}" data-placement="top" data-toggle="tooltip"></i>
                                         </label>
                                         <div class="controls">
                                                 <div class="switch">
                                                 {{#monsterSwitch}}
-                                                        <input class="switch_state" type="checkbox" name="suppress_unregister_notifications" id="suppress_unregister_notifications"  data-on="{{i18n.enabled}}" data-off="{{i18n.disabled}}">
-{{#compare suppress_unregister_notifications '===' 'false'}}{{#unless this.disabled}} checked{{/unless}}{{/compare}}{{#if this.disabled}} disabled{{/if}}</input>
+                                                        <input class="switch_state" type="checkbox" name="extra.notify_unregister" id="notify_unregister" data-on="{{i18n.enabled}}" data-off="{{i18n.disabled}}" {{#unless suppress_unregister_notifications}}checked{{/unless}}{{#if this.disabled}} disabled{{/if}} />
                                                 {{/monsterSwitch}}
                                                 </div>
                                                 <i class="restriction-matcher-sign fa-lg fa fa-check monster-green"></i>

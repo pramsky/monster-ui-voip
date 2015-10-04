@@ -644,7 +644,16 @@
 				"5": "Ajouter des téléphones à vos utilisateurs via cette case.",
 				"6": "Gérez les différentes fonctionnalités disponibles pour vos utilisateurs via ce menu."
 			}
-		}
+		},
+                "prepend": {
+                        "title": "Caller ID Prepend",
+                        "headline": "Caller ID Prepend",
+                        "cidNameLabel": "Caller ID Name prefix",
+                        "cidNumberLabel": "Caller ID Number prefix"
+                },
+                "suffix": {
+                        "cidNumberLabel": "Caller ID Number suffix"
+                }
 	},
 
 	"strategy": {

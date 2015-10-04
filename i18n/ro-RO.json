@@ -95,8 +95,29 @@
 			"voicemails": "cutii vocale",
 			"users": "utilizatorii"
 		},
-		"__comment": "ui-819, v3.19_s1",
-		"outdatedGroupsError": "datele grupuri este depășit și nu poate fi redat. vă rugăm să contactați administratorul a va actualiza datele."
+		"outdatedGroupsError": "datele grupuri este depășit și nu poate fi redat. vă rugăm să contactați administratorul a va actualiza datele.",
+                "forward": {
+                        "title": "Allow Call-Forward",
+                        "headline": "Allow Call-Forward",
+                        "description": "Enable this option if you want to allow this group's users to press their device \"Forward\" button to forward a call fromthis ring group. If this option is disabled, it will ignore the user's command."
+                },
+                "walkthrough": {
+                        "steps": {
+                                "1": "Add a specific User Group by clicking on the button. The handy drag and drop allows you to add users, create a group name and add an extension number. Once complete, each User Group and its settings will be populated below.",
+                                "2": "Once a User Group is created, it will pre-populate the area here. Make any necessary changes such as the group name, number of members and extension number.",
+                                "3": "Purchase, Port and Assign numbers. Once complete, it will automatically be assigned to the specific User Group.",
+                                "4": "Turn on/off and seamlessly manage any of the User Features specific to the User Group."
+                        }
+                },
+                "prepend": {
+                        "title": "Caller ID Prepend",
+                        "headline": "Caller ID Prepend",
+                        "cidNameLabel": "Caller ID Name prefix",
+                        "cidNumberLabel": "Caller ID Number prefix"
+                },
+                "suffix": {
+                        "cidNumberLabel": "Caller ID Number suffix"
+		}
 	},
 
 	"devices": {

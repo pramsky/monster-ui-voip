@@ -497,14 +497,14 @@ define(function(require){
 			var self = this,
 				recordCallNode = monster.util.findCallflowNode(data.callflow, 'record_call'),
 				templateData = $.extend(true, {
-												group: data.group
-											},
-											(data.group.extra.mapFeatures.call_recording.active && recordCallNode ? {
-												url: recordCallNode.data.url,
-												format: recordCallNode.data.format,
-												timeLimit: recordCallNode.data.time_limit
-											} : {})
-										),
+								group: data.group
+						},
+						(data.group.extra.mapFeatures.call_recording.active && recordCallNode ? {
+							url: recordCallNode.data.url,
+							format: recordCallNode.data.format,
+							timeLimit: recordCallNode.data.time_limit
+						} : {})
+				),
 				featureTemplate = $(monster.template(self, 'groups-feature-call_recording', templateData)),
 				switchFeature = featureTemplate.find('.switch-state'),
 				featureForm = featureTemplate.find('#call_recording_form'),
@@ -873,13 +873,14 @@ define(function(require){
 			var self = this,
 				prependNode = monster.util.findCallflowNode(data.callflow, 'prepend_cid'),
 				templateData = $.extend(true, {
-												group: data.group
-											},
-											(data.group.extra.mapFeatures.call_recording.active && prependNode ? {
-												caller_id_name_prefix: prependNode.data.caller_id_name_prefix,
-												caller_id_number_prefix: prependNode.data.caller_id_number_prefix
-											} : {})
-										),
+							group: data.group,
+						},
+						(data.group.smartpbx.prepend.enabled && prependNode ? {
+					caller_id_name_prefix: prependNode.data.caller_id_name_prefix,
+				      caller_id_number_prefix: prependNode.data.caller_id_number_prefix,
+				      caller_id_number_suffix: prependNode.data.caller_id_number_suffix
+						} : {})
+				),
 				featureTemplate = $(monster.template(self, 'groups-feature-prepend', templateData)),
 				switchFeature = featureTemplate.find('.switch-state'),
 				popup;

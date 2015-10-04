@@ -129,6 +129,9 @@
 			"headline": "Caller ID Prepend",
 			"cidNameLabel": "Caller ID Name prefix",
 			"cidNumberLabel": "Caller ID Number prefix"
+		},
+		"suffix": {
+			"cidNumberLabel": "Caller ID Number suffix"
 		}
 	},
 

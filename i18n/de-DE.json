@@ -120,7 +120,11 @@
                         "title": "Anruf-ID Vorstellen",
                         "headline": "Anruf-ID Vorstellen",
                         "cidNameLabel": "Anruf-ID Name Präfix",
-                        "cidNumberLabel": "Anruf-ID Nummer Präfix"
+                        "cidNumberLabel": "Anruf-ID Nummer Präfix",
+                        "cidNumberLabelSuffix": "Anruf-ID Nummer Suffix"
+                },
+                "suffix": {
+                        "cidNumberLabel": "Anruf-ID Nummer Suffix"
                 }
 	},
 	"devices": {

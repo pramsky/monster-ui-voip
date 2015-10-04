@@ -498,6 +498,7 @@
 
 .feature-popup-container[data-feature="ringback"] .media-dropdown {
 	margin-bottom: 0px;
+	max-width: 210px;
 }
 .feature-popup-container[data-feature="ringback"] .upload-toggle {
 	margin-left: 10px;
