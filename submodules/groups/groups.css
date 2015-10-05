@@ -544,6 +544,7 @@
 
 .feature-popup-container[data-feature="next_action"] .next-action > *:not(:first-child) {
 	margin-left: 10px;
+	max-width: 180px;
 }
 
 

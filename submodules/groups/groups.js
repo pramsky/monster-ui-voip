@@ -875,7 +875,7 @@ define(function(require){
 				templateData = $.extend(true, {
 							group: data.group,
 						},
-						(data.group.smartpbx.prepend.enabled && prependNode ? {
+						(typeof data.group.smartpbx.prepend !== "undefined" && prependNode ? {
 					caller_id_name_prefix: prependNode.data.caller_id_name_prefix,
 				      caller_id_number_prefix: prependNode.data.caller_id_number_prefix,
 				      caller_id_number_suffix: prependNode.data.caller_id_number_suffix

@@ -93,8 +93,8 @@
 		},
 		"nextAction": {
 			"title": "Next Action",
-			"headline": "Add an action when no one picks up",
-			"label": "If no one answers, forward the call to:",
+			"headline": "Add an action when ring over",
+			"label": "Action, if no one answers:",
 			"menu": "Menu",
 			"mainMenu": "Main Menu (Open hours)",
 			"voicemails": "Voicemail Boxes",

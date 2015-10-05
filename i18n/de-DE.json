@@ -94,8 +94,8 @@
 		},
                 "nextAction": {
                         "title": "Nächste Aktion",
-                        "headline": "Zufügen einer Aktion wenn niemand antwortet",
-                        "label": "Wenn nicht beantwortet, umleiten zu Beantworter:",
+                        "headline": "Aktion bei Überlauf",
+                        "label": "Aktion, wenn nicht beantwortet:",
                         "menu": "Menü",
                         "mainMenu": "Hauptmenu (Firma offen)",
                         "voicemails": "Beantworter Konten",
