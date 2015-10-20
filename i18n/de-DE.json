@@ -1,4 +1,5 @@
 {
+	"defaultLang": "de-DE",
 	"defaultttsvoice": "female/de-DE",
 	"callerId": "Anruf-ID",
 	"e911": "Notrufe",
@@ -13,7 +14,7 @@
 		"mainNumber": "Bürozeiten",
 		"callLogs": "Verbindungen",
 		"quickLinks": "Hilfe",
-                "featureCodes": "Service-Nummern",
+                "featureCodes": "Service & Installation",
 		"vmboxes": "Beantworter"
 	},
 
@@ -157,7 +158,7 @@
                                         "types": {
                                                 "autoprovision": "Sie können automatisch, die Einstellungen des Softphones ausführen lassen, ohne die technischen Details zu kennen.",
                                                 "software": "Über den Download-Link 'Softphone installieren' laden Sie das Softwaretelefon und installieren es, wie gewohnt.",
-                                                "qrcode": "Nun scannen Sie mit dem installierten Softwaretelefon den angezeigen QR-Code (Im Wählfeld unten links), und sofort ist das Telefon beriebsbereit.",
+                                                "qrcode": "Nun scannen Sie mit dem installierten Softwaretelefon den angezeigen QR-Code (Im Wählfeld UNTEN (für Android) OBEN (für iPhone) LINKS), und sofort ist das Telefon beriebsbereit.",
                                                 "security": "Erfreuen Sie sich einer einfachen und sicheren Installation."
                                         }
                                 },
@@ -839,7 +840,7 @@
                 "walkthrough": {
                         "first": {
                                 "steps": {
-                                        "1": "Zuerst stellen Sie Ihre Hauptnummer für Ihre Hosted-PBX ein. Dies sollte eine öffentliche Nummer sein, das Ihr Geschäft nach Aussen representiert."
+                                        "1": "Zuerst stellen Sie Ihre Hauptnummer für Ihre Hosted-PBX ein. Dies sollte eine öffentliche Nummer sein, das Ihr Geschäft nach Aussen repräsentiert."
                                 }
                         },
                         "second": {
@@ -1026,6 +1027,33 @@
                         "parking": "Parken",
                         "do_not_disturb": "Bitte nicht Stören",
                         "misc": "Verschiedenes"
+                },
+                "installBox": {
+                        "avmTitle": "AVM FRITZ! Clip: Die FRITZ!Box am IP-basierten Anschluss (All-IP)",
+                        "avmDescript": "Die FRITZ!Box stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im FRITZ! Clip wird kurz erklärt, was die Besonderheiten eines IP-basierten Anschlusses sind und wie er bei einer FRITZ!Box eingerichtet wird. Weitere Informationen unter http://avm.de/ip-basiert",
+                        "avmAllipYtLink": "http://www.youtube.com/watch?v=oJgY4Zyn5Lk"
+                },
+                "installIos": {
+                        "iosTitle": "QoS-Modem für ein stabiles Internet am IP-basierten Anschluss (All-IP)",
+                        "iosDescript": "Das QoS-Modem sorgt für ein stabilen und zuverlässigen Internetanschluss. Im Clip wird die Installation erklärt!",
+                        "iosAllipYtLink": "http://www.youtube.com/watch?v=Gwg4K-B6RwM"
+                },
+                "installSoft": {
+                        "softTitle": "Zoiper App: Das Softphone auf dem Handy oder PC an (All-IP)",
+                        "softDescript": "Das Softphone stellt auch an einem Handy über WLAN-Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im Clip wird die einfache installation erklärt!"
+                },
+                "installSip": {
+                        "sipTitle": "Einfache installation eines SIP-Telefons am IP-basierten Anschluss (All-IP)",
+                        "sipDescript": "Das SIP-Telefon stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im Clip wird kurz erklärt, was die Besonderheiten eines SIP-Anschlusses sind."
+                },
+                "walkthrough": {
+                        "steps": {
+                                "1": "Service Nummern: Gibt Ihnen einen Überblick über die möglichen Kurznummern.",
+                                "2": "Installation FritzBox: Die Anleitung wie Sie die Fritzbox installieren.",
+                                "3": "Installation QoS-Modem: Die Anleitung wie Sie das QoS-Modem installieren.",
+                                "4": "Installation Softphone: Die Anleitung wie Sie die Softphone App installieren.",
+                                "5": "Installation SIP-Telefon: Die Anleitung wie Sie ein SIP-Telefon installieren."
+                        }
                 }
         },
         "vmboxes": {
@@ -1120,6 +1148,14 @@
                                 "emptyUploadAlert": "Wählen Sie eine Datei aus."
                         }
                 }
+        },
+        "installservices": {
+                "title": "Installieren und Service-Nummern",
+                "featureCodes": "Service-Nummern",
+                "installFritzBox": "Inst. FritzBox",
+                "installIosmodem": "Inst. QoS-Modem",
+                "installSoftphone": "Inst. Software Telefon",
+                "installSipphone": "Inst. SIP-Telefon"
         },
         "numberPrepend": "Vorgestellter Text",
         "portIconHelp": "Diese Nummer ist im Portierungprozess und wird gelöscht wenn die Portierung abgelehnt wird. Diese Nummer wird nicht vermittelt, darum können Sie diese nicht bentuzen."

@@ -28,13 +28,20 @@ define(function(require){
 				toDate = dates.to;
 			}
 
+                        if(monster.apps.auth.isReseller == true && monster.apps.auth.currentUser.priv_level === "admin") {
+                            show_details = true
+                        } else {
+                            show_details = false
+                        };
+
 			var dataTemplate = {
 				timezone: 'GMT' + jstz.determine_timezone().offset(),
 				type: type || 'today',
 				fromDate: fromDate,
 				toDate: toDate,
 				showFilteredDates: ['thisMonth', 'thisWeek'].indexOf(type) >= 0,
-				showReport: monster.config.whitelabel.callReportEmail ? true : false
+				showReport: monster.config.whitelabel.callReportEmail ? true : false,
+				showDetails: show_details
 			};
 
 			// Reset variables used to link A-Legs & B-Legs sent by different pages in the API
@@ -46,7 +53,7 @@ define(function(require){
 				template = $(monster.template(self, 'callLogs-layout', dataTemplate));
 
 				if(cdrs && cdrs.length) {
-					var cdrsTemplate = $(monster.template(self, 'callLogs-cdrsList', {cdrs: cdrs, showReport: monster.config.whitelabel.callReportEmail ? true : false}));
+					var cdrsTemplate = $(monster.template(self, 'callLogs-cdrsList', {cdrs: cdrs, showDetails: show_details, showReport: monster.config.whitelabel.callReportEmail ? true : false}));
 					template.find('.call-logs-grid .grid-row-container')
 							.append(cdrsTemplate);
 				}
@@ -204,7 +211,7 @@ define(function(require){
 					loaderDiv.find('.loading-message > i').toggleClass('fa-spin');
 					self.callLogsGetCdrs(fromDate, toDate, function(newCdrs, nextStartKey) {
 						newCdrs = self.callLogsFormatCdrs(newCdrs);
-						cdrsTemplate = $(monster.template(self, 'callLogs-cdrsList', {cdrs: newCdrs, showReport: monster.config.whitelabel.callReportEmail ? true : false}));
+						cdrsTemplate = $(monster.template(self, 'callLogs-cdrsList', {cdrs: newCdrs, showDetails: show_details,  showReport: monster.config.whitelabel.callReportEmail ? true : false}));
 
 						startKey = nextStartKey;
 						if(!startKey) {

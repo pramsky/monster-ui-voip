@@ -148,6 +148,42 @@ define(function(require){
 					parent: parent
 				});
 			});
+			template.find('.feature-codes-header button').on('click', function(e) {
+				var $this = $(this),
+					type = $this.data('type');
+
+                                        if(type == 'installFritzBox') {
+                                                parent.find('.installFritzBox').show();
+                                                parent.find('.featureCodes').hide();
+                                                parent.find('.installSoftphone').hide();
+                                                parent.find('.installSipphone').hide();
+                                                parent.find('.installIosmodem').hide();
+                                        } else if(type == 'installIosmodem') {
+                                                parent.find('.installIosmodem').show();
+                                                parent.find('.featureCodes').hide();
+                                                parent.find('.installSoftphone').hide();
+                                                parent.find('.installSipphone').hide();
+                                                parent.find('.installFritzBox').hide();
+                                        } else if(type == 'installSoftphone') {
+                                                parent.find('.installSoftphone').show();
+                                                parent.find('.featureCodes').hide();
+                                                parent.find('.installFritzBox').hide();
+                                                parent.find('.installSipphone').hide();
+                                                parent.find('.installIosmodem').hide();
+                                        } else if(type == 'installSipphone') {
+                                                parent.find('.installSipphone').show();
+                                                parent.find('.installFritzBox').hide();
+                                                parent.find('.featureCodes').hide();
+                                                parent.find('.installSoftphone').hide();
+                                                parent.find('.installIosmodem').hide();
+                                        } else if(type == 'featureCodes') {
+                                                parent.find('.featureCodes').show();
+                                                parent.find('.installSipphone').hide();
+                                                parent.find('.installFritzBox').hide();
+                                                parent.find('.installSoftphone').hide();
+                                                parent.find('.installIosmodem').hide();
+                                        }
+                        });
 		}
 	};
 

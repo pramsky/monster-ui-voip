@@ -1,4 +1,5 @@
 {
+	"defaultLang": "en-US",
 	"defaultttsvoice": "female/en-US",
 	"callerId": "Caller-ID",
 	"e911": "E911",
@@ -1085,7 +1086,34 @@
 			"parking": "Parking",
 			"do_not_disturb": "Do Not Disturb",
 			"misc": "Miscellaneous"
-		}
+		},
+                "installBox": {
+                        "avmTitle": "AVM FRITZ! Clip: Die FRITZ!Box -- the top model for Internet, telephony and multimedia (All-IP)",
+                        "avmDescript": "The FRITZ!Box offers the new Wireless AC standard for ultra-fast wireless speed as well as considerably more range. The latest hardware, lightning-fast gigabit LAN ports, and always the latest version of FRITZ!OS for your Smart Home.",
+                        "avmAllipYtLink": "http://www.youtube.com/watch?v=XXXk9ARdZH8"
+                },
+                "installIos": {
+                        "iosTitle": "QoS-Modem for stable and save internet connections at (All-IP)",
+                        "iosDescript": "Das QoS-Modem is able to hold your internet stable as well, the perfect fit for all your home networking needs.",
+                        "iosAllipYtLink": "http://www.youtube.com/watch?v=Gwg4K-B6RwM"
+                },
+                "installSoft": {
+                        "softTitle": "Zoiper App: The Softphone App on your Smartphone oder PC over (All-IP)",
+                        "softDescript": "The Softphone App on your Smartphone over WLAN-Connection can you have phone cheep as well!"
+                },
+                "installSip": {
+                        "sipTitle": "Easy installation for your SIP-Phones at IP-Connections with (All-IP)",
+                        "sipDescript": "The SIP-Phone is easy to use, just setup and plugin the sip-phone."
+                },
+                "walkthrough": {
+                        "steps": {
+                                "1": "Service Nummern: Give you the overview o possible service numbers.",
+                                "2": "Installation FritzBox: The Guide for install a Fritzbox.",
+                                "3": "Installation QoS-Modem: The Guide for install the QoS-Modem.",
+                                "4": "Installation Softphone: The Guide for install a Softphone.",
+                                "5": "Installation SIP-Phone: The Guide for install a SIP-Phone."
+                        }
+                }
 	},
 
 	"__comment": "UI-1220: Added VMBox module",
@@ -1184,7 +1212,14 @@
 			}
 		}
 	},
-
+        "installservices": {
+                "title": "Install and Service-Numbers",
+                "featureCodes": "Service-Numbers",
+                "installFritzBox": "Inst. FritzBox",
+                "installIosmodem": "Inst. QoS-Modem",
+                "installSoftphone": "Inst. Phone App",
+                "installSipphone": "Inst. SIP-Phone"
+        },
 	"__comment": "UI-1219: Adding the prepend feature to numbers",
 	"__version": "v3.20_s1",
 	"numberPrepend": "Prepend",
