@@ -46,7 +46,6 @@ define(function(require){
 
 				_.each(dataTemplate.users, function(user) {
 					templateUser = monster.template(self, 'users-row', user);
-
 					template.find('.user-rows').append(templateUser);
 				});
 
@@ -166,7 +165,7 @@ define(function(require){
 					additionalExtensions: 0,
 					additionalNumbers: 0,
 					devices: [],
-					extension: dataUser.hasOwnProperty('presence_id') ? dataUser.presence_id : '',
+					extension: dataUser.presence_id,
 					hasFeatures: false,
 					isAdmin: dataUser.priv_level === 'admin',
 					listCallerId: [],
@@ -301,7 +300,7 @@ define(function(require){
 					hasValidPresenceID = true;
 				}
 
-//				addNumberToPresenceOptions(extension);
+				addNumberToPresenceOptions(extension);
 			});
 
 			// Sort it from lower number to greater number

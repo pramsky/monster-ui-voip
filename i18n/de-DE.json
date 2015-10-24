@@ -845,7 +845,7 @@
                         },
                         "second": {
                                 "steps": {
-                                        "1": "Setzen Sie die Anrufstrategie gemäss Ihren Öffnungszeiten einstellen, oder 24h die selbe lassen, ebenso können Sie in der Mittagszeit entsprechende Einstellungen vornehmen.",
+                                        "1": "Setzen Sie die Anrufstrategie gemäss Ihren Öffnungszeiten, oder Sie können 24h die selbe lassen, ebenso können Sie in der Mittagszeit entsprechende Einstellungen vornehmen.",
                                         "2": "Falls Ihr Geschäft, während den Feiertagen oder wegen Urlaubs geschlossen ist, können Sie dies entsprechend behandeln.",
                                         "3": "Mit dem Virtuellen Portier können Sie eingehende Anrufe vorbehandeln, z.B. Ansagen abspielen oder eine automatische Weiterleitung durchführen.",
                                         "4": "Hier können Sie eine öffentliche Hauptkonferenznummer für Ihr Geschäft zufügen. Die Miete und die Zuweisung von Nummern können Sie selbst vornehmen.",
@@ -979,7 +979,7 @@
                 "walkthrough": {
                         "steps": {
                                 "1": "In der Übersicht können Sie mit einen Blick Ihre Einstellungen überprüfen, inkl. Benutzer, Geräte und Zugewiesene sowie, Haupt- Fax- und Konferenznummern.",
-                                "2": "Im Menü Benutzer, fügen Sie neue Benutzer hinzu, oder ändern Einstellung. Sie können für einen Benutzr externe Nummern mieten, portieren oder zuweisen, und Geräte und deren Eigenschaften anpassen.",
+                                "2": "Im Menü Benutzer, fügen Sie neue Benutzer hinzu, oder ändern Einstellung. Sie können für einen Benutzer externe Nummern mieten, portieren oder zuweisen, und Geräte und deren Eigenschaften anpassen.",
                                 "3": "Wenn Sie alle Benutzer erstellt haben, können Sie mit den Gruppeneinstellungen fortfahren. Gruppen Sind für mehrere Benutzer gedacht um diese über eine gemeinsame Nummer z.B eine Verkaufsabteilung anzurufen.",
                                 "4": "Hier werden Abfolge für die eingehenden Anrufe auf die Hauptnummern definiert. Fügen Sie als erstes eine Nummer für Ihr Geschäft hinzu, und leiten Sie diese entsprechned Ihren zeilichen Bedürfnissen z.B. mit dem Virtuellen Portier weiter."
                         }
