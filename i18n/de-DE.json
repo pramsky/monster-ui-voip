@@ -883,6 +883,8 @@
 			"duration2": "(Min)",
 			"hangup1": "Status",
 			"hangup2": "Auflegen",
+                        "play1": "Abspielen",
+                        "play2": "Aufnahme",
 			"details1": "Verbindung",
 			"details2": "Detail",
 			"report1": "Übermittlung",
