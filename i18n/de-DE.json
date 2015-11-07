@@ -883,8 +883,8 @@
 			"duration2": "(Min)",
 			"hangup1": "Status",
 			"hangup2": "Auflegen",
-                        "play1": "Abspielen",
-                        "play2": "Aufnahme",
+                        "play1": "Aufnahme",
+                        "play2": "Abspielen",
 			"details1": "Verbindung",
 			"details2": "Detail",
 			"report1": "Übermittlung",
@@ -1032,7 +1032,7 @@
                 },
                 "installBox": {
                         "avmTitle": "AVM FRITZ! Clip: Die FRITZ!Box am IP-basierten Anschluss (All-IP)",
-                        "avmDescript": "Die FRITZ!Box stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im FRITZ! Clip wird kurz erklärt, was die Besonderheiten eines IP-basierten Anschlusses sind und wie er bei einer FRITZ!Box eingerichtet wird. Weitere Informationen unter http://avm.de/ip-basiert",
+                        "avmDescript": "Die FRITZ!Box stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im FRITZ! Clip wird kurz erklärt, wie die Installation erfolgt und was die Besonderheiten eines IP-basierten Anschlusses sind und wie er bei einer FRITZ!Box eingerichtet wird. Weitere Informationen unter http://avm.de/ip-basiert",
                         "avmAllipYtLink": "http://www.youtube.com/watch?v=oJgY4Zyn5Lk"
                 },
                 "installIos": {
@@ -1046,7 +1046,7 @@
                 },
                 "installSip": {
                         "sipTitle": "Einfache installation eines SIP-Telefons am IP-basierten Anschluss (All-IP)",
-                        "sipDescript": "Das SIP-Telefon stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im Clip wird kurz erklärt, was die Besonderheiten eines SIP-Anschlusses sind."
+                        "sipDescript": "Das SIP-Telefon stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im Clip wird kurz erklärt, wie die Installation erfolgt und was die Besonderheiten eines SIP-Anschlusses sind. Ein Reset mit Snom Telefonen erfolgt mit [**##] Werkseinstellungen mit [Ziehen den Netzstecker am Telefon, Halten Sie nun die #-Taste gedrückt, Verbinden Sie das Telefon wieder mit dem Netzstecker, Halten Sie die #-Taste solange weiter gedrückt, bis das Menü auf dem Display erscheint]"
                 },
                 "walkthrough": {
                         "steps": {
