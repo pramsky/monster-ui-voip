@@ -267,7 +267,7 @@ define(function(require){
 				mode = data.id ? 'edit' : 'add',
 				type = data.device_type,
 
-				popupTitle = mode === 'edit' ? monster.template(self, '!' + self.i18n.active().devices[type].editTitle, { name: data.name }) : self.i18n.active().devices[type].addTitle,
+				popupTitle = mode === 'edit' ? monster.template(self, '!' + self.i18n.active().devices[type].editTitle, { name: data.name }) : self.i18n.active().devices[type].addTitle;
                                 data.account = monster.apps.auth.currentAccount;
 				templateDevice = $(monster.template(self, 'devices-'+type, $.extend(true, {}, data, {
 					isE911Enabled: monster.util.isNumberFeatureEnabled('e911')
