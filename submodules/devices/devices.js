@@ -270,7 +270,7 @@ define(function(require){
 				popupTitle = mode === 'edit' ? monster.template(self, '!' + self.i18n.active().devices[type].editTitle, { name: data.name }) : self.i18n.active().devices[type].addTitle;
                                 data.account = monster.apps.auth.currentAccount;
 				templateDevice = $(monster.template(self, 'devices-'+type, $.extend(true, {}, data, {
-					isE911Enabled: monster.util.isNumberFeatureEnabled('e911')
+					showEmergencyCnam: monster.util.isNumberFeatureEnabled('cnam') && monster.util.isNumberFeatureEnabled('e911')
 				}))),
 				deviceForm = templateDevice.find('#form_device');
 
@@ -426,19 +426,21 @@ define(function(require){
 				}
 			});
 
-			templateDevice.find('#delete_device').on('click', function() {
-				var deviceId = $(this).parents('.edit-device').data('id');
+			if (type !== 'mobile') {
+				templateDevice.find('#delete_device').on('click', function() {
+					var deviceId = $(this).parents('.edit-device').data('id');
 
-				monster.ui.confirm(self.i18n.active().devices.confirmDeleteDevice, function() {
-					self.devicesDeleteDevice(deviceId, function(device) {
-						popup.dialog('close').remove();
+					monster.ui.confirm(self.i18n.active().devices.confirmDeleteDevice, function() {
+						self.devicesDeleteDevice(deviceId, function(device) {
+							popup.dialog('close').remove();
 
-						toastr.success(monster.template(self, '!' + self.i18n.active().devices.deletedDevice, { deviceName: device.name }));
+							toastr.success(monster.template(self, '!' + self.i18n.active().devices.deletedDevice, { deviceName: device.name }));
 
-						callbackDelete && callbackDelete(device);
+							callbackDelete && callbackDelete(device);
+						});
 					});
 				});
-			});
+			}
 
 			templateDevice.find('.actions .cancel-link').on('click', function() {
 				popup.dialog('close').remove();
@@ -560,7 +562,7 @@ define(function(require){
 			var popup = monster.ui.dialog(templateDevice, {
 				position: ['center', 20],
 				title: popupTitle,
-				dialogClass: 'overflow-visible'
+				dialogClass: 'voip-edit-device-popup overflow-visible'
 			});
 		},
 

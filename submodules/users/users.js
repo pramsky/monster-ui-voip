@@ -1062,6 +1062,7 @@ define(function(require){
 								template
 									.find('.list-assigned-items')
 									.append($(monster.template(self, 'users-numbersItemRow', {
+										isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
 										isE911Enabled: monster.util.isNumberFeatureEnabled('e911'),
 										number: val
 									})));
@@ -1093,6 +1094,7 @@ define(function(require){
 									number.phoneNumber = number.id;
 
 									var rowTemplate = $(monster.template(self, 'users-numbersItemRow', {
+										isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
 										isE911Enabled: monster.util.isNumberFeatureEnabled('e911'),
 										number: number
 									}));
@@ -1151,33 +1153,35 @@ define(function(require){
 				}
 			});
 
-			template.on('click', '.callerId-number', function() {
-				var cnamCell = $(this).parents('.item-row').first(),
-					phoneNumber = cnamCell.data('id');
+			if (monster.util.isNumberFeatureEnabled('cnam')) {
+				template.on('click', '.callerId-number', function() {
+					var cnamCell = $(this).parents('.item-row').first(),
+						phoneNumber = cnamCell.data('id');
 
-				if(phoneNumber) {
-					var args = {
-						phoneNumber: phoneNumber,
-						callbacks: {
-							success: function(data) {
-								if('cnam' in data.data && data.data.cnam.display_name) {
-									cnamCell.find('.features i.feature-outbound_cnam').addClass('active');
-								} else {
-									cnamCell.find('.features i.feature-outbound_cnam').removeClass('active');
-								}
+					if(phoneNumber) {
+						var args = {
+							phoneNumber: phoneNumber,
+							callbacks: {
+								success: function(data) {
+									if('cnam' in data.data && data.data.cnam.display_name) {
+										cnamCell.find('.features i.feature-outbound_cnam').addClass('active');
+									} else {
+										cnamCell.find('.features i.feature-outbound_cnam').removeClass('active');
+									}
 
-								if('cnam' in data.data && data.data.cnam.inbound_lookup) {
-									cnamCell.find('.features i.feature-inbound_cnam').addClass('active');
-								} else {
-									cnamCell.find('.features i.feature-inbound_cnam').removeClass('active');
+									if('cnam' in data.data && data.data.cnam.inbound_lookup) {
+										cnamCell.find('.features i.feature-inbound_cnam').addClass('active');
+									} else {
+										cnamCell.find('.features i.feature-inbound_cnam').removeClass('active');
+									}
 								}
 							}
-						}
-					};
+						};
 
-					monster.pub('common.callerId.renderPopup', args);
-				}
-			});
+						monster.pub('common.callerId.renderPopup', args);
+					}
+				});
+			}
 
 			if (monster.util.isNumberFeatureEnabled('e911')) {
 				template.on('click', '.e911-number', function() {
@@ -1266,7 +1270,7 @@ define(function(require){
 							currentUser: currentUser
 						});
 					} else {
-						monster.ui.alert('error', self.i18n.active().users.call_recording.noNumber);
+						monster.ui.alert('error', self.i18n.active().users.callRecording.noNumber);
 					}
 				});
 			});
@@ -2038,35 +2042,44 @@ define(function(require){
 								currentUser.smartpbx.find_me_follow_me = currentUser.smartpbx.find_me_follow_me || {};
 								currentUser.smartpbx.find_me_follow_me.enabled = (enabled && endpoints.length > 0);
 								var selectedMedia = featureTemplate.find('.media-dropdown option:selected').val();
+								var callflowNode = {};
 
 								if(enabled && endpoints.length > 0) {
-									userCallflow.flow.module = 'ring_group';
-									userCallflow.flow.data = {
+									callflowNode.module = 'ring_group';
+									callflowNode.data = {
 										strategy: "simultaneous",
-										timeout: 25,
-										name: "groupname",
-										ringback: selectedMedia,
+										timeout: 20,
 										endpoints: []
 									}
-									_.each(endpoints, function(endpoint) {
 
-										userCallflow.flow.data.endpoints.push({
+										_.each(endpoints, function(endpoint) {
+										callflowNode.data.endpoints.push({
 											id: endpoint.id,
 											endpoint_type: "device",
 											delay: endpoint.delay,
 											timeout: endpoint.timeout
 										});
-	
-										if((endpoint.delay+endpoint.timeout) > userCallflow.flow.data.timeout) { userCallflow.flow.data.timeout = (endpoint.delay+endpoint.timeout); }
+
+										if((endpoint.delay+endpoint.timeout) > callflowNode.data.timeout) { 
+											callflowNode.data.timeout = (endpoint.delay+endpoint.timeout); 
+										}
 									});
 								} else {
-									userCallflow.flow.module = 'user';
-									userCallflow.flow.data = {
+									callflowNode.module='user';
+									callflowNode.data = {
 										can_call_self: false,
 										id: currentUser.id,
-										timeout: 25
-									}
+										timeout: 20
+									};
 								}
+
+								// In next 5 lines, look for user/group node, and replace it with the new data;
+								var flow = userCallflow.flow;
+								while(flow.hasOwnProperty('module') && ['ring_group', 'user'].indexOf(flow.module) < 0) {
+									flow = flow.children['_'];
+								}
+								flow.module = callflowNode.module;
+								flow.data = callflowNode.data;
 
 								monster.parallel({
 										callflow: function(callbackParallel) {
@@ -2654,6 +2667,7 @@ define(function(require){
 			self.usersGetNumbersData(userId, function(results) {
 				self.usersFormatNumbersData(userId, results, function(results) {
 					template = $(monster.template(self, 'users-numbers', $.extend(true, {}, results, {
+						isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
 						isE911Enabled: monster.util.isNumberFeatureEnabled('e911')
 					})));
 
