@@ -168,7 +168,8 @@
                                         "software": "Software installation",
                                         "qrcode": "QR-Code",
                                         "security": "Sicherheit"
-                                }
+                                },
+				"provstring": "Provstring"
 			},
 			"audio": {
 				"menuTitle": "Audio",
@@ -845,7 +846,7 @@
                         },
                         "second": {
                                 "steps": {
-                                        "1": "Setzen Sie die Anrufstrategie gemäss Ihren Öffnungszeiten, oder Sie können 24h die selbe lassen, ebenso können Sie in der Mittagszeit entsprechende Einstellungen vornehmen.",
+                                        "1": "Setzen Sie die Anrufstrategie gemäss Ihren Öffnungszeiten einstellen, oder 24h die selbe lassen, ebenso können Sie in der Mittagszeit entsprechende Einstellungen vornehmen.",
                                         "2": "Falls Ihr Geschäft, während den Feiertagen oder wegen Urlaubs geschlossen ist, können Sie dies entsprechend behandeln.",
                                         "3": "Mit dem Virtuellen Portier können Sie eingehende Anrufe vorbehandeln, z.B. Ansagen abspielen oder eine automatische Weiterleitung durchführen.",
                                         "4": "Hier können Sie eine öffentliche Hauptkonferenznummer für Ihr Geschäft zufügen. Die Miete und die Zuweisung von Nummern können Sie selbst vornehmen.",
@@ -883,8 +884,6 @@
 			"duration2": "(Min)",
 			"hangup1": "Status",
 			"hangup2": "Auflegen",
-                        "play1": "Aufnahme",
-                        "play2": "Abspielen",
 			"details1": "Verbindung",
 			"details2": "Detail",
 			"report1": "Übermittlung",
@@ -981,7 +980,7 @@
                 "walkthrough": {
                         "steps": {
                                 "1": "In der Übersicht können Sie mit einen Blick Ihre Einstellungen überprüfen, inkl. Benutzer, Geräte und Zugewiesene sowie, Haupt- Fax- und Konferenznummern.",
-                                "2": "Im Menü Benutzer, fügen Sie neue Benutzer hinzu, oder ändern Einstellung. Sie können für einen Benutzer externe Nummern mieten, portieren oder zuweisen, und Geräte und deren Eigenschaften anpassen.",
+                                "2": "Im Menü Benutzer, fügen Sie neue Benutzer hinzu, oder ändern Einstellung. Sie können für einen Benutzr externe Nummern mieten, portieren oder zuweisen, und Geräte und deren Eigenschaften anpassen.",
                                 "3": "Wenn Sie alle Benutzer erstellt haben, können Sie mit den Gruppeneinstellungen fortfahren. Gruppen Sind für mehrere Benutzer gedacht um diese über eine gemeinsame Nummer z.B eine Verkaufsabteilung anzurufen.",
                                 "4": "Hier werden Abfolge für die eingehenden Anrufe auf die Hauptnummern definiert. Fügen Sie als erstes eine Nummer für Ihr Geschäft hinzu, und leiten Sie diese entsprechned Ihren zeilichen Bedürfnissen z.B. mit dem Virtuellen Portier weiter."
                         }
@@ -1032,7 +1031,7 @@
                 },
                 "installBox": {
                         "avmTitle": "AVM FRITZ! Clip: Die FRITZ!Box am IP-basierten Anschluss (All-IP)",
-                        "avmDescript": "Die FRITZ!Box stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im FRITZ! Clip wird kurz erklärt, wie die Installation erfolgt und was die Besonderheiten eines IP-basierten Anschlusses sind und wie er bei einer FRITZ!Box eingerichtet wird. Weitere Informationen unter http://avm.de/ip-basiert",
+                        "avmDescript": "Die FRITZ!Box stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im FRITZ! Clip wird kurz erklärt, was die Besonderheiten eines IP-basierten Anschlusses sind und wie er bei einer FRITZ!Box eingerichtet wird. Weitere Informationen unter http://avm.de/ip-basiert",
                         "avmAllipYtLink": "http://www.youtube.com/watch?v=oJgY4Zyn5Lk"
                 },
                 "installIos": {
@@ -1046,7 +1045,7 @@
                 },
                 "installSip": {
                         "sipTitle": "Einfache installation eines SIP-Telefons am IP-basierten Anschluss (All-IP)",
-                        "sipDescript": "Das SIP-Telefon stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im Clip wird kurz erklärt, wie die Installation erfolgt und was die Besonderheiten eines SIP-Anschlusses sind. Ein Reset mit Snom Telefonen erfolgt mit [**##] Werkseinstellungen mit [Ziehen den Netzstecker am Telefon, Halten Sie nun die #-Taste gedrückt, Verbinden Sie das Telefon wieder mit dem Netzstecker, Halten Sie die #-Taste solange weiter gedrückt, bis das Menü auf dem Display erscheint]"
+                        "sipDescript": "Das SIP-Telefon stellt auch an einem All-IP- oder IP-basierten Anschluss ihre vielseitigen Leistungsmerkmale zur Verfügung. Im Clip wird kurz erklärt, was die Besonderheiten eines SIP-Anschlusses sind."
                 },
                 "walkthrough": {
                         "steps": {

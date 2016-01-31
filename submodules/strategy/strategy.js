@@ -368,6 +368,7 @@ define(function(require){
 				});
 			});
 
+
 			self.strategyNumbersBindEvents(strategyNumbersContainer, strategyData);
 			self.strategyConfNumBindEvents(strategyConfNumContainer, strategyData);
 			self.strategyFaxingNumBindEvents(strategyFaxingNumContainer, strategyData);
@@ -399,8 +400,6 @@ define(function(require){
 											return ret;
 										}
 									}),
-									isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
-									isE911Enabled: monster.util.isNumberFeatureEnabled('e911'),
 									spareLinkEnabled: (_.countBy(accountNumbers, function(number) {return number.used_by ? 'assigned' : 'spare';})['spare'] > 0)
 								},
 								template = $(monster.template(self, 'strategy-'+templateName, templateData));
@@ -628,6 +627,7 @@ define(function(require){
 									tabMessage: self.i18n.active().strategy.calls.callTabsMessages[callflowName]
 								};
 
+
 							if (strategyData.callflows[callflowName].flow.hasOwnProperty("is_main_number_cf")) {
 								tabData.callOption.callEntityId = strategyData.callflows[callflowName].flow.data.id;
 								tabData.callOption.type = "advanced-callflow";
@@ -751,10 +751,9 @@ define(function(require){
 				var $this = $(this),
 					numberToRemove = $this.data('number'),
 					e911Feature = $this.data('e911'),
-					isE911Enabled = monster.util.isNumberFeatureEnabled('e911'),
 					indexToRemove = strategyData.callflows["MainCallflow"].numbers.indexOf(numberToRemove.toString());
 
-				if(e911Feature === 'active' && container.find('.number-element .remove-number[data-e911="active"]').length === 1 && isE911Enabled) {
+				if(e911Feature === 'active' && container.find('.number-element .remove-number[data-e911="active"]').length === 1) {
 					monster.ui.alert('error', self.i18n.active().strategy.alertMessages.lastE911Error);
 				} else if(indexToRemove >= 0) {
 					self.strategyGetNumber(numberToRemove, function(dataNumber) {
@@ -845,60 +844,56 @@ define(function(require){
 				}
 			});
 
-			if (monster.util.isNumberFeatureEnabled('cnam')) {
-				container.on('click', '.number-element .callerId-number', function() {
-					var cnamCell = $(this).parents('.number-element').first(),
-						phoneNumber = cnamCell.find('.remove-number').data('number');
+			container.on('click', '.number-element .callerId-number', function() {
+				var cnamCell = $(this).parents('.number-element').first(),
+					phoneNumber = cnamCell.find('.remove-number').data('number');
 
-					if(phoneNumber) {
-						var args = {
-							phoneNumber: phoneNumber,
-							callbacks: {
-								success: function(data) {
-									if('cnam' in data.data && data.data.cnam.display_name) {
-										cnamCell.find('.features i.feature-outbound_cnam').addClass('active');
-									} else {
-										cnamCell.find('.features i.feature-outbound_cnam').removeClass('active');
-									}
+				if(phoneNumber) {
+					var args = {
+						phoneNumber: phoneNumber,
+						callbacks: {
+							success: function(data) {
+								if('cnam' in data.data && data.data.cnam.display_name) {
+									cnamCell.find('.features i.feature-outbound_cnam').addClass('active');
+								} else {
+									cnamCell.find('.features i.feature-outbound_cnam').removeClass('active');
+								}
 
-									if('cnam' in data.data && data.data.cnam.inbound_lookup) {
-										cnamCell.find('.features i.feature-inbound_cnam').addClass('active');
-									} else {
-										cnamCell.find('.features i.feature-inbound_cnam').removeClass('active');
-									}
+								if('cnam' in data.data && data.data.cnam.inbound_lookup) {
+									cnamCell.find('.features i.feature-inbound_cnam').addClass('active');
+								} else {
+									cnamCell.find('.features i.feature-inbound_cnam').removeClass('active');
 								}
 							}
-						};
+						}
+					};
 
-						monster.pub('common.callerId.renderPopup', args);
-					}
-				});
-			}
+					monster.pub('common.callerId.renderPopup', args);
+				}
+			});
 
-			if (monster.util.isNumberFeatureEnabled('e911')) {
-				container.on('click', '.number-element .e911-number', function() {
-					var e911Cell = $(this).parents('.number-element').first(),
-						phoneNumber = e911Cell.find('.remove-number').data('number');
+			container.on('click', '.number-element .e911-number', function() {
+				var e911Cell = $(this).parents('.number-element').first(),
+					phoneNumber = e911Cell.find('.remove-number').data('number');
 
-					if(phoneNumber) {
-						var args = {
-							phoneNumber: phoneNumber,
-							callbacks: {
-								success: function(data) {
-									if(!($.isEmptyObject(data.data.dash_e911))) {
-										e911Cell.find('.features i.feature-dash_e911').addClass('active');
-									}
-									else {
-										e911Cell.find('.features i.feature-dash_e911').removeClass('active');
-									}
+				if(phoneNumber) {
+					var args = {
+						phoneNumber: phoneNumber,
+						callbacks: {
+							success: function(data) {
+								if(!($.isEmptyObject(data.data.dash_e911))) {
+									e911Cell.find('.features i.feature-dash_e911').addClass('active');
+								}
+								else {
+									e911Cell.find('.features i.feature-dash_e911').removeClass('active');
 								}
 							}
-						};
+						}
+					};
 
-						monster.pub('common.e911.renderPopup', args);
-					}
-				});
-			}
+					monster.pub('common.e911.renderPopup', args);
+				}
+			});
 
 			container.on('click', '.number-element .prepend-number', function() {
 				var prependCell = $(this).parents('.number-element').first(),
@@ -1633,7 +1628,6 @@ console.log(greetingMedia);
 							case 'user':
 							case 'device':
 							case 'callflow':
-							case 'media':
 								flowElement.data.id = selectedEntity.val();
 								break;
 							case 'ring_group':
@@ -2142,14 +2136,18 @@ console.log(greetingMedia);
 					}
 
 					switch(entityType) {
+						case 'directory':
+						case 'user':
+						case 'device':
+						case 'voicemail':
+						case 'callflow':
+							menuElements[number].data.id = entityId;
+							break;
 						case 'ring_group':
 							menuElements[number].data.endpoints = [{
 								endpoint_type: "group",
 								id: entityId
 							}];
-							break;
-						default: 
-							menuElements[number].data.id = entityId;
 							break;
 					}
 				});
@@ -2184,16 +2182,16 @@ console.log(greetingMedia);
 
 			_.each(entities, function(value, key) {
 				var group = {
-					groupName: self.i18n.active().strategy.callEntities[key],
-					groupType: key,
-					entities: $.map(value, function(entity) {
-						return {
-							id: entity.id,
-							name: entity.name || (entity.first_name + ' ' + entity.last_name),
-							module: entity.module || key
-						};
-					})
-				};
+						groupName: self.i18n.active().strategy.callEntities[key],
+						groupType: key,
+						entities: $.map(value, function(entity) {
+							return {
+								id: entity.id,
+								name: entity.name || (entity.first_name + ' ' + entity.last_name),
+								module: entity.module || key
+							};
+						})
+					};
 
 				switch(group.groupType) {
 					case 'directory':
@@ -2207,9 +2205,6 @@ console.log(greetingMedia);
 						break;
 					case 'ring_group':
 						group.groupIcon = 'fa fa-users';
-						break;
-					case 'media':
-						group.groupIcon = 'fa fa-music';
 						break;
 					case 'voicemail':
 						group.groupIcon = 'icon-telicon-voicemail';
@@ -2350,7 +2345,7 @@ console.log(greetingMedia);
 										flow: {
 											children: {},
 											data: {},
-											module: "faxbox"
+											module: "faxing"
 										}
 									}
 								},
@@ -2682,11 +2677,6 @@ console.log(greetingMedia);
 							}
 						});
 					},
-					media: function (callback) {
-						self.strategyListMedia(function (media) {
-							callback(null, media);
-						});
-					},
 					userCallflows: function(_callback) {
 						self.callApi({
 							resource: 'callflow.list',
@@ -2772,7 +2762,6 @@ console.log(greetingMedia);
 					var callEntities = {
 						device: results.devices,
 						user: $.extend(true, [], results.users),
-						media: results.media,
 						userCallflows: [],
 						ring_group: [],
 						userGroups: $.map(results.userGroups, function(val) {
@@ -2783,10 +2772,6 @@ console.log(greetingMedia);
 						}),
 						advancedCallflows: results.advancedCallflows
 					};
-
-					_.each(callEntities.media, function(media) {
-						media.module = 'media';
-					});
 
 					_.each(callEntities.device, function(device) {
 						device.module = 'device';
@@ -2973,20 +2958,6 @@ console.log(greetingMedia);
 				},
 				error: function(data, status) {
 					callbackError && callbackError();
-				}
-			});
-		},
-
-		strategyListMedia: function(callback) {
-			var self = this;
-
-			self.callApi({
-				resource: 'media.list',
-				data: {
-					accountId: self.accountId
-				},
-				success: function(data, status) {
-					callback && callback(data.data);
 				}
 			});
 		},

@@ -158,8 +158,14 @@ define(function(require){
 					self.devicesRender();
 				};
 
-			self.devicesGetEditData(data, function(dataDevice) {
-				if (dataDevice.hasOwnProperty('provision')) {
+                        self.devicesGetEditData(data, function(dataDevice) {
+                                if (dataDevice.hasOwnProperty('provision')) {
+                                        if (typeof dataDevice.provision.endpoint_brand == "string" && typeof monster.apps.auth.currentAccount !== "object") dataDevice.provision.provstring = self.i18n.active().devices.sip.provstringfail_noaccount;
+                                        if (typeof dataDevice.provision.endpoint_brand == "string" && typeof monster.apps.auth.currentAccount == "object") {
+                                                if(dataDevice.provision.endpoint_brand == "snom") dataDevice.provision.provstring = monster.config.api.provisioner_http + 'prov/' + dataDevice.provision.endpoint_brand + "/" + "settings.php?mac={mac}&pass=" + monster.apps.auth.currentAccount.provision.urlpass;
+                                                if(dataDevice.provision.endpoint_brand == "mitel") dataDevice.provision.provstring = monster.config.api.provisioner + 'prov/' + dataDevice.provision.endpoint_brand + "/";
+                                                if(dataDevice.provision.endpoint_brand == "yealink") dataDevice.provision.provstring = monster.config.api.provisioner + 'prov/' + dataDevice.provision.endpoint_brand + "/";
+                                        };
 					self.devicesGetIterator(dataDevice.provision, function(template) {
 						if (template.hasOwnProperty('feature_keys') && template.feature_keys.iterate > 0) {
 							if (!dataDevice.provision.hasOwnProperty('feature_keys')) {
@@ -266,12 +272,9 @@ define(function(require){
 			var self = this,
 				mode = data.id ? 'edit' : 'add',
 				type = data.device_type,
-
 				popupTitle = mode === 'edit' ? monster.template(self, '!' + self.i18n.active().devices[type].editTitle, { name: data.name }) : self.i18n.active().devices[type].addTitle;
                                 data.account = monster.apps.auth.currentAccount;
-				templateDevice = $(monster.template(self, 'devices-'+type, $.extend(true, {}, data, {
-					showEmergencyCnam: monster.util.isNumberFeatureEnabled('cnam') && monster.util.isNumberFeatureEnabled('e911')
-				}))),
+				templateDevice = $(monster.template(self, 'devices-'+type, data));
 				deviceForm = templateDevice.find('#form_device');
 
 			if (data.hasOwnProperty('provision') && data.provision.hasOwnProperty('feature_keys')) {
@@ -426,21 +429,19 @@ define(function(require){
 				}
 			});
 
-			if (type !== 'mobile') {
-				templateDevice.find('#delete_device').on('click', function() {
-					var deviceId = $(this).parents('.edit-device').data('id');
+			templateDevice.find('#delete_device').on('click', function() {
+				var deviceId = $(this).parents('.edit-device').data('id');
 
-					monster.ui.confirm(self.i18n.active().devices.confirmDeleteDevice, function() {
-						self.devicesDeleteDevice(deviceId, function(device) {
-							popup.dialog('close').remove();
+				monster.ui.confirm(self.i18n.active().devices.confirmDeleteDevice, function() {
+					self.devicesDeleteDevice(deviceId, function(device) {
+						popup.dialog('close').remove();
 
-							toastr.success(monster.template(self, '!' + self.i18n.active().devices.deletedDevice, { deviceName: device.name }));
+						toastr.success(monster.template(self, '!' + self.i18n.active().devices.deletedDevice, { deviceName: device.name }));
 
-							callbackDelete && callbackDelete(device);
-						});
+						callbackDelete && callbackDelete(device);
 					});
 				});
-			}
+			});
 
 			templateDevice.find('.actions .cancel-link').on('click', function() {
 				popup.dialog('close').remove();
@@ -562,7 +563,7 @@ define(function(require){
 			var popup = monster.ui.dialog(templateDevice, {
 				position: ['center', 20],
 				title: popupTitle,
-				dialogClass: 'voip-edit-device-popup overflow-visible'
+				dialogClass: 'overflow-visible'
 			});
 		},
 

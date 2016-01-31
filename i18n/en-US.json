@@ -177,7 +177,8 @@
                                         "software": "Easy Install",
                                         "qrcode": "QR-Code",
                                         "security": "Security"
-                                }
+                                },
+				"provstring": "Provstring"
 			},
 			"audio": {
 				"menuTitle": "Audio",
@@ -849,10 +850,7 @@
 			"directory": "Directory",
 			"__comment": "UI-1742: Can now select a callflow created in Advanced Callflows in Main Number",
 			"__version": "3.22",
-			"advancedCallflows": "Advanced Callflows",
-			"__comment": "UI-1886: Can now select a media in virtual receptionist",
-			"__version": "3.23",
-			"media": "Media"
+			"advancedCallflows": "Advanced Callflows"
 		},
 		"confirmMessages": {
 			"deleteHoliday": "This holiday will be permanently deleted. Continue?",
@@ -942,21 +940,12 @@
 			"duration2": "(Min)",
 			"hangup1": "Hangup",
 			"hangup2": "Cause",
-			"play1": "Play",
-			"play2": "Record",
 			"details1": "Call",
 			"details2": "Details",
 			"report1": "Submit",
 			"report2": "Report"
 		},
 		"reportCall": "Report Call",
-		"playCall": "Play Call",
-		"stopPlaying": "Stop playing",
-		"rewindBackward": "Rewind backward",
-		"rewindForward": "Rewind forward",
-		"downloadRecord": "Download call record",
-		"audioNotSupported": "Your browser does not support the audio element",
-		"audioNotAvailable": "Audio recording is not available",
 		"loaderMessage": "Scroll down or click here to load additional Call Logs.",
 		"loadingMessage": "Loading additional Call Logs...",
 		"alertMessages": {
@@ -1011,6 +1000,7 @@
 			"mandatoryE911Alert": "You must specify e911 information for your company caller ID number."
 		},
 		"missingMainNumberForCallerId": "You need to add a main number to your office before configuring the Caller-ID!",
+		"missingE911Message": "Please setup your Company Caller ID and e911 on a Main Number.",
 		"missingMainNumberMessage": "Please add a Main Number to your account.",
 		"totalUsers": "Total Users",
 		"totalDevices": "Total Devices",
@@ -1034,28 +1024,23 @@
 		"__comment": "UI-1220: Adding a Main VMBox automatically when they first load the SmartPBX if they don't have one",
 		"__version": "3.19",
 		"mainVMBoxName": "Main Voicemail Box",
+
+		"__comment": "UI-1604: Walkthrough dashboard",
+		"__version": "3.21",
+		"walkthrough": {
+			"steps": {
+				"1": "Review your entire office setup including your users, devices, numbers, main number and conference number",
+				"2": "Create and manage most of your services in the Users tab. Create new users, purchase port, and assign numbers, add an autoprovision devices, and manage User Features.",
+				"3": "Once you have created enough users, create user groups. This is extremely useful if you have users that work in the same department, such as a sales team.",
+				"4": "Create a main number for your business. Manage call handling with Virtual Receptionist, and route calls depending on Office Hours and Holidays"
+			}
+		},
 		"__comment": "UI-1210: Display the Main Faxbox number on the dashboard",
 		"__version": "3.22",
 		"faxingNumberLabel": "Faxbox Number",
 		"__comment": "UI-1197: Display company directory on the dashboard",
 		"__version": "3.22",
-		"directoryLabel": "Company Directory Users:",
-
-		"__comment": "UI-1851: Update walkthrough dashboard text",
-		"__version": "3.23",
-		"walkthrough": {
-			"steps": {
-				"1": "Welcome to SmartPBX, the easiest way to set up your office phone system! This is the main dashboard. From here you can see your users, devices, numbers all in one place!",
-				"2": "Setting up Users is a breeze in SmartPBX. Create and manage most of your services in the Users tab. Create new users, purchase port, and assign numbers, add an autoprovision devices, and manage User Features.",
-				"3": "Once you have created enough users, create user groups. This is extremely useful if you have users that work in the same department, such as a sales team.",
-				"4": "Main Number services are highly important for your business! Manage call handling with Virtual Receptionist, and route calls depending on Office Hours and Holidays."
-			}
-		},
-		"__comment": "UI-1856: On the dashboard, hide cnam related actions when the feature is disabled on the account",
-		"__version": "3.23",
-		"missingCnamE911Message": "Please setup your Company Caller ID and e911 on a Main Number.",
-		"missingCnamMessage": "Please setup your Company Caller ID on a Main Number.",
-		"missingE911Message": "Please setup your e911 on a Main Number."
+		"directoryLabel": "Company Directory Users:"
 	},
 
 	"__comment": "UI-299, v3.19_s2: Added the Feature Codes tab to SmartPBX.",
@@ -1212,7 +1197,7 @@
 			"recipients": {
 				"menuTitle": "Recipients",
 				"sectionTitle": "Recipients",
-				"header": "This panel lets you manage who will be notified when someone leaves a message in this voicemail box. Click on  \"Add New Recipient\" to add an e-mail address to the list",
+				"header": "This panel lets you manage who will be notified when someones leave a message on this voicemail box. Click on  \"Add New Recipient\" to add an e-mail address to the list",
 				"create": "Add New Recipient"
 			},
 			"__comment": "UI-975: Adding the prepend feature to numbers",

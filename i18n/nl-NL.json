@@ -161,7 +161,8 @@
                                         "software": "Easy Install",
                                         "qrcode": "QR-Code",
                                         "security": "Security"
-                                }
+                                },
+				"provstring": "Provstring"
 			},
 			"audio": {
 				"menuTitle": "audio",

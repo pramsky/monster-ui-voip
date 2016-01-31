@@ -13,6 +13,7 @@ define(function(require){
 			'fr-FR': { customCss: false },
 			'ru-RU': { customCss: false },
                         'de-DE': { customCss: false },
+                        'dk-DK': { customCss: false },
                         'es-ES': { customCss: false },
                         'it-IT': { customCss: false },
                         'nl-NL': { customCss: false },
@@ -45,7 +46,8 @@ define(function(require){
 			var self = this,
 				parent = container || $('#monster-content'),
 				template = $(monster.template(self, 'app'));
-
+// accountid switch urs
+                                self.accountId = monster.apps.auth.accountId;
 
 			/* On first Load, load my office */
 			template.find('.category#myOffice').addClass('active');

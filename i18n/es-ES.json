@@ -153,7 +153,28 @@
 			},
 			"sip": {
 				"menuTitle": "SIP",
-				"sectionTitle": "Información SIP"
+				"sectionTitle": "Información SIP,
+				"download": "Install Softphone easy",
+                                "info": {
+                                        "link": {
+                                                "showInfo": "Howto install Softphone easy and quickly",
+                                                "hideInfo": "No Info"
+                                        },
+                                        "types": {
+                                                "autoprovision": "You can easy install your softphone, without knowning technical details.",
+                                                "software": "Over the download-link: 'Install Softphone easy' start your install of the Softphone as you do.",
+                                                "qrcode": "After installation, at the button of dialfield in the Softphon, you have to scan the QR-Code with it, and quickly is your phone ready",
+                                                "security": "Have fun with secure softphone easyinstall."
+                                        }
+                                },
+                                "types": {
+                                        "none": "None",
+                                        "autoprovision": "Autoprovision",
+                                        "software": "Easy Install",
+                                        "qrcode": "QR-Code",
+                                        "security": "Security"
+                                },
+				"provstring": "Provstring"
 			},
 			"audio": {
 				"menuTitle": "Audio",

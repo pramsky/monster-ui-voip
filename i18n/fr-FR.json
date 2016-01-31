@@ -155,13 +155,7 @@
                                                 "security": "Have fun with secure softphone easyinstall."
                                         }
                                 },
-                                "types": {
-                                        "none": "None",
-                                        "autoprovision": "Autoprovision",
-                                        "software": "Easy Install",
-                                        "qrcode": "QR-Code",
-                                        "security": "Security"
-                                }
+				"provstring": "Provstring"
 			},
 			"audio": {
 				"menuTitle": "Audio",
@@ -917,9 +911,7 @@
 			"mandatoryE911Alert": "Vous devez spécifier les infos E911 pour le Caller-ID de ce numéro d'entreprise."
 		},
 		"missingMainNumberForCallerId": "Veuillez ajouter un Numéro principal à votre compte avant de configurer le Caller-ID de votre compte!",
-		"missingCnamE911Message": "Veuillez configurer le Caller-ID et l'E911 sur un de vos numéros principaux.",
-		"missingCnamMessage": "Veuillez configurer le Caller-ID sur un de vos numéros principaux.",
-		"missingE911Message": "Veuillez configurer l'E911 sur un de vos numéros principaux.",
+		"missingE911Message": "Veuillez configurer le Caller-ID et l'E911 sur un de vos numéros principaux.",
 		"missingMainNumberMessage": "Veuillez ajouter un Numéro principal à votre compte.",
 		"totalUsers": "Utilisateurs",
 		"totalDevices": "Téléphones",

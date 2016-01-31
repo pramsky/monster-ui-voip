@@ -223,28 +223,28 @@
 	overflow: visible;
 }
 
-.voip-edit-device-popup .edit-device {
+.edit-device {
 	width: 700px;
 }
 
-.voip-edit-device-popup .edit-device .actions {
+.edit-device .actions {
 	border-top: 1px solid #CCCCCC;
 	height: 30px;
 	line-height: 30px;
 	padding: 15px;
 }
 
-.voip-edit-device-popup .edit-device .actions button {
+.edit-device .actions button {
 	margin-left: 10px;
 }
 
-.voip-edit-device-popup .edit-device .title-bar {
+.edit-device .title-bar {
 	border-bottom: 1px solid #ccc;
 	margin-bottom: 20px;
 	padding: 15px 0;
 }
 
-.voip-edit-device-popup .edit-device .title-bar .device-title > div {
+.edit-device .title-bar .device-title > div {
 	display: inline-block;
 	float: left;
 	font-size: 18px;
@@ -253,27 +253,27 @@
 	margin-left: 40px;
 }
 
-.voip-edit-device-popup .edit-device .title-bar .device-title .device-icon {
+.edit-device .title-bar .device-title .device-icon {
 	height: 75px;
 	line-height: 75px;
 }
 
-.voip-edit-device-popup .edit-device .title-bar .device-title .device-icon > i {
+.edit-device .title-bar .device-title .device-icon > i {
 	font-size: 48px;
 	vertical-align: middle;
 }
 
-.voip-edit-device-popup .edit-device .title-bar .device-title .device-image {
+.edit-device .title-bar .device-title .device-image {
 	border-radius: 2px;
 	border: 1px solid #CCC;
 }
 
-.voip-edit-device-popup .edit-device .title-bar .nav-pills {
+.edit-device .title-bar .nav-pills {
 	margin-top: 24px;
 	margin-right: 15px;
 }
 
-.voip-edit-device-popup .edit-device .content .tabs-section .title {
+.edit-device .content .tabs-section .title {
 	color: #22a5ff;
 	font-size: 24px;
 	margin-bottom: 30px;
@@ -281,61 +281,53 @@
 	text-shadow: 1px 0 1px #CCCCCC;
 }
 
-.voip-edit-device-popup .edit-device .content .tabs-section .helper {
+.edit-device .content .tabs-section .helper {
 	position: relative;
 	margin: 0 40px 15px 40px;
 }
 
-.voip-edit-device-popup .edit-device .content .tabs-section .helper i {
+.edit-device .content .tabs-section .helper i {
 	position: absolute;
 	top: 0;
 	left: -25px;
 }
 
-.voip-edit-device-popup .edit-device .content .tabs-section .number-address {
+.edit-device .content .tabs-section .number-address {
 	display: none;
 }
 
-.voip-edit-device-popup .edit-device .help-box.red-box {
-	margin: 10px 25px;
+.edit-device .help-box.red-box {
+	margin: 10px 25px
 }
 
-.voip-edit-device-popup .edit-device .content #form_device .controls .text {
-	padding-top: 5px;
-}
-
-.voip-edit-device-popup .edit-device .content #form_device .displayed-realm {
+.edit-device .content #form_device .displayed-realm {
 	line-height: 30px;
 	font-weight: bold;
 }
 
-.voip-edit-device-popup .edit-device .restrictions-container {
+.edit-device .restrictions-container {
 	position: relative;
 }
 
-.voip-edit-device-popup .edit-device .restriction-matcher-div {
+.edit-device .restriction-matcher-div {
 	margin-right: 40px;
 	float: right;
 }
 
-.voip-edit-device-popup .edit-device .restriction-matcher-input {
+.edit-device .restriction-matcher-input {
 	width: 120px;
 	margin-right: 10px;
 	margin-left: 5px;
 }
 
-.voip-edit-device-popup .edit-device .restriction-matcher-sign {
+.edit-device .restriction-matcher-sign {
 	margin-left: 20px;
 	width: 25px;
 	vertical-align: middle;
 	display: none;
 }
 
-.voip-edit-device-popup .edit-device .restriction-list {
-	display: inline-block;
-}
-
-.voip-edit-device-popup .edit-device .restriction-message {
+.edit-device .restriction-message {
 	width: 275px;
 	margin: 0 0 0 30px !important;
 	padding: 10px;
@@ -343,60 +335,60 @@
 	display: none;
 }
 
-.voip-edit-device-popup .edit-device .disabled-restrictions-info {
+.edit-device .disabled-restrictions-info {
 	width: 270px;
 	position: absolute;
 	bottom: 0px;
 	right: 40px;
 }
 
-.voip-edit-device-popup .edit-device .restriction-list .restriction-line.disabled .control-label,
-.voip-edit-device-popup .edit-device .restriction-list .restriction-line.disabled .control-label > i {
+.edit-device .restriction-list .restriction-line.disabled .control-label,
+.edit-device .restriction-list .restriction-line.disabled .control-label > i {
 	cursor: default;
 	color: #aaa;
 }
 
-.voip-edit-device-popup .edit-device .feature-key-value {
+.edit-device .feature-key-value {
 	display: none;
 	margin-left: 20px;
 }
 
-.voip-edit-device-popup .edit-device .feature-key-value.active {
+.edit-device .feature-key-value.active {
 	display: inline-block;
 }
 
-.voip-edit-device-popup .edit-device .feature-key-value label {
+.edit-device .feature-key-value label {
 	display: inline-block;
 	margin-right: 10px;
 }
 
 /* Codecs selector */
-.voip-edit-device-popup .edit-device .content .codec-selector .box-selector {
+.edit-device .content .codec-selector .box-selector {
 	float: left;
 	width: 300px;
 }
 
-.voip-edit-device-popup .edit-device .content .codec-selector .box-selector:first-child {
+.edit-device .content .codec-selector .box-selector:first-child {
 	margin-left: 30px;
 	margin-right: 40px;
 }
-.voip-edit-device-popup .edit-device .content .codec-selector .box-selector ul {
+.edit-device .content .codec-selector .box-selector ul {
 	height: 328px;
 	overflow: auto;
 }
 
-.voip-edit-device-popup .edit-device .content #video_codec_selector .box-selector ul {
+.edit-device .content #video_codec_selector .box-selector ul {
 	min-height: 123px;
 }
 
 /* RTP Special CSS */
-.voip-edit-device-popup .edit-device .content .rtp-line > * {
+.edit-device .content .rtp-line > * {
 	float: left;
 	font-size: 14px;
 	margin-right: 10px;
 }
 
-.voip-edit-device-popup .edit-device .form-horizontal .control-label.checkbox {
+.edit-device .form-horizontal .control-label.checkbox {
 	width: inherit;
 	margin-left: 35px;
 	padding-top: 3px;
@@ -587,7 +579,7 @@
 	border-radius: 5px;
 }
 /* Restart Button */
-.voip-edit-device-popup .edit-device #restart_device {
+.edit-device #restart_device {
 	margin-left: 10px;
 }
 
@@ -607,6 +599,6 @@
 }
 
 /* Special checkbox case */
-.voip-edit-device-popup .edit-device .form-horizontal .control-label.checkbox-basic {
+.edit-device .form-horizontal .control-label.checkbox-basic {
 	margin-left: 160px;
 }

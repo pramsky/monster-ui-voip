@@ -46,6 +46,7 @@ define(function(require){
 
 				_.each(dataTemplate.users, function(user) {
 					templateUser = monster.template(self, 'users-row', user);
+
 					template.find('.user-rows').append(templateUser);
 				});
 
@@ -165,7 +166,7 @@ define(function(require){
 					additionalExtensions: 0,
 					additionalNumbers: 0,
 					devices: [],
-					extension: dataUser.presence_id,
+					extension: dataUser.hasOwnProperty('presence_id') ? dataUser.presence_id : '',
 					hasFeatures: false,
 					isAdmin: dataUser.priv_level === 'admin',
 					listCallerId: [],
@@ -1061,11 +1062,7 @@ define(function(require){
 
 								template
 									.find('.list-assigned-items')
-									.append($(monster.template(self, 'users-numbersItemRow', {
-										isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
-										isE911Enabled: monster.util.isNumberFeatureEnabled('e911'),
-										number: val
-									})));
+									.append($(monster.template(self, 'users-numbersItemRow', { number: val })));
 
 								extraSpareNumbers = _.without(extraSpareNumbers, val.phoneNumber);
 							});
@@ -1083,7 +1080,6 @@ define(function(require){
 
 			template.on('click', '.actions .buy-link', function(e) {
 				e.preventDefault();
-
 				monster.pub('common.buyNumbers', {
 					searchType: $(this).data('type'),
 					callbacks: {
@@ -1093,11 +1089,7 @@ define(function(require){
 									number.viewFeatures = $.extend(true, {}, features);
 									number.phoneNumber = number.id;
 
-									var rowTemplate = $(monster.template(self, 'users-numbersItemRow', {
-										isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
-										isE911Enabled: monster.util.isNumberFeatureEnabled('e911'),
-										number: number
-									}));
+									var rowTemplate = monster.template(self, 'users-numbersItemRow', { number: number });
 
 									monster.ui.tooltips(rowTemplate);
 
@@ -1153,60 +1145,56 @@ define(function(require){
 				}
 			});
 
-			if (monster.util.isNumberFeatureEnabled('cnam')) {
-				template.on('click', '.callerId-number', function() {
-					var cnamCell = $(this).parents('.item-row').first(),
-						phoneNumber = cnamCell.data('id');
+			template.on('click', '.callerId-number', function() {
+				var cnamCell = $(this).parents('.item-row').first(),
+					phoneNumber = cnamCell.data('id');
 
-					if(phoneNumber) {
-						var args = {
-							phoneNumber: phoneNumber,
-							callbacks: {
-								success: function(data) {
-									if('cnam' in data.data && data.data.cnam.display_name) {
-										cnamCell.find('.features i.feature-outbound_cnam').addClass('active');
-									} else {
-										cnamCell.find('.features i.feature-outbound_cnam').removeClass('active');
-									}
+				if(phoneNumber) {
+					var args = {
+						phoneNumber: phoneNumber,
+						callbacks: {
+							success: function(data) {
+								if('cnam' in data.data && data.data.cnam.display_name) {
+									cnamCell.find('.features i.feature-outbound_cnam').addClass('active');
+								} else {
+									cnamCell.find('.features i.feature-outbound_cnam').removeClass('active');
+								}
 
-									if('cnam' in data.data && data.data.cnam.inbound_lookup) {
-										cnamCell.find('.features i.feature-inbound_cnam').addClass('active');
-									} else {
-										cnamCell.find('.features i.feature-inbound_cnam').removeClass('active');
-									}
+								if('cnam' in data.data && data.data.cnam.inbound_lookup) {
+									cnamCell.find('.features i.feature-inbound_cnam').addClass('active');
+								} else {
+									cnamCell.find('.features i.feature-inbound_cnam').removeClass('active');
 								}
 							}
-						};
+						}
+					};
 
-						monster.pub('common.callerId.renderPopup', args);
-					}
-				});
-			}
+					monster.pub('common.callerId.renderPopup', args);
+				}
+			});
 
-			if (monster.util.isNumberFeatureEnabled('e911')) {
-				template.on('click', '.e911-number', function() {
-					var e911Cell = $(this).parents('.item-row').first(),
-						phoneNumber = e911Cell.data('id');
+			template.on('click', '.e911-number', function() {
+				var e911Cell = $(this).parents('.item-row').first(),
+					phoneNumber = e911Cell.data('id');
 
-					if(phoneNumber) {
-						var args = {
-							phoneNumber: phoneNumber,
-							callbacks: {
-								success: function(data) {
-									if(!($.isEmptyObject(data.data.dash_e911))) {
-										e911Cell.find('.features i.feature-dash_e911').addClass('active');
-									}
-									else {
-										e911Cell.find('.features i.feature-dash_e911').removeClass('active');
-									}
+				if(phoneNumber) {
+					var args = {
+						phoneNumber: phoneNumber,
+						callbacks: {
+							success: function(data) {
+								if(!($.isEmptyObject(data.data.dash_e911))) {
+									e911Cell.find('.features i.feature-dash_e911').addClass('active');
+								}
+								else {
+									e911Cell.find('.features i.feature-dash_e911').removeClass('active');
 								}
 							}
-						};
+						}
+					};
 
-						monster.pub('common.e911.renderPopup', args);
-					}
-				});
-			}
+					monster.pub('common.e911.renderPopup', args);
+				}
+			});
 
 			template.on('click', '.prepend-number', function() {
 				var prependCell = $(this).parents('.item-row').first(),
@@ -1270,7 +1258,7 @@ define(function(require){
 							currentUser: currentUser
 						});
 					} else {
-						monster.ui.alert('error', self.i18n.active().users.callRecording.noNumber);
+						monster.ui.alert('error', self.i18n.active().users.call_recording.noNumber);
 					}
 				});
 			});
@@ -2042,44 +2030,35 @@ define(function(require){
 								currentUser.smartpbx.find_me_follow_me = currentUser.smartpbx.find_me_follow_me || {};
 								currentUser.smartpbx.find_me_follow_me.enabled = (enabled && endpoints.length > 0);
 								var selectedMedia = featureTemplate.find('.media-dropdown option:selected').val();
-								var callflowNode = {};
 
 								if(enabled && endpoints.length > 0) {
-									callflowNode.module = 'ring_group';
-									callflowNode.data = {
+									userCallflow.flow.module = 'ring_group';
+									userCallflow.flow.data = {
 										strategy: "simultaneous",
-										timeout: 20,
+										timeout: 25,
+										name: "groupname",
+										ringback: selectedMedia,
 										endpoints: []
 									}
+									_.each(endpoints, function(endpoint) {
 
-										_.each(endpoints, function(endpoint) {
-										callflowNode.data.endpoints.push({
+										userCallflow.flow.data.endpoints.push({
 											id: endpoint.id,
 											endpoint_type: "device",
 											delay: endpoint.delay,
 											timeout: endpoint.timeout
 										});
-
-										if((endpoint.delay+endpoint.timeout) > callflowNode.data.timeout) { 
-											callflowNode.data.timeout = (endpoint.delay+endpoint.timeout); 
-										}
+	
+										if((endpoint.delay+endpoint.timeout) > userCallflow.flow.data.timeout) { userCallflow.flow.data.timeout = (endpoint.delay+endpoint.timeout); }
 									});
 								} else {
-									callflowNode.module='user';
-									callflowNode.data = {
+									userCallflow.flow.module = 'user';
+									userCallflow.flow.data = {
 										can_call_self: false,
 										id: currentUser.id,
-										timeout: 20
-									};
+										timeout: 25
+									}
 								}
-
-								// In next 5 lines, look for user/group node, and replace it with the new data;
-								var flow = userCallflow.flow;
-								while(flow.hasOwnProperty('module') && ['ring_group', 'user'].indexOf(flow.module) < 0) {
-									flow = flow.children['_'];
-								}
-								flow.module = callflowNode.module;
-								flow.data = callflowNode.data;
 
 								monster.parallel({
 										callflow: function(callbackParallel) {
@@ -2666,10 +2645,7 @@ define(function(require){
 
 			self.usersGetNumbersData(userId, function(results) {
 				self.usersFormatNumbersData(userId, results, function(results) {
-					template = $(monster.template(self, 'users-numbers', $.extend(true, {}, results, {
-						isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
-						isE911Enabled: monster.util.isNumberFeatureEnabled('e911')
-					})));
+					template = $(monster.template(self, 'users-numbers', results));
 
 					callback && callback(template, results);
 				});

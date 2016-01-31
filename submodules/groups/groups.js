@@ -426,10 +426,7 @@ define(function(require){
 
 			self.groupsGetNumbersData(groupId, function(data) {
 				self.groupsFormatNumbersData(data, function(data) {
-					template = $(monster.template(self, 'groups-numbers', $.extend(true, {}, data, {
-						isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
-						isE911Enabled: monster.util.isNumberFeatureEnabled('e911')
-					})));
+					template = $(monster.template(self, 'groups-numbers', data));
 
 					self.groupsBindNumbers(template, data);
 
@@ -1049,60 +1046,56 @@ define(function(require){
 				}
 			});
 
-			if (monster.util.isNumberFeatureEnabled('e911')) {
-				template.on('click', '.e911-number', function() {
-					var e911Cell = $(this).parents('.item-row').first(),
-						phoneNumber = e911Cell.data('id');
+			template.on('click', '.e911-number', function() {
+				var e911Cell = $(this).parents('.item-row').first(),
+					phoneNumber = e911Cell.data('id');
 
-					if(phoneNumber) {
-						var args = {
-							phoneNumber: phoneNumber,
-							callbacks: {
-								success: function(data) {
-									if(!($.isEmptyObject(data.data.dash_e911))) {
-										e911Cell.find('.features i.feature-dash_e911').addClass('active');
-									}
-									else {
-										e911Cell.find('.features i.feature-dash_e911').removeClass('active');
-									}
+				if(phoneNumber) {
+					var args = {
+						phoneNumber: phoneNumber,
+						callbacks: {
+							success: function(data) {
+								if(!($.isEmptyObject(data.data.dash_e911))) {
+									e911Cell.find('.features i.feature-dash_e911').addClass('active');
+								}
+								else {
+									e911Cell.find('.features i.feature-dash_e911').removeClass('active');
 								}
 							}
-						};
+						}
+					};
 
-						monster.pub('common.e911.renderPopup', args);
-					}
-				});
-			}
+					monster.pub('common.e911.renderPopup', args);
+				}
+			});
 
-			if (monster.util.isNumberFeatureEnabled('cnam')) {
-				template.on('click', '.callerId-number', function() {
-					var cnamCell = $(this).parents('.item-row').first(),
-						phoneNumber = cnamCell.data('id');
+			template.on('click', '.callerId-number', function() {
+				var cnamCell = $(this).parents('.item-row').first(),
+					phoneNumber = cnamCell.data('id');
 
-					if(phoneNumber) {
-						var args = {
-							phoneNumber: phoneNumber,
-							callbacks: {
-								success: function(data) {
-									if('cnam' in data.data && data.data.cnam.display_name) {
-										cnamCell.find('.features i.feature-outbound_cnam').addClass('active');
-									} else {
-										cnamCell.find('.features i.feature-outbound_cnam').removeClass('active');
-									}
+				if(phoneNumber) {
+					var args = {
+						phoneNumber: phoneNumber,
+						callbacks: {
+							success: function(data) {
+								if('cnam' in data.data && data.data.cnam.display_name) {
+									cnamCell.find('.features i.feature-outbound_cnam').addClass('active');
+								} else {
+									cnamCell.find('.features i.feature-outbound_cnam').removeClass('active');
+								}
 
-									if('cnam' in data.data && data.data.cnam.inbound_lookup) {
-										cnamCell.find('.features i.feature-inbound_cnam').addClass('active');
-									} else {
-										cnamCell.find('.features i.feature-inbound_cnam').removeClass('active');
-									}
+								if('cnam' in data.data && data.data.cnam.inbound_lookup) {
+									cnamCell.find('.features i.feature-inbound_cnam').addClass('active');
+								} else {
+									cnamCell.find('.features i.feature-inbound_cnam').removeClass('active');
 								}
 							}
-						};
+						}
+					};
 
-						monster.pub('common.callerId.renderPopup', args);
-					}
-				});
-			}
+					monster.pub('common.callerId.renderPopup', args);
+				}
+			});
 
 			template.on('click', '.prepend-number', function() {
 				var prependCell = $(this).parents('.item-row').first(),
@@ -1145,11 +1138,7 @@ define(function(require){
 
 							template
 								.find('.list-assigned-items')
-								.append($(monster.template(self, 'groups-numbersItemRow', {
-									isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
-									isE911Enabled: monster.util.isNumberFeatureEnabled('e911'),
-									number: val
-								})));
+								.append($(monster.template(self, 'groups-numbersItemRow', { number: val })));
 
 							extraSpareNumbers = _.without(extraSpareNumbers, val.phoneNumber);
 						});
@@ -1160,7 +1149,7 @@ define(function(require){
 							template.find('.spare-link').addClass('disabled');
 						}
 					}
-				};
+				}
 
 				monster.pub('common.numbers.dialogSpare', args);
 			});
@@ -1172,16 +1161,13 @@ define(function(require){
 					searchType: $(this).data('type'),
 					callbacks: {
 						success: function(numbers) {
+
 							monster.pub('common.numbers.getListFeatures', function(features) {
 								_.each(numbers, function(number, k) {
 									number.viewFeatures = $.extend(true, {}, features);
 									number.phoneNumber = number.id;
 
-									var rowTemplate = $(monster.template(self, 'groups-numbersItemRow', {
-										isCnamEnabled: monster.util.isNumberFeatureEnabled('cnam'),
-										isE911Enabled: monster.util.isNumberFeatureEnabled('e911'),
-										number: number
-									}));
+									var rowTemplate = monster.template(self, 'groups-numbersItemRow', { number: number });
 
 									monster.ui.tooltips(rowTemplate);
 
@@ -1476,9 +1462,7 @@ define(function(require){
 					number.localityEnabled = 'locality' in number ? true : false;
 
 					_.each(number.features, function(feature) {
-						if(feature in number.viewFeatures) {
-							number.viewFeatures[feature].active = 'active';
-						}
+						number.viewFeatures[feature].active = 'active';
 					});
 
 					if(number.used_by === '') {
