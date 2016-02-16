@@ -169,7 +169,9 @@
                                         "qrcode": "QR-Code",
                                         "security": "Sicherheit"
                                 },
-				"provstring": "Provstring"
+                                "provstring": "Geräte-URL",
+                                "provstring_conferror": "Die Einstellungen für die Automitsche Geräteeinstellung unter Kontoeinstellungen ist noch nicht gesetzt!",
+                                "provstring_jsconferror": "Die Einstellungen für die Automitsche Geräteeinstellung unter /js/config.js 'api.provisioner oder api.provisioner_http' sind noch nicht gesetzt!"
 			},
 			"audio": {
 				"menuTitle": "Audio",
@@ -273,7 +275,7 @@
                                                 "presence": "Lampe zeigt dass die Nebenstelle besetzt ist. Diese kann benutzt werden um einen Anruf zu übernehmen oder um die Nebenstelle anzurufen.",
                                                 "parking": "Lampe zeigt dass ein Anruf geparkt ist, für die Firma. Dies kann für einen Transfer zu oder von geparkten Anrufen bentuzt werden.",
                                                 "personal_parking": "Lampe zeigt dass ein Anruf geparkt ist, für diesen Benutzer. Dies kann für einen Transfer zu oder von geparkten Anrufen bentuzt werden.",
-                                                "speed_dial": "Lmape zeigt keinen Status. Kann zum Anrufen einer Nummer benutzt werden."
+                                                "speed_dial": "Lampe zeigt keinen Status. Kann zum Anrufen einer Nummer benutzt werden."
                                         }
                                 },
                                 "types": {
@@ -760,7 +762,7 @@
                     "for": "für",
                     "fileUploadButton": "Datei wählen",
                     "greetingsHelp": "Sie müssen auf den Knopf \"Aktualisieren\" drücken, um die Ansage zu übernehmen.",
-                    "defaultAction": "nöchste Aktion"
+                    "defaultAction": "Aktion ohne Taste"
                 },
                 "open": "Offen",
 		"closed": "Geschlossen",

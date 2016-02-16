@@ -160,19 +160,26 @@ define(function(require){
 
                         self.devicesGetEditData(data, function(dataDevice) {
                                 if (dataDevice.hasOwnProperty('provision')) {
-                                        if (typeof dataDevice.provision.endpoint_brand == "string" && typeof monster.apps.auth.currentAccount !== "object") dataDevice.provision.provstring = self.i18n.active().devices.sip.provstringfail_noaccount;
-                                        if (typeof dataDevice.provision.endpoint_brand == "string" && typeof monster.apps.auth.currentAccount == "object") {
-                                                if(dataDevice.provision.endpoint_brand == "snom") dataDevice.provision.provstring = monster.config.api.provisioner_http + 'prov/' + dataDevice.provision.endpoint_brand + "/" + "settings.php?mac={mac}&pass=" + monster.apps.auth.currentAccount.provision.urlpass;
-                                                if(dataDevice.provision.endpoint_brand == "mitel") dataDevice.provision.provstring = monster.config.api.provisioner + 'prov/' + dataDevice.provision.endpoint_brand + "/";
-                                                if(dataDevice.provision.endpoint_brand == "yealink") dataDevice.provision.provstring = monster.config.api.provisioner + 'prov/' + dataDevice.provision.endpoint_brand + "/";
-                                        };
+                                        if (typeof dataDevice.provision.endpoint_brand !== "string" || typeof monster.apps.auth.currentAccount !== "object" || typeof monster.apps.auth.currentAccount.provision !== "object") {
+                                            toastr.error(self.i18n.active().devices.popupSettings.sip.provstring_conferror, '', {"timeOut": 10000});
+                                        } else {
+                                            if(typeof monster.config.api.provisioner !== "string" || typeof monster.config.api.provisioner_http !== "string" || typeof monster.apps.auth.currentAccount.provision.urlpass !== "string") {
+                                                toastr.error(self.i18n.active().devices.popupSettings.sip.provstring_jsconferror, '', {"timeOut": 10000});
+					    } else {
+                                                if (typeof dataDevice.mac_address == "string" && typeof monster.apps.auth.currentAccount.provision == "object") {
+                                                    if(dataDevice.provision.endpoint_brand == "snom") dataDevice.provision.provstring = monster.config.api.provisioner_http + 'prov/' + dataDevice.provision.endpoint_brand + "/" + "settings.php?mac={mac}&pass=" + monster.apps.auth.currentAccount.provision.urlpass;
+                                                    if(dataDevice.provision.endpoint_brand == "mitel") dataDevice.provision.provstring = monster.config.api.provisioner + 'prov/' + dataDevice.provision.endpoint_brand + "/";
+                                                    if(dataDevice.provision.endpoint_brand == "yealink") dataDevice.provision.provstring = monster.config.api.provisioner_http + 'prov/' + dataDevice.provision.endpoint_brand + "/" + dataDevice.mac_address.replace(/\:/g, "").toLowerCase() + ".cfg?pass=" + monster.apps.auth.currentAccount.provision.urlpass;
+                                                }
+					    }
+					}
 					self.devicesGetIterator(dataDevice.provision, function(template) {
 						if (template.hasOwnProperty('feature_keys') && template.feature_keys.iterate > 0) {
 							if (!dataDevice.provision.hasOwnProperty('feature_keys')) {
 								dataDevice.provision.feature_keys = {};
 							}
 
-							for (var i = 1, len = template.feature_keys.iterate; i < len; i++) {
+							for (var i = 1, len = template.feature_keys.iterate; i <= len; i++) {
 								if (!dataDevice.provision.feature_keys.hasOwnProperty(i)) {
 									dataDevice.provision.feature_keys[i] = { type: 'none' };
 								}
@@ -292,7 +299,7 @@ define(function(require){
 				});
 
 				$.each(templateDevice.find('.feature-key-index'), function(idx, val) {
-					$(val).text(parseInt($(val).text(), 10) + 1);
+					$(val).text(parseInt($(val).text(), 10) + 0);
 				});
 			}
 
@@ -362,7 +369,7 @@ define(function(require){
                         var slider_tx  = templateDevice.find('#slider_tx'),tooltip_tx = templateDevice.find('.tooltip_tx');
                                         tooltip_tx.css('left', data.media.audio['tx_volume']).text( data.media.audio['tx_volume']);
                                         slider_tx.slider({
-                                        range: "min",min: -4,value: data.media.audio['tx_volume'],max: 4,step: 1,
+                                        range: "min",min: -8,value: data.media.audio['tx_volume'],max: 8,step: 1,
                                         slide: function(event, ui_tx) { //When the slider is sliding
                                                 var value_tx  = slider_tx.slider('value'),
                                                 volume_tx = templateDevice.find('.volume_tx');
@@ -379,7 +386,7 @@ define(function(require){
                         var slider_rx  = templateDevice.find('#slider_rx'), tooltip_rx = templateDevice.find('.tooltip_rx');
                                         tooltip_rx.css('left', data.media.audio['rx_volume']).text( data.media.audio['rx_volume']);
                                         slider_rx.slider({
-                                        range: "min",min: -4,value: data.media.audio['rx_volume'],max: 4,step: 1,
+                                        range: "min",min: -8,value: data.media.audio['rx_volume'],max: 8,step: 1,
                                         slide: function(event, ui_rx) { //When the slider is sliding
                                                 var value_rx  = slider_rx.slider('value'),
                                                 volume_rx = templateDevice.find('.volume_rx');
@@ -539,7 +546,6 @@ define(function(require){
 				});
 			});
 
-
 			templateDevice.find('.tabs-section[data-section="WebRTC"] .type-info a').on('click', function() {
 				var $this = $(this);
 
@@ -563,7 +569,8 @@ define(function(require){
 			var popup = monster.ui.dialog(templateDevice, {
 				position: ['center', 20],
 				title: popupTitle,
-				dialogClass: 'overflow-visible'
+				dialogClass: 'voip-edit-device-popup overflow-visible'
+//				dialogClass: 'overflow-visible'
 			});
 		},
 
@@ -600,6 +607,10 @@ define(function(require){
 					require_keypress: true,
 					keep_caller_id: true
 				}, formData.call_forward);
+
+                               if (originalData.device_type === 'smartphone') {
+                                       formData.call_forward.failover = true;
+                               }
 			}
 
 			if(hasCodecs) {
@@ -607,7 +618,7 @@ define(function(require){
 					audio: {
 						codecs: [],
 						tx_volume: tx_volume,
-						rx_volume: tx_volume
+						rx_volume: rx_volume
 					},
 					video: {
 						codecs: []

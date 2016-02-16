@@ -163,7 +163,9 @@
                                         "qrcode": "QR-Code",
                                         "security": "Security"
                                 },
-				"provstring": "Provstring"
+                                "provstring": "Provstring",
+                                "provstring_conferror": "Please set config for Automatic Devicesetting in account first!",
+                                "provstring_jsconferror": "Please set config in /js/config.js 'api.provisioner oder api.provisioner_http' first!"
 			},
 			"audio": {
 				"menuTitle": "audio",

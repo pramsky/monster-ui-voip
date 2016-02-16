@@ -2,7 +2,8 @@ define(function(require){
 	var $ = require('jquery'),
 		_ = require('underscore'),
 		monster = require('monster'),
-		chart = require('chart');
+		chart = require('chart'),
+		toastr = require('toastr');
 
 	var app = {
 
@@ -603,7 +604,7 @@ define(function(require){
 			});
 
 			template.find('.header-link.caller-id.disabled').on('click', function(e) {
-				monster.ui.alert(self.i18n.active().myOffice.missingMainNumberForCallerId);
+				toastr.error(self.i18n.active().myOffice.missingMainNumberForCallerId, '', {"timeOut": 10000});
 			});
 
 			monster.ui.tooltips(template);
@@ -663,7 +664,7 @@ define(function(require){
 				},
 				error: function(errors) {
 					if(errors.hasOwnProperty('size') && errors.size.length > 0) {
-						monster.ui.alert(self.i18n.active().myOffice.musicOnHold.fileTooBigAlert);
+						toastr.error(self.i18n.active().myOffice.musicOnHold.fileTooBigAlert, '', {"timeOut": 10000});
 					}
 					popupTemplate.find('.upload-div input').val('');
 					mediaToUpload = undefined;
@@ -726,7 +727,7 @@ define(function(require){
 						}
 					});
 				} else {
-					monster.ui.alert(self.i18n.active().myOffice.musicOnHold.emptyUploadAlert);
+					toastr.error(self.i18n.active().myOffice.musicOnHold.emptyUploadAlert, '', {"timeOut": 10000});
 				}
 			});
 
@@ -900,7 +901,7 @@ define(function(require){
 							});
 						});
 					} else {
-						monster.ui.alert(self.i18n.active().myOffice.callerId.mandatoryE911Alert);
+						toastr.error(self.i18n.active().myOffice.callerId.mandatoryE911Alert, '', {"timeOut": 10000});
 					}
 				} else {
 					delete account.caller_id.external;

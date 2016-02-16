@@ -1,7 +1,8 @@
 define(function(require){
 	var $ = require('jquery'),
 		_ = require('underscore'),
-		monster = require('monster');
+		monster = require('monster'),
+		toastr = require('toastr');
 
 	var app = {
 		requests: {},
@@ -458,7 +459,7 @@ define(function(require){
 					);
 				},
 				error: function(data, status) {
-					monster.ui.alert('error', self.i18n.active().callLogs.alertMessages.getDetailsError);
+					toastr.error(self.i18n.active().callLogs.alertMessages.getDetailsError, '', {"timeOut": 10000});
 				}
 			});
 		}

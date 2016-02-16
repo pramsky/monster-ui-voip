@@ -265,7 +265,7 @@ define(function(require){
 				},
 				error: function(errors) {
 					if(errors.hasOwnProperty('size') && errors.size.length > 0) {
-						monster.ui.alert(self.i18n.active().vmboxes.popupSettings.greeting.fileTooBigAlert);
+						toastr.error(self.i18n.active().vmboxes.popupSettings.greeting.fileTooBigAlert, '', {"timeOut": 10000});
 					}
 					greetingContainer.find('.upload-div input').val('');
 					mediaToUpload = undefined;
@@ -324,7 +324,7 @@ define(function(require){
 						}
 					});
 				} else {
-					monster.ui.alert(self.i18n.active().vmboxes.popupSettings.greeting.emptyUploadAlert);
+					toastr.error(self.i18n.active().vmboxes.popupSettings.greeting.emptyUploadAlert, '', {"timeOut": 10000});
 				}
 			});
 		},
