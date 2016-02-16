@@ -32,7 +32,7 @@ define(function(require){
 				});
 
 				if(hasOldData) {
-					monster.ui.alert('error', self.i18n.active().groups.outdatedGroupsError);
+					toastr.error(self.i18n.active().groups.outdatedGroupsError, '', {"timeOut": 10000});
 				} else {
 					var dataTemplate = self.groupsFormatListData(data),
 						template = $(monster.template(self, 'groups-layout', { countGroups: Object.keys(dataTemplate.groups).length })),
@@ -627,7 +627,7 @@ define(function(require){
 					},
 					error: function(errors) {
 						if(errors.hasOwnProperty('size') && errors.size.length > 0) {
-							monster.ui.alert(self.i18n.active().groups.ringback.fileTooBigAlert);
+							toastr.error(self.i18n.active().groups.ringback.fileTooBigAlert, '', {"timeOut": 10000});
 						}
 						featureTemplate.find('.upload-div input').val('');
 						mediaToUpload = undefined;
@@ -694,7 +694,7 @@ define(function(require){
 							}
 						});
 					} else {
-						monster.ui.alert(self.i18n.active().groups.ringback.emptyUploadAlert);
+						toastr.error(self.i18n.active().groups.ringback.emptyUploadAlert, '', {"timeOut": 10000});
 					}
 				});
 

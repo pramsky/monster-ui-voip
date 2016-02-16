@@ -706,7 +706,7 @@ define(function(require){
 					}
 				}
 				else {
-					monster.ui.alert('warning', self.i18n.active().users.noNumberCallflow);
+					toastr.error(self.i18n.active().users.noNumberCallflow, '', {"timeOut": 10000});
 				}
 			});
 
@@ -1141,7 +1141,7 @@ define(function(require){
 					});
 				}
 				else {
-					monster.ui.alert('warning', self.i18n.active().users.noNumberCallflow);
+					toastr.warning(self.i18n.active().users.noNumberCallflow, '', {"timeOut": 10000});
 				}
 			});
 
@@ -1258,7 +1258,7 @@ define(function(require){
 							currentUser: currentUser
 						});
 					} else {
-						monster.ui.alert('error', self.i18n.active().users.call_recording.noNumber);
+						toastr.error(self.i18n.active().users.call_recording.noNumber, '', {"timeOut": 10000});
 					}
 				});
 			});
@@ -1292,7 +1292,7 @@ define(function(require){
 					};
 
 					if(_.isEmpty(data.listConferences)) {
-						monster.ui.alert('error', self.i18n.active().users.conferencing.noConfNumbers);
+						toastr.error(self.i18n.active().users.conferencing.noConfNumbers, '', {"timeOut": 10000});
 					}
 					else {
 						self.usersRenderConferencing(data);
@@ -1649,7 +1649,7 @@ define(function(require){
 						});
 					}
 					else {
-						monster.ui.alert('error', self.i18n.active().users.faxing.toastr.error.numberMissing);
+						toastr.error(self.i18n.active().users.faxing.toastr.error.numberMissing, '', {"timeOut": 10000});
 					}
 				} else {
 					self.usersDeleteFaxing(data.user.id, function() {
@@ -1861,7 +1861,7 @@ define(function(require){
 				});
 			}
 			else {
-				monster.ui.alert('error', self.i18n.active().users.errorCallerId);
+				toastr.error(self.i18n.active().users.errorCallerId, '', {"timeOut": 10000});
 			}
 		},
 
@@ -1942,9 +1942,9 @@ define(function(require){
 
 			self.usersListMedias(function(medias) {
 				if(!params.userCallflow) {
-					monster.ui.alert('error', self.i18n.active().users.find_me_follow_me.noNumber);
+					toastr.error(self.i18n.active().users.find_me_follow_me.noNumber, '', {"timeOut": 10000});
 				} else if(!params.userDevices || params.userDevices.length === 0) {
-					monster.ui.alert('error', self.i18n.active().users.find_me_follow_me.noDevice);
+					toastr.error(self.i18n.active().users.find_me_follow_me.noDevice, '', {"timeOut": 10000});
 				} else {
 					var currentUser = params.currentUser,
 						userCallflow = params.userCallflow,
@@ -2244,7 +2244,7 @@ define(function(require){
 					},
 					error: function(errors) {
 						if(errors.hasOwnProperty('size') && errors.size.length > 0) {
-							monster.ui.alert(self.i18n.active().users.music_on_hold.fileTooBigAlert);
+							toastr.error(self.i18n.active().users.music_on_hold.fileTooBigAlert, '', {"timeOut": 10000});
 						}
 						featureTemplate.find('.upload-div input').val('');
 						mediaToUpload = undefined;
@@ -2311,7 +2311,7 @@ define(function(require){
 							}
 						});
 					} else {
-						monster.ui.alert(self.i18n.active().users.music_on_hold.emptyUploadAlert);
+						toastr.error(self.i18n.active().users.music_on_hold.emptyUploadAlert, '', {"timeOut": 10000});
 					}
 				});
 
@@ -2646,7 +2646,6 @@ define(function(require){
 			self.usersGetNumbersData(userId, function(results) {
 				self.usersFormatNumbersData(userId, results, function(results) {
 					template = $(monster.template(self, 'users-numbers', results));
-
 					callback && callback(template, results);
 				});
 			});
@@ -2656,9 +2655,7 @@ define(function(require){
 
 			self.usersGetDevicesData(function(results) {
 				var results = self.usersFormatDevicesData(userId, results);
-
 				template = $(monster.template(self, 'users-devices', results));
-
 				callback && callback(template, results);
 			});
 		},
@@ -3148,7 +3145,7 @@ define(function(require){
 				}
 				// If we had more than 1 Kazoo UI callflow, show an error saying the migration is impossible
 				else if(kazooUICallflowFound > 1) {
-					monster.ui.alert(self.i18n.active().users.migration.tooManyCallflows);
+					toastr.error(self.i18n.active().users.migration.tooManyCallflows, '', {"timeOut": 10000});
 				}
 				// Else, we have found 1 callflow from Kazoo-UI, migration is possible, we continue with the success callback
 				else {

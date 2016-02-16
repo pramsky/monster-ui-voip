@@ -393,11 +393,13 @@ define(function(require){
 												number: val,
 												features: $.extend(true, {}, strategyData.numberFeatures)
 											};
-											_.each(accountNumbers[val].features, function(feature) {
-												ret.features[feature].active = 'active';
-											});
-											ret.isLocal = accountNumbers[val].features.indexOf('local') > -1;
-											return ret;
+											if(typeof accountNumbers[val] !== "undefined") {
+												_.each(accountNumbers[val].features, function(feature) {
+													ret.features[feature].active = 'active';
+												});
+												ret.isLocal = accountNumbers[val].features.indexOf('local') > -1;
+											} else { ret.isLocal = false; }
+												return ret;
 										}
 									}),
 									spareLinkEnabled: (_.countBy(accountNumbers, function(number) {return number.used_by ? 'assigned' : 'spare';})['spare'] > 0)
@@ -754,7 +756,7 @@ define(function(require){
 					indexToRemove = strategyData.callflows["MainCallflow"].numbers.indexOf(numberToRemove.toString());
 
 				if(e911Feature === 'active' && container.find('.number-element .remove-number[data-e911="active"]').length === 1) {
-					monster.ui.alert('error', self.i18n.active().strategy.alertMessages.lastE911Error);
+					toastr.error(self.i18n.active().strategy.alertMessages.lastE911Error, '', {"timeOut": 10000});
 				} else if(indexToRemove >= 0) {
 					self.strategyGetNumber(numberToRemove, function(dataNumber) {
 						var dataTemplate = { phoneNumber: numberToRemove },
@@ -1016,7 +1018,6 @@ define(function(require){
 													callback && callback(data.data);
 												}
 											});
-console.log(greetingMedia);
 										} else {
 											self.callApi({
 												resource: 'media.create',
@@ -1038,7 +1039,6 @@ console.log(greetingMedia);
 													callback && callback(data.data);
 												}
 											});
-//console.log(greetingMedia);
 										}
 									};
 
@@ -1067,7 +1067,7 @@ console.log(greetingMedia);
 						});
 					});
 				} else {
-					monster.ui.alert('error', self.i18n.active().strategy.customConferenceGreeting.mainConfMissing)
+					toastr.error(self.i18n.active().strategy.customConferenceGreeting.mainConfMissing, '', {"timeOut": 10000});
 				}
 			});
 
@@ -1503,7 +1503,7 @@ console.log(greetingMedia);
 					});
 
 					if(invalidData) {
-						monster.ui.alert(self.i18n.active().strategy.alertMessages.uniqueHoliday)
+						toastr.error(self.i18n.active().strategy.alertMessages.uniqueHoliday, '', {"timeOut": 10000});
 					} else {
 						monster.parallel(holidayRulesRequests, function(err, results) {
 							_.each(results, function(val, key) {
@@ -1698,7 +1698,7 @@ console.log(greetingMedia);
 				});
 
 				if(invalidTab) {
-					monster.ui.alert(self.i18n.active().strategy.alertMessages.undefinedMenu);
+					toastr.error(self.i18n.active().strategy.alertMessages.undefinedMenu, '', {"timeOut": 10000});
 					container.find('a[href="#'+invalidTab+'"]').tab('show');
 				} else {
 					var parallelRequests = {};
@@ -1782,6 +1782,7 @@ console.log(greetingMedia);
 						popupCallEntities = $.extend(true, {}, strategyData.callEntities, { voicemail: strategyData.voicemails }, { directory: strategyData.directories }),
 						dropdownCallEntities = self.strategyGetCallEntitiesDropdownData(popupCallEntities);
 
+                                        if(typeof val == "object")
 					_.each(strategyData.callflows[name].flow.children, function(val, key) {
 						menuLineContainer.append(monster.template(self, 'strategy-menuLine', {
 							number: key,
@@ -1811,19 +1812,24 @@ console.log(greetingMedia);
 					},
 					success: function(data, status) {
 						menu = data.data;
-						if(menu.media.greeting) {
-							self.callApi({
-								resource: 'media.get',
-								data: {
-									accountId: self.accountId,
-									mediaId: menu.media.greeting
-								},
-								success: function(data, status) {
-									greeting = data.data;
-									showPopup();
-								}
-							});
+						if(typeof menu.media !== 'undefined') {
+							if(menu.media.greeting) {
+								self.callApi({
+									resource: 'media.get',
+									data: {
+										accountId: self.accountId,
+										mediaId: menu.media.greeting
+									},
+									success: function(data, status) {
+										greeting = data.data;
+										showPopup();
+									}
+								});
+							} else {
+								showPopup();
+							}
 						} else {
+							toastr.error(self.i18n.active().errors.api+'3.22.29', '', {"timeOut": 10000});
 							showPopup();
 						}
 					}
@@ -1892,9 +1898,10 @@ console.log(greetingMedia);
 
 			container.find('.target-select').chosen({ search_contains: true, width: '150px' });
 
-			if(typeof greeting == "undefined") ttsvoice.populateDropdown(container.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
-			else if(greeting == null) ttsvoice.populateDropdown(container.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
-			else ttsvoice.populateDropdown(container.find('#tts_voice'), greeting.tts.voice||'inherit', {inherit: self.i18n.defaultttsvoice});
+			if(typeof greeting == "undefined") ttsvoice.populateDropdown(popup.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
+			else if(typeof greeting.tts == "undefined") ttsvoice.populateDropdown(popup.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
+			else if(greeting == null) ttsvoice.populateDropdown(popup.find('#tts_voice'), self.i18n.defaultttsvoice||'inherit', {inherit: self.i18n.defaultttsvoice});
+			else ttsvoice.populateDropdown(popup.find('#tts_voice'), greeting.tts.voice||'inherit', {inherit: self.i18n.defaultttsvoice});
 
 			container.find('.upload-input').fileUpload({
 				inputOnly: true,
@@ -1907,7 +1914,7 @@ console.log(greetingMedia);
 				},
 				error: function(errors) {
 					if(errors.hasOwnProperty('size') && errors.size.length > 0) {
-						monster.ui.alert(self.i18n.active().strategy.alertMessages.fileTooBigAlert);
+						toastr.error(self.i18n.active().strategy.alertMessages.fileTooBigAlert, '', {"timeOut": 10000});
 					}
 					container.find('.upload-container input').val('');
 					mediaToUpload = undefined;
@@ -1959,7 +1966,7 @@ console.log(greetingMedia);
 			ttsGreeting.find('.update-greeting').on('click', function(e) {
 				var text = ttsGreeting.find('textarea').val();
 				if(text) {
-					if(greeting && greeting.id) {
+					if(typeof greeting.tts == "string" && greeting && greeting.id) {
 						greeting.type = 'virtual_receptionist';
 						greeting.description = "<Text to Speech>";
 			    			greeting.media_source = "tts";
@@ -2021,7 +2028,7 @@ console.log(greetingMedia);
 						});
 					}
 				} else {
-					monster.ui.alert(self.i18n.active().strategy.alertMessages.emptyTtsGreeting);
+					toastr.error(self.i18n.active().strategy.alertMessages.emptyTtsGreeting, '', {"timeOut": 10000});
 				}
 			});
 
@@ -2100,7 +2107,7 @@ console.log(greetingMedia);
 						});
 					}
 				} else {
-					monster.ui.alert(self.i18n.active().strategy.alertMessages.emptyUploadGreeting);
+					toastr.error(self.i18n.active().strategy.alertMessages.emptyUploadGreeting, '', {"timeOut": 10000});
 				}
 			});
 
@@ -2153,7 +2160,7 @@ console.log(greetingMedia);
 				});
 
 				if(invalidData) {
-					monster.ui.alert(self.i18n.active().strategy.alertMessages.uniqueMenuNumbers);
+					toastr.error(self.i18n.active().strategy.alertMessages.uniqueMenuNumbers, '', {"timeOut": 10000});
 				} else {
 					strategyData.callflows[callflowName].flow.children = menuElements;
 					self.strategyUpdateCallflow(strategyData.callflows[callflowName], function(updatedCallflow) {

@@ -17,7 +17,9 @@ define(function(require){
                         'es-ES': { customCss: false },
                         'it-IT': { customCss: false },
                         'nl-NL': { customCss: false },
-                        'ro-RO': { customCss: false }
+                        'pt-PT': { customCss: false },
+                        'ro-RO': { customCss: false },
+                        'zh-CN': { customCss: false }
 		},
 
 		requests: {},
@@ -46,7 +48,7 @@ define(function(require){
 			var self = this,
 				parent = container || $('#monster-content'),
 				template = $(monster.template(self, 'app'));
-// accountid switch urs
+                                // accountid switch urs
                                 self.accountId = monster.apps.auth.accountId;
 
 			/* On first Load, load my office */

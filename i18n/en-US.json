@@ -178,7 +178,9 @@
                                         "qrcode": "QR-Code",
                                         "security": "Security"
                                 },
-				"provstring": "Provstring"
+				"provstring": "Provstring",
+				"provstring_conferror": "Please set config for Automatic Devicesetting in account first!",
+                                "provstring_jsconferror": "Please set config in /js/config.js 'api.provisioner oder api.provisioner_http' first!"
 			},
 			"audio": {
 				"menuTitle": "Audio",
@@ -232,7 +234,7 @@
 				"__comment": "UI-377: Adding Restart device feature",
 				"__version": "3.21",
 				"restart": {
-					"label": "Send a Restart request",
+					"label": "Send a Restart request (Use if you change phonesettings!)",
 					"button": "Restart",
 					"help": "This sends a request to restart the device. This action is only available if the device is currently registered to the platform.",
 					"success": "You successfully sent a Restart request to this device!"
